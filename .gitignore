@@ -10,3 +10,4 @@ scripts/.og.html
 .env.local
 .env.*.local
 !.env.example
+dist-ssr

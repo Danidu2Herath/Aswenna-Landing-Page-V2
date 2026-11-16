@@ -260,14 +260,23 @@ p { margin: 0; }
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
 
-/* ------------------------------ reveal motion ----------------------------- */
-.reveal { opacity: 0; transform: translateY(22px); transition: opacity var(--duration-slow) var(--ease), transform var(--duration-slow) var(--ease); }
-.reveal.is-visible { opacity: 1; transform: none; }
+/* ------------------------------ reveal motion -----------------------------
+   Scoped to .js, which the inline script in index.html sets before the page
+   paints. Without it the page is pre-rendered HTML that nothing will ever
+   reveal, so starting at opacity 0 would hide the content from a crawler and
+   from anyone with JavaScript off. The unscoped default is therefore visible,
+   and hiding is the opt-in. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity var(--duration-slow) var(--ease), transform var(--duration-slow) var(--ease);
+}
+.js .reveal.is-visible { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  .reveal { opacity: 1; transform: none; }
+  .js .reveal { opacity: 1; transform: none; }
 }
 
 /* ===========================================================================
