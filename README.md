@@ -9,9 +9,10 @@ runtime from one file.
 
 ```bash
 npm install
-npm run dev        # http://localhost:5173
-npm run build      # -> dist/   (regenerates the SEO files first)
-npm run preview    # serve the built site
+cp .env.example .env    # required — the build fails without it
+npm run dev             # http://localhost:5173
+npm run build           # -> dist/   (regenerates the SEO files first)
+npm run preview         # serve the built site
 ```
 
 `npm run build` produces a static `dist/` folder. It needs no server of its own —
@@ -24,12 +25,14 @@ plain nginx).
 
 ```
 index.html             the document head: title, meta, Open Graph, JSON-LD
-.env                   VITE_SITE_URL — the canonical origin, in ONE place
+.env                   your configuration — NOT committed
+.env.example           the committed template; copy it to .env
 src/
   main.tsx             entry point; mounts <App/> inside <LanguageProvider/>
   App.tsx              the section order of the page
   data/content.ts      ALL copy, in one file — including the app-screen content
   i18n/                language provider + Sinhala and Tamil strings
+  env.ts               reads .env, and why VITE_ values are not secret
   lib/util.ts          clamp, rAF throttle, motion/touch queries
   hooks/index.ts       useMediaQuery, useOnScreen, useRafLoop, useRevealOnce…
   components/          one component per section, plus the shared primitives
@@ -101,29 +104,80 @@ single highest-value SEO change left, and it is maybe an hour of work.
 
 ---
 
+## Configuration — the `.env` file
+
+Everything that differs between your machine, a preview deploy and production
+lives in `.env`. It is gitignored. `.env.example` is the committed template.
+
+### Setting it up
+
+```bash
+cp .env.example .env
+```
+
+Then open `.env` and set the values:
+
+| Variable | What it is |
+| --- | --- |
+| `VITE_SITE_URL` | the canonical origin of the deployed site, no trailing slash. Feeds canonical URLs, `sitemap.xml`, `robots.txt`, Open Graph and JSON-LD. |
+| `VITE_CONTACT_ENDPOINT` | where the contact form POSTs. Must accept a JSON body and answer 2xx. |
+| `VITE_CONTACT_TIMEOUT_MS` | how long to wait for the relay before showing the error state. |
+
+`npm run build` reads `.env` and fails with a message naming the missing
+variable if it is absent, so a misconfigured deploy cannot ship silently.
+
+### On your host
+
+Netlify, Vercel, Cloudflare Pages and GitHub Actions all have a place to set
+environment variables for a build. Set the same names there and you do not
+need a `.env` file in the build image at all — a variable in the host's
+environment wins over the file.
+
+### These values are NOT secret — read this before adding one
+
+Vite replaces every `import.meta.env.VITE_*` with its literal value **at build
+time**. The value ends up in plain text inside the JavaScript bundle served to
+every visitor; anyone can read it with View Source. A `VITE_` variable is
+configuration, not a secret.
+
+That is fine for what is in there now: a form-relay URL and a public inbox
+address are meant to be public, and what protects the mailbox is the relay's
+own spam handling, not the URL being hidden.
+
+**Anything that must actually stay private cannot live in a static site at
+all.** An SMTP password, an API key with write access, a database URL — those
+need a server or a serverless function that holds the key and that the browser
+calls. If you reach that point, the smallest step is a serverless function on
+whichever host you deploy to: the browser posts to `/api/contact`, the function
+holds the key and talks to the mail service.
+
+---
+
 ## The contact form — ACTION REQUIRED BEFORE LAUNCH
 
-`src/components/ContactSection.tsx` posts the enquiry to a form relay, which
-emails it to **info@veyra.lk**. This is a static site, so there is no server of
-ours to receive the post.
-
-```ts
-const ENDPOINT = "https://formsubmit.co/ajax/info@veyra.lk";
-```
+`src/components/ContactSection.tsx` posts the enquiry to the relay named by
+`VITE_CONTACT_ENDPOINT`, which emails it to **info@veyra.lk**. This is a static
+site, so there is no server of ours to receive the post.
 
 **FormSubmit needs the address activated once.** Submit the form yourself on the
 live site, then click the link in the confirmation email FormSubmit sends to
 info@veyra.lk. **Until that is done every submission fails** and the visitor is
 shown the error state with the address to email directly.
 
-To use something else — Formspree, Web3Forms, or your own endpoint — change
-`ENDPOINT` only. It must accept a POST of JSON and answer 2xx on success.
+To use something else, change `VITE_CONTACT_ENDPOINT` in `.env` — no code
+changes:
+
+```bash
+VITE_CONTACT_ENDPOINT=https://formspree.io/f/YOUR_FORM_ID
+VITE_CONTACT_ENDPOINT=https://api.web3forms.com/submit
+VITE_CONTACT_ENDPOINT=https://api.example.com/contact
+```
 
 What the form does: validates in the browser and marks bad fields inline,
 disables the button and says "Sending…", carries a honeypot field that bots fill
-and people never see, times out after 15 seconds, and shows a **success** or a
-**failure** panel. The failure panel repeats the email address so an enquiry is
-never simply lost.
+and people never see, times out after `VITE_CONTACT_TIMEOUT_MS`, and shows a
+**success** or a **failure** panel. The failure panel repeats the email address
+so an enquiry is never simply lost.
 
 ---
 
