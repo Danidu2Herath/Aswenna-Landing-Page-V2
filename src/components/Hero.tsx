@@ -1,20 +1,36 @@
 import Icon from "./Icon";
-import Chip from "./Chip";
-import AppPhone from "./app/AppPhone";
-import { hero, site } from "../data/content";
+import { hero, partners } from "../data/content";
 import { useI18n } from "../i18n";
 
+/**
+ * Full-bleed photographic hero: the field fills the first screen, a dark
+ * scrim keeps white type readable, and the partner marks sit along the
+ * bottom edge. `data-dark` tells the header to switch to light ink over it.
+ */
 export default function Hero() {
   const { t } = useI18n();
 
   return (
-    <section className="hero" id="top">
-      <div className="hero__glow" aria-hidden="true" />
+    <section className="hero" id="top" data-dark>
+      <img
+        className="hero__bg"
+        src={hero.photo}
+        alt=""
+        aria-hidden="true"
+        fetchPriority="high"
+        width={2000}
+        height={1145}
+      />
+      <span className="hero__scrim" aria-hidden="true" />
+
       <div className="container hero__inner">
-        <span className="hero__badge">
-          <span className="hero__badge-tag">{t("hero.badgeTag", hero.badgeTag)}</span>
-          <span>{t("hero.badge", hero.badge)}</span>
-        </span>
+        <a className="hero__announce" href="#platform">
+          <span className="hero__announce-text">{t("hero.badge", hero.badge)}</span>
+          <span className="hero__announce-pill">
+            {t("hero.badgeTag", hero.badgeTag)}
+            <Icon name="arrow-right" />
+          </span>
+        </a>
 
         <h1 className="hero__title">
           {hero.title.map((line, i) => (
@@ -27,57 +43,27 @@ export default function Hero() {
         <p className="hero__sub">{t("hero.sub", hero.sub)}</p>
 
         <div className="hero__actions">
-          <a className="btn btn--primary btn--lg" href="#platform">
+          <a className="hero__cta" href="#platform">
             <span>{t("hero.primaryCta", hero.primaryCta)}</span>
-            <Icon name="arrow-right" />
+            <span className="hero__cta-icon">
+              <Icon name="arrow-right" />
+            </span>
           </a>
-          <a className="btn btn--ghost btn--lg" href="#engine">
-            <Icon name="arrow-down" />
-            <span>{t("hero.secondaryCta", hero.secondaryCta)}</span>
+          <a className="hero__link" href="#engine">
+            {t("hero.secondaryCta", hero.secondaryCta)}
           </a>
         </div>
-
-        <p className="hero__tagline">
-          <Icon name="sprout" />
-          <span>
-            {site.name} — <span>{t("site.promise", site.promise)}</span>
-          </span>
-        </p>
       </div>
 
-      <div className="container">
-        <div className="hero__showcase">
-          <div className="hero__stage">
-            <img
-              className="hero__photo"
-              src={hero.photo}
-              alt={hero.photoAlt}
-              fetchPriority="high"
-              width={2000}
-              height={1145}
-            />
-            <span className="hero__veil" aria-hidden="true" />
-
-            {hero.cards.map((card, i) => (
-              <div className={`hero__float hero__float--${i === 0 ? "left" : "right"}`} key={card.label}>
-                <span className={`hero__float-icon${i ? " hero__float-icon--alt" : ""}`}>
-                  <Icon name={card.icon} />
-                </span>
-                <div>
-                  <strong>{card.value}</strong>
-                  <span>{t(`hero.cards.${i}.label`, card.label)}</span>
-                </div>
-                <Chip tone={card.tone}>{card.note}</Chip>
-              </div>
-            ))}
-
-            {/* The application itself, in the hero: the product is the screen,
-                not the photograph behind it. */}
-            <div className="hero__device">
-              <AppPhone screen="dashboard" withCaption={false} />
-            </div>
-          </div>
-        </div>
+      <div className="container hero__partners">
+        <p className="hero__partners-label">{t("partners.note", partners.note)}</p>
+        <ul className="hero__partners-row">
+          {partners.logos.map((logo) => (
+            <li className={`hero__partner ${logo.cls}`} key={logo.src}>
+              <img src={logo.src} alt={logo.alt} loading="lazy" />
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

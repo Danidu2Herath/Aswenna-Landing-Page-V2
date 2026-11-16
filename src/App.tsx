@@ -18,7 +18,6 @@ import PricingSection from "./components/PricingSection";
 import PlatformSection from "./components/PlatformSection";
 import RoadmapSection from "./components/RoadmapSection";
 import FaqSection from "./components/FaqSection";
-import LogoStrip from "./components/LogoStrip";
 import CtaSection from "./components/CtaSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
@@ -48,7 +47,6 @@ export default function App() {
         <PlatformSection />
         <RoadmapSection />
         <FaqSection />
-        <LogoStrip />
         <CtaSection />
         <ContactSection />
       </main>

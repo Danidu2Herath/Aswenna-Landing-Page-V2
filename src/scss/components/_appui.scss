@@ -197,7 +197,7 @@
   border: 1px solid var(--color-border);
   border-radius: 1.1em;
   padding: 0.75em 0.85em;
-  box-shadow: 0 0.12em 0.4em rgba(24, 32, 26, 0.04);
+  box-shadow: 0 0.12em 0.4em rgba(0, 0, 0, 0.04);
 }
 
 .acard--accent {
@@ -946,7 +946,7 @@
   width: 32%;
   height: 0.28em;
   border-radius: var(--radius-pill);
-  background: rgba(24, 32, 26, 0.3);
+  background: rgba(0, 0, 0, 0.3);
   z-index: 4;
 }
 
@@ -1044,7 +1044,7 @@
 }
 
 .amap__plot {
-  fill: rgba(47, 124, 71, 0.22);
+  fill: rgba(52, 199, 89, 0.22);
   stroke: var(--primary-700);
   stroke-width: 1.6;
   stroke-linejoin: round;
