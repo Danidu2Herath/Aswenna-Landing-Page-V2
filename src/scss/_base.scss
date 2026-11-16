@@ -16,7 +16,9 @@ body {
   font-family: var(--font-body);
   font-size: var(--text-base);
   line-height: var(--leading-body);
+  letter-spacing: -0.022em;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
@@ -71,66 +73,58 @@ p { margin: 0; }
 /* Full-bleed breaks in a long light page. Used by the two scroll-driven
    sections so they read as a different kind of moment. */
 .section--dark {
-  background: var(--primary-950);
+  background: #000;
   color: var(--color-text-on-primary);
-  background-image:
-    radial-gradient(900px 420px at 18% 0%, rgba(47, 124, 71, 0.30), transparent 70%),
-    radial-gradient(700px 400px at 86% 100%, rgba(75, 94, 112, 0.22), transparent 72%);
 }
-.section--dark .section-title { color: #fff; }
-.section--dark .section-title .accent { color: var(--tertiary-300); }
-.section--dark .section-sub { color: rgba(231, 242, 234, 0.76); }
-.section--dark .eyebrow {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.18);
-  color: var(--tertiary-200);
-}
-/* Light ink on the badge: near-black on mid green measured 3.63:1. */
-.section--dark .eyebrow__num { background: var(--brand-tertiary); color: var(--neutral-0); }
+.section--dark .section-title { color: #F5F5F7; }
+.section--dark .section-title .accent { color: var(--tertiary-400); }
+.section--dark .section-sub { color: #86868B; }
+.section--dark .eyebrow { color: var(--tertiary-400); }
+.section--dark .eyebrow__num { background: rgba(255, 255, 255, 0.14); color: #F5F5F7; }
 
 /* --------------------------- section heading ------------------------------ */
 .section-head { max-width: 720px; }
 .section-head--center { margin-inline: auto; text-align: center; }
 
+/* Apple-style eyebrow: a short coloured line of text, not a badge. */
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 14px 6px 10px;
-  border-radius: var(--radius-pill);
-  background: var(--color-accent-soft);
-  border: 1px solid var(--color-border-accent);
-  color: var(--primary-700);
-  font-size: var(--text-xs);
+  color: var(--brand-tertiary);
+  font-size: var(--text-lg);
   font-weight: var(--weight-semibold);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
+  letter-spacing: -0.01em;
 }
 .eyebrow__num {
   display: inline-grid;
   place-items: center;
-  min-width: 22px;
-  height: 22px;
-  padding-inline: 6px;
+  min-width: 24px;
+  height: 24px;
+  padding-inline: 7px;
   border-radius: var(--radius-pill);
-  background: var(--brand-primary);
-  color: var(--color-text-inverse);
-  font-size: 10px;
+  background: var(--neutral-100);
+  color: var(--color-text-soft);
+  font-size: 12px;
   letter-spacing: 0;
 }
 
 .section-title {
-  margin-top: 18px;
-  font-size: clamp(1.9rem, 1.2rem + 2.3vw, 3rem);
+  margin-top: 8px;
+  font-size: clamp(2.2rem, 1.3rem + 3vw, 3.5rem);   /* up to 56px */
+  letter-spacing: -0.015em;
+  line-height: 1.07;
 }
 /* The signature sections step up a whole size, so the page has a few peaks
    instead of eighteen headings at one volume. */
-.section-title--display { font-size: var(--text-display); letter-spacing: -0.035em; }
+.section-title--display { font-size: var(--text-display); letter-spacing: -0.015em; line-height: 1.05; }
 .section-title .accent { color: var(--brand-tertiary); }
 
 .section-sub {
-  margin-top: 16px;
-  font-size: var(--text-lg);
+  margin-top: 18px;
+  font-size: var(--text-xl);
+  line-height: 1.38;
+  letter-spacing: 0.011em;
   color: var(--color-text-soft);
   max-width: 62ch;
 }
@@ -141,43 +135,46 @@ p { margin: 0; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 14px 24px;
+  gap: 8px;
+  padding: 12px 22px;
   border-radius: var(--radius-pill);
   font-family: var(--font-body);
-  font-size: var(--text-sm);
-  font-weight: var(--weight-semibold);
-  transition: transform var(--duration-fast) var(--ease),
-              background-color var(--duration) var(--ease),
-              border-color var(--duration) var(--ease),
-              box-shadow var(--duration) var(--ease);
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  letter-spacing: -0.022em;
+  transition: background-color var(--duration-fast) var(--ease),
+              color var(--duration-fast) var(--ease),
+              border-color var(--duration-fast) var(--ease);
   white-space: nowrap;
 }
-.btn:hover { transform: translateY(-1px); }
-.btn:active { transform: translateY(0); }
+.btn:active { opacity: 0.85; }
 
-.btn--primary { background: var(--brand-primary); color: var(--color-text-inverse); box-shadow: var(--shadow-sm); }
-.btn--primary:hover { background: var(--primary-600); box-shadow: var(--shadow-md); }
+.btn--primary { background: var(--brand-primary); color: #fff; }
+.btn--primary:hover { background: var(--color-accent-hover); }
 
-.btn--ghost { background: var(--color-surface); color: var(--color-text); border: 1px solid var(--color-border); }
-.btn--ghost:hover { border-color: var(--color-border-strong); background: var(--color-surface-sunken); }
+/* Apple's secondary button: blue outline, fills on hover. */
+.btn--ghost { background: transparent; color: var(--brand-primary); border: 1px solid var(--brand-primary); }
+.btn--ghost:hover { background: var(--brand-primary); color: #fff; }
 
-.btn--outline-light { border: 1px solid rgba(255, 255, 255, 0.35); color: #fff; background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(8px); }
-.btn--outline-light:hover { background: rgba(255, 255, 255, 0.16); }
+.btn--outline-light { border: 1px solid #2997FF; color: #2997FF; background: transparent; }
+.btn--outline-light:hover { background: #2997FF; color: #fff; }
 
-.btn--light { background: #fff; color: var(--primary-800); }
-.btn--lg { padding: 16px 30px; font-size: var(--text-base); }
+.btn--light { background: #F5F5F7; color: #1D1D1F; }
+.btn--light:hover { background: #fff; }
+.btn--lg { padding: 14px 28px; font-size: var(--text-base); }
 
 /* --------------------------------- cards ---------------------------------- */
+/* Apple tiles: flat #F5F5F7 on white, generous radius, no border. */
 .card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: var(--color-surface-muted);
+  border: 0;
   border-radius: var(--radius-lg);
-  padding: 24px;
-  transition: transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease), border-color var(--duration) var(--ease);
+  padding: 32px;
+  transition: transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
 }
-.card--hover:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--color-border-accent); }
-.card--muted { background: var(--color-surface-muted); border-color: transparent; }
+.section--alt .card, .section--band .card { background: var(--color-surface); }
+.card--hover:hover { transform: scale(1.015); box-shadow: var(--shadow-md); }
+.card--muted { background: var(--color-surface-muted); }
 .card--flush { padding: 0; overflow: hidden; }
 
 .card__icon {
@@ -185,13 +182,14 @@ p { margin: 0; }
   place-items: center;
   width: 44px;
   height: 44px;
-  border-radius: var(--radius-md);
-  background: var(--color-accent-soft);
-  color: var(--brand-primary);
-  margin-bottom: 18px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--brand-tertiary);
+  margin-bottom: 14px;
 }
-.card__title { font-size: var(--text-lg); font-weight: var(--weight-semibold); }
-.card__text { margin-top: 8px; color: var(--color-text-soft); font-size: var(--text-sm); }
+.card__icon .icon { width: 30px; height: 30px; }
+.card__title { font-size: var(--text-xl); font-weight: var(--weight-semibold); letter-spacing: 0.011em; line-height: 1.2; }
+.card__text { margin-top: 8px; color: var(--color-text-soft); font-size: var(--text-base); line-height: 1.47; }
 
 /* --------------------------------- grids ---------------------------------- */
 .grid { display: grid; gap: 20px; }
@@ -248,6 +246,7 @@ p { margin: 0; }
   font-weight: var(--weight-semibold);
 }
 .chip--estimated { background: var(--color-info-bg); color: var(--secondary-700); }
+.media { border: 0; }
 .chip--measured  { background: var(--color-live-bg); color: var(--tertiary-700); }
 .chip--planned   { background: var(--color-note-bg); color: var(--color-note); }
 .chip--neutral   { background: var(--neutral-100); color: var(--color-text-soft); }
