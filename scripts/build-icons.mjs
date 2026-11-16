@@ -23,7 +23,7 @@ const ICONS = {
   "database": "database", "scan": "scan-search", "trending-up": "trending-up",
   "calendar": "calendar-range", "signal-low": "signal-low", "phone-call": "phone-call",
   "plug": "plug", "sun": "sun-medium", "check": "check", "x": "x", "arrow-right": "arrow-right",
-  "arrow-down": "arrow-down", "arrow-up": "arrow-up", "chevron-down": "chevron-down",
+  "arrow-down": "arrow-down", "arrow-up": "arrow-up", "arrow-up-right": "arrow-up-right", "chevron-down": "chevron-down",
   "globe": "globe", "menu": "menu", "plus": "plus", "minus": "minus", "info": "info",
   "refresh": "refresh-cw", "rotate-ccw": "rotate-ccw", "star": "star", "send": "send",
   "hand": "hand", "mail": "mail", "phone": "phone", "building": "building-2",

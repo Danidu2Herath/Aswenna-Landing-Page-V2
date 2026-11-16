@@ -95,6 +95,22 @@
   --color-live:    #1A6A2E;
   --color-live-bg: #E3F6E8;
 
+  /* The two content sections that used to be black. A whiter light green:
+     present enough to read as a band, pale enough to take dark ink. */
+  --color-section-light:     #EAF4EC;
+  --color-section-light-ink: #16301E;   /* 12.64:1 on the band */
+  --color-section-light-soft:#3A5443;   /*  7.37:1 on the band */
+  --color-section-light-line: rgba(22, 48, 30, 0.12);
+  --color-section-light-panel: rgba(255, 255, 255, 0.66);
+
+  /* These sections are green whatever the brand palette settles on, so they
+     name their own accent rather than borrowing --primary-*, which is the
+     BLUE ramp in this build. Repoint this one line when the palette lands. */
+  --color-section-light-accent:      #1A6A2E;
+  --color-section-light-accent-soft: #D4F2DC;
+
+  --color-footer-bg: #FFFFFF;
+
   --color-band-veil: #FFFFFF;
   --color-alt-veil:  #F5F5F7;
 
@@ -149,7 +165,10 @@
   --tracking-wide: 0;
 
   /* 5. LAYOUT / SHAPE / MOTION */
-  --container-width: 1024px;
+  /* Fixed at 1024px this left 768px of dead margin on each side of a 2560px
+     display. It now grows with the viewport and stops before the line length
+     becomes unreadable. */
+  --container-width: clamp(1024px, 72vw, 1520px);
   --container-narrow: 692px;
   --gutter: 22px;
 
