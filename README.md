@@ -39,9 +39,9 @@ src/
       charts.tsx         the two mini charts
       AppPhone.tsx       device + screen + caption
   scss/
-    _tokens.scss       EVERY colour, size and timing. Start here.
-    _base.scss         reset, layout primitives, buttons, cards, chips
-    components/*.scss  one partial per section
+    tokens.scss       EVERY colour, size and timing. Start here.
+    base.scss         reset, layout primitives, buttons, cards, chips
+    components/*.scss  one stylesheet per section
     main.scss          the entry point
 scripts/
   gen-seo.mjs          robots.txt, sitemap.xml, webmanifest, JSON-LD
@@ -51,7 +51,7 @@ public/images/         photos, logos, the icon sprite
 ```
 
 **To change copy** → `src/data/content.ts`.
-**To change colours** → `src/scss/_tokens.scss`.
+**To change colours** → `src/scss/tokens.scss`.
 **To change the deployed domain** → `.env`, then `npm run build`.
 
 ---
