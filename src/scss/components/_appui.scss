@@ -380,12 +380,6 @@
   cursor: default;
 }
 
-.abtn--ghost {
-  flex: 0 0 auto;
-  background: rgba(255, 255, 255, 0.16);
-  color: #fff;
-}
-
 /* ----------------------------------------------------------- alert strip */
 .astrip {
   display: flex;
@@ -453,7 +447,6 @@
 .achart__area { fill: var(--tertiary-200); opacity: 0.5; }
 .achart__line { fill: none; stroke: var(--primary-600); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 .achart__dot  { fill: var(--primary-700); }
-.achart__grid { stroke: var(--color-border); stroke-width: 1; }
 .achart__bar  { fill: var(--primary-200); }
 .achart__bar--on { fill: var(--primary-600); }
 
@@ -1000,24 +993,6 @@
 .cta .phone__concept {
   background: rgba(255, 255, 255, 0.14);
   color: rgba(231, 242, 234, 0.92);
-}
-
-/* ------------------------------------------------- hero device placement */
-.hero__device {
-  position: absolute;
-  right: clamp(14px, 3vw, 40px);
-  /* Fully inside the frame: a device cropped through its own tab bar reads as
-     a rendering fault rather than a composition. */
-  bottom: 18px;
-  z-index: 3;
-
-  .phone { --ph-w: clamp(166px, 15.5vw, 224px); }
-  .phone__caption { display: none; }
-  .phone__frame { box-shadow: 0 34px 70px rgba(10, 24, 14, 0.42), 0 0 0 0.09em rgba(255, 255, 255, 0.18); }
-}
-
-@media (max-width: 860px) {
-  .hero__device { display: none; }
 }
 
 /* With the device in the frame, the right-hand floating card would sit behind

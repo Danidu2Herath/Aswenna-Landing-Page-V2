@@ -188,11 +188,3 @@
 }
 
 /* The art beside the "what the calendar adapts" panel. */
-.journey__adapts-art {
-  min-height: 200px;
-  border-radius: var(--radius-lg);
-  background:
-    radial-gradient(260px 200px at 50% 40%, rgba(52, 199, 89, 0.35), transparent 70%),
-    linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-  border: 1px solid rgba(255, 255, 255, 0.12);
-}
