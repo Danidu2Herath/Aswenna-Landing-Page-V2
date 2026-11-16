@@ -75,7 +75,7 @@ p { margin: 0; }
    LIGHT SECTIONS
    These two used to be `#000`. They are now a pale green band with dark ink,
    which means every rule inside them that assumed light-on-dark had to be
-   inverted — see components/_lightsections.scss.
+   inverted — see components/lightsections.scss.
    --------------------------------------------------------------------------- */
 .section--light {
   background: var(--color-section-light);
