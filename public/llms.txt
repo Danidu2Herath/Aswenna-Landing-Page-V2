@@ -1,0 +1,53 @@
+# Aswenna
+
+> An IoT-enabled precision farming platform for Sri Lankan agriculture — soil intelligence, hyperlocal weather, AI recommendations, smart irrigation, crop-health monitoring and market intelligence.
+
+Aswenna — "Smarter fields, greater future" — is a project of Veyra Solutions, built for
+smallholder farming in Sri Lanka and offered in Sinhala, Tamil and English.
+
+## Status, before anything else
+
+Aswenna is an academic and agricultural **research and development
+project**, not a deployed commercial service. Nothing on the site describes
+something that can be bought or used today.
+
+- Roadmap phases 01-03 describe the **planned** project scope.
+- Roadmap phase 04 collects **proposed** future extensions.
+- Pricing tiers are **indicative costs for a proposed pilot**, not a sales offer.
+- Application screens are **interface design concepts with illustrative
+  values**, not screenshots of a running system.
+- Every soil or weather value is labelled either **estimated** (derived from
+  regional databases for the mapped location) or **measured** (read by a device
+  or a handheld probe on that plot). The two are never presented as the same
+  thing.
+
+## Full content
+
+- [Aswenna in full, as Markdown](https://aswenna.lk/llms-full.txt): every section of
+  the page in plain text, generated from the same source the page renders.
+
+## Sections
+
+- [Why Aswenna](https://aswenna.lk/#why)
+- [How it works](https://aswenna.lk/#engine)
+- [Features](https://aswenna.lk/#features)
+- [Hardware](https://aswenna.lk/#install)
+- [Pricing](https://aswenna.lk/#pricing)
+- [FAQ](https://aswenna.lk/#faq)
+- [The Aswenna platform](https://aswenna.lk/#platform)
+- [Roadmap](https://aswenna.lk/#roadmap)
+- [Contact](https://aswenna.lk/#contact)
+
+## Machine-readable
+
+- [Sitemap](https://aswenna.lk/sitemap.xml)
+- [Crawl policy](https://aswenna.lk/robots.txt): AI crawlers are named and allowed
+- Structured data: JSON-LD in the page head — Organization, WebSite, WebPage,
+  ResearchProject, FAQPage
+
+## Contact
+
+- Email: info@veyra.lk
+- Phone: +94 78 259 6361, +94 77 786 2375
+
+_Content last updated 2026-11-16. Generated from src/data/content.ts._

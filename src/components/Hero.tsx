@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Icon from "./Icon";
 import { hero, partners } from "../data/content";
 import { useI18n } from "../i18n";
@@ -32,11 +33,17 @@ export default function Hero() {
           </span>
         </a>
 
+        {/* The visible lines are separate blocks, so without the space between
+            them the accessible name and Google's snippet both read the last
+            word of one line joined to the first word of the next. */}
         <h1 className="hero__title">
           {hero.title.map((line, i) => (
-            <span className="hero__line" key={line}>
-              <span style={{ animationDelay: `${120 + i * 120}ms` }}>{t(`hero.title.${i}`, line)}</span>
-            </span>
+            <Fragment key={line}>
+              {i > 0 ? " " : null}
+              <span className="hero__line">
+                <span style={{ animationDelay: `${120 + i * 120}ms` }}>{t(`hero.title.${i}`, line)}</span>
+              </span>
+            </Fragment>
           ))}
         </h1>
 
