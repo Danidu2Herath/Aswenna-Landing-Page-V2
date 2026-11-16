@@ -270,34 +270,8 @@ export const featureGroups = {
   ],
 };
 
-export const demo = {
-  num: "10",
-  eyebrow: "Try it",
-  title: "Watch Smart Irrigation",
-  accent: "Make the Call",
-  sub: "Drag the soil moisture and watch what the plot does. This is the same rule the controller follows in the field.",
-  moistureLabel: "Soil moisture in the root zone",
-  modeLabel: "Control mode",
-  autoLabel: "Automatic",
-  manualLabel: "Farmer override",
-  lower: 35,
-  upper: 75,
-  thresholds: "Starts below 35% · stops at 75%",
-  valveOpen: "Valve open — watering",
-  valveClosed: "Valve closed",
-  reset: "Reset",
-  note: "A demonstration of the documented behaviour, running in your browser. It is not connected to a field device.",
-  states: {
-    dry: { tone: "note", title: "Moisture below the lower threshold", text: "The controller opened the valve on its own. Watering continues until the root zone recovers." },
-    wetting: { tone: "live", title: "Recovering", text: "Moisture is climbing. The valve closes by itself once it reaches the upper threshold." },
-    ok: { tone: "live", title: "Root zone is where it should be", text: "Nothing to do. The next check happens automatically, and rainfall in the forecast shifts the schedule." },
-    wet: { tone: "info", title: "At the upper threshold", text: "The valve has closed. Water that is not needed is water the next cultivation will want." },
-    manual: { tone: "info", title: "Farmer override is on", text: "Automatic control is paused. The valve stays wherever the farmer has set it, whatever the soil reports." },
-  },
-};
-
 export const fieldFirst = {
-  num: "11",
+  num: "10",
   eyebrow: "Designed for real conditions",
   title: "Designed for the Field,",
   accent: "Not an Office",
@@ -310,7 +284,7 @@ export const fieldFirst = {
 };
 
 export const hardware = {
-  num: "12",
+  num: "11",
   eyebrow: "Field technology",
   title: "The IoT Ecosystem.",
   sub: "Hardware built for village conditions — solar powered, long range, and shareable across a farmer organization.",
@@ -327,7 +301,7 @@ export const hardware = {
 };
 
 export const install = {
-  num: "13",
+  num: "12",
   eyebrow: "Hardware in the field",
   title: "How Field Hardware Installs",
   accent: "on Your Land",
@@ -349,7 +323,7 @@ export const install = {
 };
 
 export const pricing = {
-  num: "14",
+  num: "13",
   eyebrow: "Participation tiers",
   title: "Choose What Fits",
   accent: "Your Farm",
@@ -373,7 +347,7 @@ export const pricing = {
 };
 
 export const platform = {
-  num: "15",
+  num: "14",
   eyebrow: "Connected agriculture",
   title: "The Aswenna Platform.",
   sub: "Proposed interfaces for farmers, their organizations and the extension officers who support them.",
@@ -392,7 +366,7 @@ export const platform = {
 };
 
 export const roadmap = {
-  num: "16",
+  num: "15",
   eyebrow: "Strategic implementation",
   title: "The Roadmap.",
   sub: "Phases 01–03 define the project scope. Phase 04 collects future extensions. All phases describe planned capabilities, not deployed commercial operations.",
@@ -412,7 +386,7 @@ export const roadmap = {
 };
 
 export const faq = {
-  num: "17",
+  num: "16",
   eyebrow: "Questions",
   title: "Frequently Asked",
   accent: "Questions",
