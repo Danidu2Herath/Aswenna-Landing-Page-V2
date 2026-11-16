@@ -1,0 +1,192 @@
+.eloop {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  gap: 48px;
+  align-items: center;
+}
+
+/* --------------------------------- ring ---------------------------------- */
+.eloop__ring {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  margin-inline: auto;
+  aspect-ratio: 1;
+}
+
+.eloop__svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+
+.eloop__track {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.13);
+  stroke-width: 0.5;
+}
+.eloop__trail {
+  fill: none;
+  stroke: var(--tertiary-300);
+  stroke-width: 0.9;
+  stroke-linecap: round;
+  opacity: 0.9;
+}
+.eloop__packet {
+  fill: #fff;
+  filter: drop-shadow(0 0 3px var(--tertiary-200));
+}
+
+/* ------------------------------- the nodes -------------------------------- */
+.eloop__node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 6px;
+  border-radius: var(--radius-lg);
+  color: rgba(231, 242, 234, 0.6);
+  transition: color var(--duration) var(--ease);
+}
+.eloop__node:hover { color: #fff; }
+
+.eloop__node-icon {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: var(--radius-pill);
+  background: var(--primary-900);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: var(--tertiary-200);
+  transition: transform var(--duration) var(--ease), background-color var(--duration) var(--ease),
+              border-color var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+}
+.eloop__node-name {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.eloop__node.is-active { color: #fff; }
+.eloop__node.is-active .eloop__node-icon {
+  transform: scale(1.14);
+  background: var(--brand-tertiary);
+  border-color: var(--tertiary-200);
+  color: #fff;
+  box-shadow: 0 0 0 6px rgba(47, 124, 71, 0.22), 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* ------------------------------ ring centre ------------------------------- */
+.eloop__centre {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 54%;
+  text-align: center;
+}
+.eloop__centre-step {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tertiary-300);
+}
+.eloop__centre-name {
+  margin-top: 10px;
+  font-size: var(--text-2xl);
+  color: #fff;
+  animation: eloop-swap 380ms var(--ease) both;
+}
+.eloop__centre-text {
+  margin-top: 10px;
+  font-size: var(--text-sm);
+  color: rgba(231, 242, 234, 0.76);
+  line-height: 1.6;
+}
+
+@keyframes eloop-swap { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* --------------------------------- aside ---------------------------------- */
+.eloop__list { display: grid; gap: 6px; }
+
+.eloop__row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  text-align: left;
+  color: rgba(231, 242, 234, 0.62);
+  border: 1px solid transparent;
+  transition: background-color var(--duration) var(--ease), color var(--duration) var(--ease),
+              border-color var(--duration) var(--ease);
+}
+.eloop__row:hover { background: rgba(255, 255, 255, 0.06); color: #fff; }
+.eloop__row.is-active {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+.eloop__row-n {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--tertiary-300);
+}
+.eloop__row-name { font-size: var(--text-base); font-weight: var(--weight-semibold); }
+
+.eloop__note {
+  margin-top: 22px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(231, 242, 234, 0.82);
+  font-size: var(--text-sm);
+}
+.eloop__note svg { flex-shrink: 0; margin-top: 2px; color: var(--tertiary-300); }
+
+@media (max-width: 1080px) {
+  .eloop { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+}
+@media (max-width: 620px) {
+  .eloop__node-name { display: none; }
+  .eloop__node-icon { width: 44px; height: 44px; }
+  .eloop__centre { width: 62%; }
+  .eloop__centre-name { font-size: var(--text-lg); }
+  .eloop__centre-text { font-size: var(--text-xs); }
+}
+
+/* ---------------------------------------------------------------------------
+   Hand-over feedback
+   Clicking a stage holds the loop for a few seconds and then it resumes on
+   its own. The note says so, and the refresh glyph stops turning while the
+   loop is being held, so the pause reads as deliberate rather than broken.
+   --------------------------------------------------------------------------- */
+.eloop__note .icon {
+  animation: eloop-turn 6s linear infinite;
+}
+
+.eloop__note.is-held {
+  color: var(--tertiary-200);
+}
+
+.eloop__note.is-held .icon {
+  animation-play-state: paused;
+}
+
+@keyframes eloop-turn {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eloop__note .icon { animation: none; }
+}

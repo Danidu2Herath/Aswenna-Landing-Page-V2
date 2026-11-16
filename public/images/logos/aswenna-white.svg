@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" width="220" height="48" role="img" aria-label="Aswenna">
+  <g transform="translate(0 2)">
+    <rect width="44" height="44" rx="12" fill="#FFFFFF" fill-opacity="0.12"/>
+    <path d="M22 34V18.5" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M22 22c0-5.5 4.2-9.6 9.6-10.1.5 5.4-3.3 10.1-9.6 10.1Z" fill="#FFFFFF"/>
+    <path d="M22 27.5c-4.9 0-8.4-3.3-8.8-7.9 4.6.4 8.4 3.5 8.8 7.9Z" fill="#FFFFFF" fill-opacity="0.72"/>
+    <path d="M13.8 35h16.4" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-opacity="0.6"/>
+  </g>
+  <text x="56" y="25" font-family="'Plus Jakarta Sans',Inter,system-ui,sans-serif" font-size="19" font-weight="700" fill="#FFFFFF" letter-spacing="-0.4">Aswenna</text>
+  <text x="56" y="39" font-family="Inter,system-ui,sans-serif" font-size="9.5" font-weight="500" fill="#FFFFFF" fill-opacity="0.66" letter-spacing="0.8">AGRICULTURAL INTELLIGENCE</text>
+</svg>
