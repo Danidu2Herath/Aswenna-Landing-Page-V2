@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#1D4E2B" />
+
+    <!-- ===================================================================
+         SEO
+         The canonical origin comes from VITE_SITE_URL in .env, and the same
+         value feeds robots.txt and sitemap.xml (scripts/gen-seo.mjs).
+         Change it in ONE place: .env.
+         =================================================================== -->
+    <title>Aswenna — Smarter fields, greater future | IoT precision farming for Sri Lanka</title>
+    <meta
+      name="description"
+      content="Aswenna is an IoT-enabled precision farming platform for Sri Lankan agriculture: soil intelligence, hyperlocal weather, AI crop recommendations, smart irrigation and market intelligence — in Sinhala, Tamil and English."
+    />
+    <meta name="author" content="Veyra Solutions" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="%VITE_SITE_URL%/" />
+
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/images/logos/aswenna-mark.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Fonts: preconnect first so the stylesheet request does not pay for
+         the TLS handshake. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="image" href="/images/photos/hero-field.webp" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans+Sinhala:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap"
+    />
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Aswenna" />
+    <meta property="og:url" content="%VITE_SITE_URL%/" />
+    <meta property="og:title" content="Aswenna — Smarter fields, greater future" />
+    <meta
+      property="og:description"
+      content="IoT-enabled precision farming for Sri Lankan agriculture: soil intelligence, hyperlocal weather, AI recommendations, smart irrigation and market intelligence."
+    />
+    <meta property="og:image" content="%VITE_SITE_URL%/images/og-cover.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Aswenna — an IoT precision farming platform for Sri Lankan agriculture" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:locale:alternate" content="si_LK" />
+    <meta property="og:locale:alternate" content="ta_LK" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Aswenna — Smarter fields, greater future" />
+    <meta
+      name="twitter:description"
+      content="IoT-enabled precision farming for Sri Lankan agriculture: soil intelligence, hyperlocal weather, AI recommendations, smart irrigation and market intelligence."
+    />
+    <meta name="twitter:image" content="%VITE_SITE_URL%/images/og-cover.jpg" />
+
+    <!-- seo:jsonld -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://aswenna.lk/#organization",
+            "name": "Veyra Solutions",
+            "url": "https://aswenna.lk",
+            "email": "info@veyra.lk",
+            "telephone": [
+              "+94782596361",
+              "+94777862375"
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "LK"
+            },
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://aswenna.lk/images/logos/aswenna-mark.svg"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://aswenna.lk/#website",
+            "url": "https://aswenna.lk/",
+            "name": "Aswenna",
+            "description": "An IoT-enabled precision farming platform for Sri Lankan agriculture — soil intelligence, hyperlocal weather, AI recommendations, smart irrigation, crop-health monitoring and market intelligence.",
+            "inLanguage": [
+              "en",
+              "si",
+              "ta"
+            ],
+            "publisher": {
+              "@id": "https://aswenna.lk/#organization"
+            }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://aswenna.lk/#webpage",
+            "url": "https://aswenna.lk/",
+            "name": "Aswenna — Smarter fields, greater future",
+            "isPartOf": {
+              "@id": "https://aswenna.lk/#website"
+            },
+            "about": {
+              "@id": "https://aswenna.lk/#project"
+            },
+            "primaryImageOfPage": {
+              "@type": "ImageObject",
+              "url": "https://aswenna.lk/images/og-cover.jpg"
+            }
+          },
+          {
+            "@type": "ResearchProject",
+            "@id": "https://aswenna.lk/#project",
+            "name": "Aswenna",
+            "alternateName": "Agricultural Intelligence Platform",
+            "description": "An IoT-enabled precision farming platform for Sri Lankan agriculture — soil intelligence, hyperlocal weather, AI recommendations, smart irrigation, crop-health monitoring and market intelligence.",
+            "url": "https://aswenna.lk/",
+            "parentOrganization": {
+              "@id": "https://aswenna.lk/#organization"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "Sri Lanka"
+            },
+            "knowsAbout": [
+              "precision agriculture",
+              "soil moisture monitoring",
+              "LoRaWAN",
+              "smart irrigation",
+              "crop recommendation",
+              "agricultural market intelligence"
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://aswenna.lk/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Do I need to buy sensors or hardware?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Tier 0 is the whole software platform with no hardware at all — soil profiling, crop recommendations, the cultivation calendar, alerts, market analytics and satellite crop-health maps. Hardware only adds measured readings from your own plot on top of that."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What if I do not have a smartphone or a signal?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Alerts and recommendations can be delivered by SMS or by voice call to a basic handset, and the application itself is offline-first: it keeps working without a connection and synchronises when one returns."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How accurate are the soil values?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "It depends on where they come from, and Aswenna always tells you which. Estimated values are derived from regional soil databases for your mapped location. Measured values come from a field device or a handheld probe on your plot. The two are never mixed or presented as the same thing."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Who owns the data from my land?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "You do. Plot boundaries, readings and history belong to the farmer, and can be exported at any time. Data shared with a farmer organization or an extension officer is anonymized where it feeds area-wide analysis."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is Aswenna available in Sinhala and Tamil?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. The interface and the alerts are planned in Sinhala, Tamil and English, because advice that cannot be read is not advice."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is this available to use today?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Not yet. Aswenna is an academic and agricultural research initiative. Phases 01 to 03 describe the planned project scope and Phase 04 collects proposed future extensions — none of it describes a deployed commercial service."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- /seo:jsonld -->
+  </head>
+  <body>
+    <div id="app-root"></div>
+    <noscript>
+      <div style="padding: 24px; font-family: system-ui, sans-serif; line-height: 1.6">
+        <h1>Aswenna — Smarter fields, greater future</h1>
+        <p>
+          Aswenna is an IoT-enabled precision farming platform for Sri Lankan agriculture: soil
+          intelligence, hyperlocal weather, AI crop recommendations, smart irrigation, crop-health
+          monitoring and market intelligence. It is a project of Veyra Solutions.
+        </p>
+        <p>
+          This page needs JavaScript to display. To reach us directly:
+          <a href="mailto:info@veyra.lk">info@veyra.lk</a>, <a href="tel:+94782596361">+94 78 259 6361</a>
+          or <a href="tel:+94777862375">+94 77 786 2375</a>.
+        </p>
+      </div>
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

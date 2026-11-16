@@ -1,0 +1,224 @@
+/* The header is a floating island: it never paints a full-width bar, so the
+   page runs underneath it and only the pills carry a background. */
+.header {
+  position: fixed;
+  inset-inline: 0;
+  top: var(--header-gap);
+  z-index: 60;
+  transition: top var(--duration) var(--ease);
+}
+.header--stuck { top: var(--header-gap-stuck); }
+
+/* Once scrolling starts the pills lift off the page. Not full liquid glass:
+   on the pale sage background there is nothing behind the panel for a heavy
+   blur to refract, so it reads as a smudge. A crisp, nearly opaque pill with
+   a light blur keeps the text legible and the edges clean. */
+.header--stuck .header__nav ul,
+.header--stuck .lang__button,
+.header--stuck .header__burger,
+.header--stuck .brand {
+  background: var(--header-light-bg);
+  border-color: var(--header-light-border);
+  box-shadow: var(--header-light-shadow);
+}
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .header--stuck .header__nav ul,
+  .header--stuck .lang__button,
+  .header--stuck .header__burger,
+  .header--stuck .brand {
+    -webkit-backdrop-filter: var(--header-light-blur);
+    backdrop-filter: var(--header-light-blur);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Over a dark section
+   The bar measures what is underneath it (see Header.tsx) and switches to a
+   transparent dark panel with light text, so the dark photography reads
+   through it instead of being covered by a pale slab.
+   --------------------------------------------------------------------------- */
+.header--over-dark .header__nav ul,
+.header--over-dark .lang__button,
+.header--over-dark .header__burger,
+.header--over-dark .brand {
+  background: var(--header-dark-bg);
+  border-color: var(--header-dark-border);
+  box-shadow: var(--header-dark-shadow);
+  color: var(--header-dark-ink);
+}
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .header--over-dark .header__nav ul,
+  .header--over-dark .lang__button,
+  .header--over-dark .header__burger,
+  .header--over-dark .brand {
+    -webkit-backdrop-filter: var(--header-dark-blur);
+    backdrop-filter: var(--header-dark-blur);
+  }
+}
+
+.header--over-dark .brand__name,
+.header--over-dark .lang__code { color: var(--header-dark-ink); }
+.header--over-dark .brand__tag { color: var(--header-dark-ink-soft); }
+.header--over-dark .header__nav a { color: var(--header-dark-ink-soft); }
+.header--over-dark .header__nav a:hover,
+.header--over-dark .header__nav a:focus-visible {
+  background: var(--header-dark-hover);
+  color: #fff;
+}
+
+/* The brand mark is drawn for a light pill, so it gets a hairline ring to
+   separate it from the dark panel rather than being redrawn. */
+.header--over-dark .brand img {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.22);
+}
+
+/* The call to action stays the brand green: it is the one element that must
+   not change meaning with the backdrop. It only gains a ring so its edge
+   survives on a dark field. */
+.header--over-dark .header__cta {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.24), var(--header-dark-shadow);
+}
+
+.header__inner { display: flex; align-items: center; gap: 20px; }
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  /* The pill is always present: the strapline is 10.5px on a photographic
+     backdrop, which needs an opaque surface behind it to clear WCAG AA.
+     Keeping it from the start also removes a layout shift on first scroll. */
+  padding: 7px 16px 7px 9px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-xs);
+  transition: background-color var(--duration) var(--ease), border-color var(--duration) var(--ease),
+              box-shadow var(--duration) var(--ease);
+}
+.brand img { border-radius: var(--radius-sm); }
+.brand__text { display: flex; flex-direction: column; line-height: 1.1; }
+.brand__name {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-lg);
+  letter-spacing: var(--tracking-tight);
+}
+.brand__tag { font-size: 10.5px; color: var(--color-text-muted); letter-spacing: 0.02em; }
+
+.header__nav { margin-inline: auto; }
+.header__nav ul {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 5px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-xs);
+  transition: background-color var(--duration) var(--ease), border-color var(--duration) var(--ease),
+              box-shadow var(--duration) var(--ease);
+}
+.header__nav a {
+  display: block;
+  padding: 9px 14px;
+  border-radius: var(--radius-pill);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-soft);
+  /* Sinhala and Tamil labels are longer than the English ones; without this
+     they wrap and the header pill doubles in height. */
+  white-space: nowrap;
+  transition: background-color var(--duration-fast) var(--ease), color var(--duration-fast) var(--ease);
+}
+.header__nav a:hover { background: var(--color-accent-soft); color: var(--primary-700); }
+
+.header__actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.header__cta { padding: 11px 20px; }
+
+.header__burger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.mobile-nav {
+  display: none;
+  margin: 12px var(--gutter) 0;
+  padding: 14px;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+}
+.mobile-nav.is-open { display: block; }
+.mobile-nav ul { display: flex; flex-direction: column; margin-bottom: 12px; }
+.mobile-nav a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 10px;
+  border-radius: var(--radius-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-soft);
+}
+.mobile-nav a:hover { background: var(--color-surface-sunken); color: var(--color-text); }
+.mobile-nav .btn { width: 100%; }
+
+@media (max-width: 1180px) {
+  .header__nav { display: none; }
+  .header__inner { justify-content: space-between; }
+  .header__burger { display: grid; }
+}
+@media (max-width: 560px) {
+  .header__cta { display: none; }
+  .brand__tag { display: none; }
+}
+
+/* ---------------------------------------------------------------------------
+   Sinhala and Tamil
+   Noto Sans sets both scripts wider than Inter sets Latin, so the navigation
+   needs tighter metrics, and it has to hand over to the menu button sooner.
+   The provider puts the active language on <html lang>, which is what these
+   rules key off.
+   --------------------------------------------------------------------------- */
+html[lang="si"] .header__nav a,
+html[lang="ta"] .header__nav a {
+  font-size: 13px;
+  padding: 9px 10px;
+}
+
+@media (max-width: 1320px) {
+  html[lang="si"] .header__nav,
+  html[lang="ta"] .header__nav { display: none; }
+
+  html[lang="si"] .header__inner,
+  html[lang="ta"] .header__inner { justify-content: space-between; }
+
+  html[lang="si"] .header__burger,
+  html[lang="ta"] .header__burger { display: grid; }
+}
+
+/* ---------------------------------------------------------------------------
+   Very narrow phones (360px and below).
+   At 320px the brand plus the full language pill and the menu button overran
+   the viewport by 20px and clipped the menu button. Tightening the gutter and
+   reducing the language control to its globe buys back ~70px.
+   --------------------------------------------------------------------------- */
+@media (max-width: 420px) {
+  :root { --gutter: 16px; }
+
+  .lang__code,
+  .lang__chev { display: none; }
+  .lang__button { padding: 11px; }
+
+  .header__actions { gap: 6px; }
+  .brand img { width: 32px; height: 32px; }
+  .brand__name { font-size: var(--text-base); }
+}

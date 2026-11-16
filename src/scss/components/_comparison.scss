@@ -1,0 +1,84 @@
+.compare {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 20px;
+  align-items: start;
+}
+
+.compare__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+.compare__head--without { background: var(--neutral-200); color: var(--color-text-soft); }
+.compare__head--with { background: var(--brand-primary); color: var(--color-text-inverse); }
+
+.compare__badge {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-pill);
+}
+.compare__badge--without { background: var(--neutral-400); color: #fff; }
+.compare__badge--with { background: rgba(255, 255, 255, 0.22); color: #fff; }
+
+/* Each row spans both columns so the two cells always line up. */
+.compare__row {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  gap: 20px;
+}
+
+.compare__cell {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  padding: 16px 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  font-size: var(--text-sm);
+  height: 100%;
+}
+.compare__cell--without { background: var(--color-surface); color: var(--color-text-muted); }
+.compare__cell--with { background: var(--tertiary-50); border-color: var(--primary-200); color: var(--color-text); font-weight: var(--weight-medium); }
+
+.compare__mark {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  border-radius: var(--radius-pill);
+}
+.compare__mark--without { background: #FEE2E2; color: #B91C1C; }
+.compare__mark--with { background: var(--brand-tertiary); color: #fff; }
+
+/* Column labels live in the headers on desktop; each cell repeats them on mobile. */
+.compare__inline { display: none; }
+
+@media (max-width: 760px) {
+  .compare { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .compare__row { grid-template-columns: minmax(0, 1fr); gap: 8px; margin-bottom: 16px; }
+  .compare__head { display: none; }
+  .compare__inline {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 10.5px;
+    font-weight: var(--weight-bold);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+  .compare__cell--with .compare__inline { color: var(--primary-700); }
+}

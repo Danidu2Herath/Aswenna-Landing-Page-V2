@@ -1,0 +1,79 @@
+.ffirst__layout {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.ffirst__list { display: grid; gap: 14px; }
+
+.ffirst__item {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 16px;
+  padding: 22px;
+  border-radius: var(--radius-lg);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  transition: border-color var(--duration) var(--ease), transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+}
+.ffirst__item:hover { border-color: var(--color-border-accent); transform: translateX(4px); box-shadow: var(--shadow-sm); }
+
+.ffirst__icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--color-accent-soft);
+  color: var(--brand-primary);
+}
+.ffirst__title { font-size: var(--text-base); font-weight: var(--weight-semibold); }
+.ffirst__text { margin-top: 8px; font-size: var(--text-sm); color: var(--color-text-soft); }
+
+.ffirst__visual { display: grid; place-items: center; }
+.ffirst__visual .phone__frame { max-width: 258px; }
+
+@media (max-width: 900px) {
+  .ffirst__layout { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+}
+
+/* ---------------------------------------------------------------------------
+   The device in front of the field
+   The photograph is the place the application has to work in; the alerts
+   screen is what arrives there. Overlapping them says that in one glance.
+   --------------------------------------------------------------------------- */
+.ffirst__stack {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  padding-bottom: 42px;
+}
+
+.ffirst__stack .media {
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+}
+
+.ffirst__device {
+  position: absolute;
+  right: -6px;
+  bottom: 0;
+
+  .phone { --ph-w: 186px; }
+  .phone__frame { box-shadow: 0 22px 48px rgba(16, 32, 20, 0.30), 0 0 0 0.09em rgba(255, 255, 255, 0.16); }
+}
+
+/* Below this the overlap starts to cover the photograph, so the device moves
+   underneath it and centres instead. */
+@media (max-width: 520px) {
+  .ffirst__stack { padding-bottom: 0; }
+  .ffirst__device {
+    position: static;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .ffirst__device .phone { --ph-w: 208px; }
+}

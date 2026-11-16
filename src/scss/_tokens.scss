@@ -1,0 +1,226 @@
+/* ==========================================================================
+   ASWENNA — DESIGN TOKENS
+   --------------------------------------------------------------------------
+   Every colour, size and timing the site uses lives here as a CSS custom
+   property. Change a value here and it updates everywhere, at runtime, with
+   no rebuild of anything but this stylesheet.
+   Palette: Sage — a breath of the brand green, 7.7% softer than pure white.
+   ========================================================================== */
+
+:root {
+  /* ----------------------------------------------------------------
+     1. BRAND COLOURS  (from the Aswenna brand sheet)
+     ---------------------------------------------------------------- */
+  --brand-primary:   #1D4E2B;   /* deep forest green */
+  --brand-secondary: #4B5E70;   /* slate blue-grey   */
+  --brand-tertiary:  #2F7C47;   /* field green       */
+  --brand-neutral:   #111827;   /* ink               */
+
+  /* ----------------------------------------------------------------
+     2. BRAND RAMPS
+     ---------------------------------------------------------------- */
+  --primary-50:  #EFF6F1;
+  --primary-100: #D8E9DE;
+  --primary-200: #B2D3BE;
+  --primary-300: #8ABC9C;
+  --primary-400: #5E9E77;
+  --primary-500: #3C7F56;
+  --primary-600: #2A653F;
+  --primary-700: #1D4E2B;
+  --primary-800: #163C21;
+  --primary-900: #0E2715;
+  --primary-950: #07160C;
+
+  --secondary-50:  #F2F5F8;
+  --secondary-100: #E2E8EF;
+  --secondary-200: #C6D1DD;
+  --secondary-300: #A3B3C4;
+  --secondary-400: #8094A9;
+  --secondary-500: #64798F;
+  --secondary-600: #4B5E70;
+  --secondary-700: #3C4B5A;
+  --secondary-800: #2C3845;
+  --secondary-900: #1D2530;
+
+  --tertiary-50:  #EFF8F2;
+  --tertiary-100: #D6EFDF;
+  --tertiary-200: #ADDEC0;
+  --tertiary-300: #7FC89B;
+  --tertiary-400: #55AF77;
+  --tertiary-500: #2F7C47;
+  --tertiary-600: #296D3E;
+  --tertiary-700: #215833;
+
+  /* Neutral — tuned to the sage page so greys never look cold against it. */
+  --neutral-0:   #FDFEFD;
+  --neutral-50:  #F8FBF8;
+  --neutral-100: #F1F6F1;
+  --neutral-200: #E5ECE4;
+  --neutral-300: #C3D0C0;
+  --neutral-400: #93A094;
+  --neutral-500: #5C665F;   /* muted text; #67726B failed AA on the banded surfaces */
+  --neutral-600: #46514A;
+  --neutral-700: #353E39;
+  --neutral-800: #242B27;
+  --neutral-900: #18201A;
+
+  /* ----------------------------------------------------------------
+     3. SEMANTIC COLOURS
+     ---------------------------------------------------------------- */
+  --color-bg:             #F4F7F4;
+  --color-bg-alt:         #E8EEE7;
+  --color-surface:        var(--neutral-0);
+  --color-surface-muted:  #E5ECE4;
+  --color-surface-sunken: var(--neutral-50);
+
+  --color-text:            var(--neutral-900);
+  --color-text-soft:       var(--neutral-600);
+  --color-text-muted:      var(--neutral-500);
+  --color-text-inverse:    var(--neutral-0);
+  --color-text-on-primary: #E7F2EA;
+
+  --color-border:        #DEE7DC;
+  --color-border-strong: var(--neutral-300);
+  --color-border-accent: var(--primary-200);
+
+  --color-accent:       var(--brand-primary);
+  --color-accent-hover: var(--primary-600);
+  --color-accent-soft:  var(--primary-50);
+  --color-accent-ring:  rgba(29, 78, 43, 0.18);
+  /* A green that still clears AA as small text on the page background. */
+  --color-accent-text:  #2A653F;
+
+  --color-highlight:      var(--brand-tertiary);
+  --color-highlight-soft: var(--tertiary-50);
+
+  /* Status. Nothing on the page uses yellow any more. */
+  --color-info:    var(--brand-secondary);
+  --color-info-bg: var(--secondary-100);
+  --color-note:    var(--secondary-700);
+  --color-note-bg: var(--secondary-100);
+  --color-live:    var(--tertiary-700);
+  --color-live-bg: var(--tertiary-100);
+
+  /* Translucent veils, so the backdrop reads through banded sections. */
+  --color-band-veil: rgba(253, 254, 253, 0.76);
+  --color-alt-veil:  rgba(232, 238, 231, 0.74);
+
+  /* ----------------------------------------------------------------
+     3b. BACKGROUND — photograph, scrim and sensor mesh
+     ---------------------------------------------------------------- */
+  --bg-photo:      url("/images/photos/page-backdrop.webp");
+  --bg-photo-tint: 244, 247, 244;
+  --bg-photo-scrim-top:  0.30;
+  --bg-photo-scrim-body: 0.80;
+  --bg-photo-scrim:      var(--bg-photo-scrim-top);
+
+  --mesh-node-rgb:   29, 78, 43;
+  --mesh-link-rgb:   47, 124, 71;
+  --mesh-active-rgb: 47, 124, 71;
+  --mesh-glow-rgb:   47, 124, 71;
+  --mesh-node-alpha:   0.38;
+  --mesh-link-alpha:   0.26;
+  --mesh-active-alpha: 0.85;
+  --mesh-glow-alpha:   0.14;
+  --mesh-density:   15000;
+  --mesh-link-dist: 146;
+  --mesh-reach:     265;
+  --mesh-pull:      20;
+  --mesh-pulse-ms:  1500;
+
+  --texture-size: 26px;
+  --texture-dot:  rgba(29, 78, 43, 0.06);
+
+  /* ----------------------------------------------------------------
+     4. TYPOGRAPHY
+     ---------------------------------------------------------------- */
+  --font-heading: "Plus Jakarta Sans", "Noto Sans Sinhala", "Noto Sans Tamil", "Inter", system-ui, sans-serif;
+  --font-body:    "Inter", "Noto Sans Sinhala", "Noto Sans Tamil", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono:    ui-monospace, "SF Mono", Menlo, monospace;
+
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.25rem;
+  --text-2xl:  1.5rem;
+  --text-3xl:  1.875rem;
+  --text-4xl:  2.25rem;
+  --text-display: clamp(2.3rem, 1.3rem + 3.6vw, 4.3rem);
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --leading-tight: 1.15;
+  --leading-snug: 1.35;
+  --leading-body: 1.65;
+  --tracking-tight: -0.025em;
+  --tracking-wide: 0.08em;
+
+  /* ----------------------------------------------------------------
+     5. LAYOUT / SHAPE / MOTION
+     ---------------------------------------------------------------- */
+  --container-width: 1200px;
+  --container-narrow: 820px;
+  --gutter: 24px;
+
+  --section-gap: clamp(56px, 8vw, 120px);
+  --section-gap-tight: clamp(40px, 5.5vw, 76px);
+
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-2xl: 36px;
+  --radius-pill: 999px;
+
+  --shadow-xs: 0 1px 2px rgba(24, 32, 26, 0.05);
+  --shadow-sm: 0 2px 8px rgba(24, 32, 26, 0.06);
+  --shadow-md: 0 8px 24px rgba(24, 32, 26, 0.08);
+  --shadow-lg: 0 18px 44px rgba(24, 32, 26, 0.11);
+  --shadow-xl: 0 30px 70px rgba(24, 32, 26, 0.15);
+  --ring: 0 0 0 4px var(--color-accent-ring);
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --duration-fast: 160ms;
+  --duration: 280ms;
+  --duration-slow: 520ms;
+
+  --header-height: 76px;
+  --header-gap: 18px;
+  --header-gap-stuck: 10px;
+
+  /* Glass used by elements that float over the page. */
+  --glass-bg:        rgba(253, 254, 253, 0.76);
+  --glass-bg-strong: rgba(253, 254, 253, 0.90);
+  --glass-border:    rgba(255, 255, 255, 0.58);
+  --glass-blur:      blur(16px) saturate(165%);
+  --glass-sheen:     inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  --glass-shadow:    0 10px 30px rgba(24, 32, 26, 0.12);
+
+  /* ----------------------------------------------------------------
+     6. HEADER SURFACES
+     ----------------------------------------------------------------
+     The header gets its own surface tokens rather than reusing the glass
+     ones. Full liquid glass needs something with contrast behind it to
+     refract; over the pale sage page there is nothing to catch, so the
+     panel just looks smeared. Over the page it is therefore a crisp,
+     nearly opaque pill with a light blur, and over a dark section it
+     becomes a genuinely transparent dark panel with light text.
+     ---------------------------------------------------------------- */
+  --header-light-bg:     rgba(253, 254, 253, 0.90);
+  --header-light-border: rgba(222, 231, 220, 0.92);
+  --header-light-blur:   blur(12px) saturate(118%);
+  --header-light-shadow: 0 6px 20px rgba(24, 32, 26, 0.10);
+
+  --header-dark-bg:      rgba(13, 26, 17, 0.38);
+  --header-dark-border:  rgba(255, 255, 255, 0.20);
+  --header-dark-blur:    blur(14px) saturate(125%);
+  --header-dark-shadow:  0 10px 28px rgba(5, 14, 8, 0.30);
+  --header-dark-ink:     #EDF6EF;
+  --header-dark-ink-soft: rgba(237, 246, 239, 0.82);
+  --header-dark-hover:   rgba(255, 255, 255, 0.14);
+}
