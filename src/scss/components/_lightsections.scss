@@ -1,0 +1,138 @@
+/* ==========================================================================
+   LIGHT SECTIONS — the inversions
+   --------------------------------------------------------------------------
+   The engine and the growth journey were written for light text on black.
+   Turning the band pale green is not a colour swap: every panel, border,
+   glyph and muted grey inside them points the wrong way.
+
+   Those inversions live here rather than being scattered through the
+   component files, so the change is reviewable in one place and reversible
+   by deleting one @use line.
+   ========================================================================== */
+.section--light {
+  --sl-ink:   var(--color-section-light-ink);
+  --sl-soft:  var(--color-section-light-soft);
+  --sl-line:  var(--color-section-light-line);
+  --sl-panel: var(--color-section-light-panel);
+}
+
+/* ------------------------------------------------- the intelligence loop */
+.section--light {
+  .eloop__node { color: var(--sl-soft); }
+  .eloop__node:hover,
+  .eloop__node.is-active { color: var(--sl-ink); }
+
+  .eloop__node-icon {
+    background: #fff;
+    border-color: var(--sl-line);
+    color: var(--color-section-light-accent);
+  }
+  .eloop__node.is-active .eloop__node-icon {
+    background: var(--color-section-light-accent);
+    border-color: var(--color-section-light-accent);
+    color: #fff;
+  }
+
+  .eloop__centre-step { color: var(--color-section-light-accent); }
+  .eloop__centre-name { color: var(--sl-ink); }
+  .eloop__centre-text { color: var(--sl-soft); }
+
+  .eloop__row { color: var(--sl-soft); }
+  .eloop__row:hover,
+  .eloop__row.is-active {
+    background: var(--sl-panel);
+    border-color: var(--sl-line);
+    color: var(--sl-ink);
+  }
+  .eloop__row-n { color: var(--color-section-light-accent); }
+
+  .eloop__note {
+    background: var(--sl-panel);
+    border-color: var(--sl-line);
+    color: var(--sl-soft);
+
+    svg { color: var(--color-section-light-accent); }
+  }
+
+  .eloop__track { stroke: var(--sl-line); }
+  .eloop__trail { stroke: var(--color-section-light-accent); }
+  .eloop__packet { fill: var(--color-section-light-accent); }
+}
+
+/* ----------------------------------------------------- the growth journey */
+.section--light {
+  .journey__copy .section-sub { color: var(--sl-soft); }
+
+  .journey__now {
+    background: var(--sl-panel);
+    border-color: var(--sl-line);
+  }
+  .journey__now-num { color: var(--color-section-light-accent); }
+  .journey__now-name { color: var(--sl-ink); }
+  .journey__now-text { color: var(--sl-soft); }
+
+  .journey__tick { color: var(--sl-soft); }
+  .journey__tick:hover { color: var(--sl-ink); background: var(--sl-panel); }
+  .journey__tick.is-done { color: var(--sl-soft); }
+  .journey__tick.is-active { color: var(--sl-ink); background: var(--sl-panel); }
+  .journey__tick-dot { background: var(--color-border-strong); }
+  .journey__tick.is-done .journey__tick-dot { background: var(--color-section-light-accent); }
+  .journey__tick.is-active .journey__tick-dot { background: var(--color-section-light-accent); }
+
+  .journey__adapts {
+    background: var(--sl-panel);
+    border-color: var(--sl-line);
+  }
+  .journey__adapts-title { color: var(--sl-ink); }
+  .journey__adapts-sub { color: var(--sl-soft); }
+  .journey__adapts-list li {
+    background: rgba(255, 255, 255, 0.78);
+    border-color: var(--sl-line);
+    color: var(--sl-ink);
+  }
+  .journey__tick-check { background: var(--color-section-light-accent); color: #fff; }
+}
+
+/* --------------------------------------------- the growing spine (touch) */
+.section--light {
+  .jspine__viewer {
+    background:
+      radial-gradient(340px 220px at 50% 22%, rgba(26, 106, 46, 0.10), transparent 72%),
+      var(--color-section-light);
+    border-color: var(--sl-line);
+    box-shadow: 0 14px 32px rgba(22, 48, 30, 0.12);
+  }
+  .jspine__meta-num { color: var(--color-section-light-accent); }
+  .jspine__meta-name { color: var(--sl-ink); }
+  .jspine__bar { background: var(--sl-line); }
+  .jspine__bar i { background: linear-gradient(90deg, #35A355, var(--color-section-light-accent)); }
+
+  .jspine__list::before { background: var(--sl-line); }
+
+  .jspine__node {
+    background: #fff;
+    border-color: var(--color-border-strong);
+    color: var(--sl-soft);
+  }
+  .jspine__step.is-done .jspine__node {
+    background: var(--color-section-light-accent-soft);
+    border-color: var(--color-section-light-accent);
+    color: var(--color-section-light-accent);
+  }
+  .jspine__step.is-on .jspine__node {
+    background: var(--color-section-light-accent);
+    border-color: var(--color-section-light-accent);
+    color: #fff;
+    box-shadow: 0 0 0 6px rgba(26, 106, 46, 0.18);
+  }
+
+  .jspine__name { color: var(--sl-soft); }
+  .jspine__text { color: var(--sl-soft); }
+  .jspine__step.is-on .jspine__name { color: var(--sl-ink); }
+  .jspine__step.is-on .jspine__text { color: var(--sl-ink); }
+}
+
+/* The crop is drawn from brand tokens and reads correctly either way, but on
+   a pale band its glow needs to come down or it washes the stem out. */
+.section--light .journey__visual svg circle[fill^="url"],
+.section--light .jspine__art svg circle[fill^="url"] { opacity: 0.4; }

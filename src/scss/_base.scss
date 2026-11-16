@@ -72,15 +72,25 @@ p { margin: 0; }
 /* ---------------------------- dark sections ------------------------------ */
 /* Full-bleed breaks in a long light page. Used by the two scroll-driven
    sections so they read as a different kind of moment. */
-.section--dark {
-  background: #000;
-  color: var(--color-text-on-primary);
+/* ---------------------------------------------------------------------------
+   LIGHT SECTIONS
+   These two used to be `#000`. They are now a pale green band with dark ink,
+   which means every rule inside them that assumed light-on-dark had to be
+   inverted — see components/_lightsections.scss.
+   --------------------------------------------------------------------------- */
+.section--light {
+  background: var(--color-section-light);
+  color: var(--color-section-light-ink);
 }
-.section--dark .section-title { color: #F5F5F7; }
-.section--dark .section-title .accent { color: var(--tertiary-400); }
-.section--dark .section-sub { color: #86868B; }
-.section--dark .eyebrow { color: var(--tertiary-400); }
-.section--dark .eyebrow__num { background: rgba(255, 255, 255, 0.14); color: #F5F5F7; }
+.section--light .section-title { color: var(--color-section-light-ink); }
+.section--light .section-title .accent { color: var(--color-section-light-accent); }
+.section--light .section-sub { color: var(--color-section-light-soft); }
+.section--light .eyebrow {
+  background: rgba(255, 255, 255, 0.72);
+  border-color: var(--color-section-light-line);
+  color: var(--color-section-light-accent);
+}
+.section--light .eyebrow__num { background: var(--color-section-light-accent); color: #fff; }
 
 /* --------------------------- section heading ------------------------------ */
 .section-head { max-width: 720px; }

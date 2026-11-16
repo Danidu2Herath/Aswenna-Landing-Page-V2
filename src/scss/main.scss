@@ -35,3 +35,6 @@
 @use "components/appui";
 @use "components/totop";
 @use "components/extras";
+
+/* Last: it inverts rules the component files set. */
+@use "components/lightsections";
