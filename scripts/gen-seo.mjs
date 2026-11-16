@@ -20,10 +20,29 @@ const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, "..");
 
 /* ------------------------------------------------------------------ origin */
-const env = readFileSync(join(root, ".env"), "utf8");
-const match = /^VITE_SITE_URL\s*=\s*(.+)$/m.exec(env);
-if (!match) throw new Error("VITE_SITE_URL is missing from .env");
-const ORIGIN = match[1].trim().replace(/\/+$/, "");
+/* The deploy platform's own environment wins, so a host that injects
+   VITE_SITE_URL needs no .env file in the build image at all. */
+const fromFile = (name) => {
+  for (const file of [".env.local", ".env"]) {
+    try {
+      const m = new RegExp(`^${name}\\s*=\\s*(.+)$`, "m").exec(readFileSync(join(root, file), "utf8"));
+      if (m) return m[1].trim().replace(/^["']|["']$/g, "");
+    } catch {
+      /* file absent — try the next one */
+    }
+  }
+  return undefined;
+};
+
+const RAW = process.env.VITE_SITE_URL ?? fromFile("VITE_SITE_URL");
+if (!RAW) {
+  throw new Error(
+    "VITE_SITE_URL is not set.\n" +
+      "  Copy the template and fill it in:  cp .env.example .env\n" +
+      "  Or set it in your host's environment variables.",
+  );
+}
+const ORIGIN = RAW.replace(/\/+$/, "");
 if (!/^https?:\/\/[^/\s]+$/.test(ORIGIN)) {
   throw new Error(`VITE_SITE_URL does not look like an origin: ${ORIGIN}`);
 }
