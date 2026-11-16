@@ -32,8 +32,8 @@
   /* FULLY opaque. At 97% the stage text sliding underneath still ghosted
      through and turned the crop into a double exposure. */
   background:
-    radial-gradient(340px 220px at 50% 22%, rgba(47, 124, 71, 0.30), transparent 72%),
-    linear-gradient(180deg, #0E2715, #07160C);
+    radial-gradient(340px 220px at 50% 22%, rgba(52, 199, 89, 0.30), transparent 72%),
+    linear-gradient(180deg, #1D1D1F, #000000);
   border: 1px solid rgba(255, 255, 255, 0.13);
   box-shadow: 0 18px 40px rgba(3, 10, 6, 0.55);
 }
@@ -147,7 +147,7 @@
   background: var(--brand-tertiary);
   border-color: var(--tertiary-200);
   color: #fff;
-  box-shadow: 0 0 0 6px rgba(47, 124, 71, 0.22);
+  box-shadow: 0 0 0 6px rgba(52, 199, 89, 0.22);
 }
 
 .jspine__name {
@@ -192,7 +192,7 @@
   min-height: 200px;
   border-radius: var(--radius-lg);
   background:
-    radial-gradient(260px 200px at 50% 40%, rgba(47, 124, 71, 0.35), transparent 70%),
+    radial-gradient(260px 200px at 50% 40%, rgba(52, 199, 89, 0.35), transparent 70%),
     linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
