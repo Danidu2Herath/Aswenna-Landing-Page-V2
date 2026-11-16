@@ -1,4 +1,3 @@
-import BackgroundTexture from "./components/BackgroundTexture";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import TrustBar from "./components/TrustBar";
@@ -26,7 +25,6 @@ import ToTop from "./components/ToTop";
 export default function App() {
   return (
     <>
-      <BackgroundTexture />
       <Header />
       <main id="main">
         <Hero />
