@@ -1,0 +1,9 @@
+# Aswenna — Smarter fields, greater future
+User-agent: *
+Allow: /
+
+# Nothing here is private; the only thing worth excluding is the build output
+# of a preview deploy, which should not exist on the canonical origin anyway.
+Disallow: /*.json$
+
+Sitemap: https://aswenna.lk/sitemap.xml

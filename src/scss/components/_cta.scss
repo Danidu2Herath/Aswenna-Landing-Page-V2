@@ -1,0 +1,76 @@
+/* The closing panel runs edge to edge, like the two dark sections above it,
+   so the page ends on a full-width band rather than a floating card. */
+.cta { padding: 0; }
+
+.cta__panel {
+  position: relative;
+  overflow: hidden;
+  background: var(--primary-950);
+  isolation: isolate;
+}
+.cta__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  opacity: 0.85;
+}
+/* Matched to .section--dark so the band reads as the same material as the
+   journey and engine sections: espresso green with the same two glows. */
+.cta__veil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(900px 420px at 18% 0%, rgba(47, 124, 71, 0.28), transparent 70%),
+    radial-gradient(700px 400px at 86% 100%, rgba(75, 94, 112, 0.20), transparent 72%),
+    linear-gradient(140deg, rgba(7, 22, 12, 0.97) 0%, rgba(10, 30, 16, 0.95) 50%, rgba(16, 44, 24, 0.93) 100%);
+}
+
+.cta__inner {
+  position: relative;
+  padding-block: clamp(64px, 9vw, 132px);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cta__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #fff;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+.cta__title {
+  margin-top: 24px;
+  color: #fff;
+  font-size: clamp(1.9rem, 1.1rem + 2.8vw, 3.3rem);
+  max-width: 18ch;
+}
+.cta__sub {
+  margin-top: 20px;
+  max-width: 62ch;
+  color: rgba(231, 242, 234, 0.84);
+  font-size: var(--text-lg);
+}
+.cta__actions { margin-top: 32px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.cta__brand {
+  margin-top: 36px;
+  font-size: var(--text-sm);
+  color: rgba(231, 242, 234, 0.7);
+  letter-spacing: 0.04em;
+}
+.cta__brand strong { color: #fff; letter-spacing: 0.12em; }

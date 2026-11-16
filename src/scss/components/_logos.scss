@@ -1,0 +1,89 @@
+/* ---------------------------------------------------------------------------
+   Partner logo strip.
+   Dark band, because the supplied IIT mark has a white wordmark that would be
+   invisible on the page background. The ATP mark is black line art, so it is
+   inverted to white here — both then read on the same surface.
+   --------------------------------------------------------------------------- */
+.logos {
+  background: var(--primary-950);
+  background-image:
+    radial-gradient(760px 320px at 15% 0%, rgba(47, 124, 71, 0.26), transparent 70%),
+    radial-gradient(620px 300px at 88% 100%, rgba(75, 94, 112, 0.18), transparent 72%);
+  padding-block: clamp(36px, 5vw, 60px);
+  overflow: hidden;
+}
+
+.logos__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px 24px;
+  flex-wrap: wrap;
+  margin-bottom: 26px;
+}
+.logos__label {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--tertiary-200);
+}
+.logos__note { font-size: var(--text-sm); color: rgba(231, 242, 234, 0.72); }
+
+.logos__viewport { position: relative; width: 100%; }
+/* Fade the strip into the band at both ends. */
+.logos__viewport::before,
+.logos__viewport::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(32px, 7vw, 96px);
+  z-index: 2;
+  pointer-events: none;
+}
+.logos__viewport::before { left: 0; background: linear-gradient(90deg, var(--primary-950), transparent); }
+.logos__viewport::after { right: 0; background: linear-gradient(270deg, var(--primary-950), transparent); }
+
+.logos__track {
+  display: flex;
+  align-items: center;
+  gap: clamp(36px, 6vw, 84px);
+  width: max-content;
+  padding-inline: var(--gutter);
+}
+.is-running .logos__track { animation: logos-scroll 34s linear infinite; }
+.is-paused .logos__track { animation-play-state: paused; }
+
+/* Without animation it becomes a plain, swipeable row. */
+.is-static .logos__viewport,
+.logos__viewport.is-static { overflow-x: auto; }
+.is-static .logos__track { animation: none; }
+
+@keyframes logos-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.logos__item {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  height: clamp(38px, 5vw, 54px);
+}
+.logos__item img {
+  max-height: 100%;
+  width: auto;
+  max-width: clamp(130px, 18vw, 210px);
+  object-fit: contain;
+  opacity: 0.92;
+}
+/* The IIT lockup is much wider than it is tall. */
+.logos__item--tall img { max-height: 84%; max-width: clamp(150px, 20vw, 240px); }
+/* ATP ships as black line art; invert it onto the dark band. */
+.logos__item--invert img { filter: invert(1) brightness(1.9); opacity: 0.88; }
+
+@media (prefers-reduced-motion: reduce) {
+  .logos__track { animation: none !important; }
+  .logos__viewport { overflow-x: auto; }
+}
