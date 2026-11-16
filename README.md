@@ -69,8 +69,10 @@ It writes:
 
 | File | What it is |
 | --- | --- |
-| `public/robots.txt` | crawl rules and the sitemap pointer |
+| `public/robots.txt` | crawl rules, AI crawlers named and allowed, sitemap pointer |
 | `public/sitemap.xml` | the URL set to submit to Google Search Console |
+| `public/llms.txt` | short orientation file for AI tools: what this is, and what it is **not** |
+| `public/llms-full.txt` | the whole page as plain Markdown, ~15 kB |
 | `public/site.webmanifest` | name, theme colour, icon |
 | the JSON-LD in `index.html` | Organization, WebSite, WebPage, ResearchProject, FAQPage |
 
@@ -78,6 +80,28 @@ The FAQ markup is generated from the real FAQ, so the six questions can appear
 as rich results. The project is described as a **ResearchProject**, not as a
 released `SoftwareApplication`: phases 01–03 are planned scope and phase 04 is
 proposed, and the structured data must not claim more than the page does.
+
+`<lastmod>` and `dateModified` come from the last commit that touched
+`src/data/content.ts`, not from the build date. A sitemap where every date is
+"today" tells a crawler nothing and gets discounted.
+
+### Readable by AI tools
+
+Three things make the content legible to a crawler or an assistant that is not
+a full browser:
+
+1. **The page is pre-rendered** (below), so the HTML already contains the text.
+2. **`/llms.txt`** is the short version, and leads with what Aswenna is *not* —
+   the predictable failure is a tool describing a research project as a product
+   you can buy today.
+3. **`/llms-full.txt`** is every section as Markdown. Both are generated from
+   the same `content.ts` the page renders, so they cannot drift out of step,
+   and both are linked from `<head>` with `rel="alternate"`.
+
+`robots.txt` names GPTBot, ClaudeBot, PerplexityBot, Google-Extended,
+Applebot-Extended, CCBot and the rest explicitly and allows them. A crawler
+that cannot read the page will describe the project from somewhere less
+accurate.
 
 ### Before you submit to Search Console
 
@@ -89,18 +113,33 @@ proposed, and the structured data must not claim more than the page does.
 4. Run the live URL through the Rich Results Test and the Facebook Sharing
    Debugger once, so the FAQ markup and the social card are confirmed.
 
-### The one real SEO limitation
+### Pre-rendering
 
-This is a single-page React app: the HTML served to a crawler contains the head
-and the `<noscript>` block, and the body is rendered by JavaScript. Google
-renders JavaScript and will index it, but Bing and most social scrapers are
-less reliable, and the first paint is slower than it needs to be.
+`npm run build` renders the whole page to HTML and writes it into
+`dist/index.html`, so what a crawler receives is ~97 kB of real markup rather
+than an empty `<div>`. With JavaScript disabled the served page shows 75
+headings and about 2,900 words.
 
-If organic search matters, pre-render the page at build time —
-[`vite-plugin-prerender`](https://www.npmjs.com/package/vite-plugin-prerender)
-or `react-dom/server`'s `renderToStaticMarkup` into `index.html`. The components
-are all pure given the content file, so nothing in them blocks it. That is the
-single highest-value SEO change left, and it is maybe an hour of work.
+How it works:
+
+```
+vite build                                      the browser bundle
+vite build --ssr src/entry-server.tsx           a Node build of the same tree
+node scripts/prerender.mjs                      render it into dist/index.html
+```
+
+`src/entry-server.tsx` renders exactly what `main.tsx` mounts. The browser
+still boots the real application over that markup — the pre-render is the
+first paint and the index, not a replacement for the app. It uses
+`renderToStaticMarkup` rather than hydration on purpose: a hydration mismatch
+on a media query would be a worse failure than rendering once more.
+
+**One thing this requires:** the scroll-reveal animations are scoped to a `.js`
+class that an inline script in `<head>` sets before the first paint. Without
+that scoping the pre-rendered content would sit at `opacity: 0` forever for
+anyone without JavaScript — visible to a text parser, invisible to a person,
+and the kind of thing a search engine treats as hidden text. With no
+JavaScript the content is simply visible; the animation is the opt-in.
 
 ---
 
