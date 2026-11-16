@@ -3,4 +3,10 @@ dist
 *.tsbuildinfo
 scripts/.og.html
 .DS_Store
+
+# Local environment. .env.example is the committed template and must stay
+# tracked, so it is excluded from the rule above it.
 .env
+.env.local
+.env.*.local
+!.env.example
