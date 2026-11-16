@@ -1,7 +1,8 @@
 // =============================================================================
 //  ASWENNA — stylesheet entry point
-//  Build:  npm run build:css      Watch:  npm run watch:css
-//  Tokens live in _tokens.scss and are the one place colours are defined.
+//  Compiled by Vite through src/main.tsx. Every other .scss file here is
+//  reached from this one, so this is the only entry point.
+//  Tokens live in tokens.scss and are the one place colours are defined.
 // =============================================================================
 @use "tokens";
 @use "base";
