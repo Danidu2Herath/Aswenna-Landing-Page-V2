@@ -3,12 +3,12 @@
  *
  * Geometry is lifted from an installed `lucide-react` so the shapes are the
  * real thing rather than hand-redrawn. Run it only when the icon list changes:
- *   node scripts/build-icons.mjs [path-to-lucide-react]
+ *   npm i -D lucide-react && node scripts/build-icons.mjs
  */
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 
-const PKG = process.argv[2] || "/home/user/aswenna-landing/node_modules/lucide-react";
+const PKG = process.argv[2] || "./node_modules/lucide-react";
 const DIR = join(PKG, "dist/esm/icons");
 
 /** name used in content.js -> lucide icon file name */
@@ -22,18 +22,14 @@ const ICONS = {
   "grid": "layout-grid", "cpu": "cpu", "waves": "waves", "gauge": "gauge", "users": "users",
   "database": "database", "scan": "scan-search", "trending-up": "trending-up",
   "calendar": "calendar-range", "signal-low": "signal-low", "phone-call": "phone-call",
-  "plug": "plug", "sun": "sun-medium", "check": "check", "x": "x", "arrow-right": "arrow-right",
-  "arrow-down": "arrow-down", "arrow-up": "arrow-up", "arrow-up-right": "arrow-up-right", "chevron-down": "chevron-down",
+  "plug": "plug", "sun": "sun-medium", "check": "check", "x": "x", "arrow-right": "arrow-right", "arrow-up": "arrow-up", "arrow-up-right": "arrow-up-right", "chevron-down": "chevron-down",
   "globe": "globe", "menu": "menu", "plus": "plus", "minus": "minus", "info": "info",
   "refresh": "refresh-cw", "rotate-ccw": "rotate-ccw", "star": "star", "send": "send",
-  "hand": "hand", "mail": "mail", "phone": "phone", "building": "building-2",
+  "hand": "hand", "mail": "mail", "phone": "phone",
   "bell": "bell", "bell-ring": "bell-ring", "battery": "battery-medium",
-  "chevron-right": "chevron-right", "chevron-left": "chevron-left", "search": "search",
-  "wifi": "wifi", "house": "house", "circle-check": "circle-check-big",
-  "triangle-alert": "triangle-alert", "sliders": "sliders-horizontal", "ellipsis": "ellipsis",
-  "clock": "clock", "list-checks": "list-checks", "pencil": "pencil", "share": "share-2",
-  "chart": "chart-column", "crosshair": "crosshair", "snowflake": "snowflake",
-  "umbrella": "umbrella", "wind": "wind", "banknote": "banknote",
+  "wifi": "wifi", "house": "house",
+  "triangle-alert": "triangle-alert", "sliders": "sliders-horizontal", "ellipsis": "ellipsis", "pencil": "pencil",
+  "chart": "chart-column", "crosshair": "crosshair",
 };
 
 const extract = (file, depth = 0) => {

@@ -71,13 +71,12 @@ export const trustBar = {
 };
 
 export const partners = {
-  label: "Built with",
   note: "Aswenna is a project of Veyra Solutions.",
   logos: [
     { src: "/images/logos/aswenna-white.svg", alt: "Aswenna", cls: "" },
     { src: "/images/logos/veyra-placeholder.svg", alt: "Veyra Solutions", cls: "" },
-    { src: "/images/logos/iit.png", alt: "Informatics Institute of Technology", cls: "logos__item--tall" },
-    { src: "/images/logos/atp.webp", alt: "Agile Team Project", cls: "logos__item--invert" },
+    { src: "/images/logos/iit.png", alt: "Informatics Institute of Technology", cls: "hero__partner--tall" },
+    { src: "/images/logos/atp.webp", alt: "Agile Team Project", cls: "" },
   ],
 };
 
