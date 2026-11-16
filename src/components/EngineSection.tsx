@@ -106,7 +106,7 @@ export default function EngineSection() {
   const stage = engine.stages[active];
 
   return (
-    <section className="section section--dark engine" id="engine" data-dark>
+    <section className="section section--light engine" id="engine">
       <div className="container">
         <SectionHead {...engine} display keyBase="engine" />
 

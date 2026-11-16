@@ -10,6 +10,11 @@ export const site = {
   tagline: "Smarter fields, greater future",
   promise: "Empowering Farmers, Growing Prosperity.",
   parent: "Veyra Solutions",
+  /* The one-sentence description of the project, used by the page metadata
+     and the structured data. It used to live in the footer as a visible
+     paragraph; the paragraph is gone, the metadata still needs it. */
+  description:
+    "An IoT-enabled precision farming platform for Sri Lankan agriculture — soil intelligence, hyperlocal weather, AI recommendations, smart irrigation, crop-health monitoring and market intelligence.",
 };
 
 export const contactDetails = {
@@ -151,22 +156,22 @@ export const seasons = {
   num: "05",
   eyebrow: "Across the cultivation year",
   title: "How Aswenna Protects You",
-  accent: "Across Maha & Yala",
-  sub: "Both seasons move through the same stages. At each one there is a decision that data can inform.",
+  accent: "Across the Seasons",
+  sub: "Every season moves through the same four stages. At each one there is a decision that data can inform.",
   stages: [
-    { icon: "sprout", stage: "Stage 01", when: "Land preparation", title: "Land Prep & Nursery",
+    { icon: "sprout", photo: "/images/photos/problem-soil.webp", stage: "Stage 01", when: "Land preparation", title: "Land Prep & Nursery",
       text: "Before anything is sown, the plot is mapped and profiled, so the season starts from the soil that is actually there rather than from last year's assumptions.",
       callout: { label: "What Aswenna does", text: "Builds a geo-located soil profile for the plot and recommends crops suited to its conditions, the water available and recent price behaviour." },
       link: "Soil intelligence", href: "#soil" },
-    { icon: "leaf", stage: "Stage 02", when: "Vegetative growth", title: "Vegetative & Top-Dressing",
+    { icon: "leaf", photo: "/images/photos/field-crop-health.webp", stage: "Stage 02", when: "Vegetative growth", title: "Vegetative & Top-Dressing",
       text: "The crop is establishing and demand for nutrients and water rises. This is where a schedule fixed weeks earlier starts to drift away from the field.",
       callout: { label: "What Aswenna does", text: "Adjusts the cultivation calendar when rainfall or soil moisture changes, and triggers irrigation from measured moisture rather than from the date." },
       link: "Cultivation calendar", href: "#features" },
-    { icon: "bug", stage: "Stage 03", when: "Flowering", title: "Panicle & Soil Nutrition",
+    { icon: "bug", photo: "/images/photos/problem-pests.webp", stage: "Stage 03", when: "Flowering", title: "Panicle & Soil Nutrition",
       text: "Humidity and leaf wetness climb, and so does the risk of an outbreak. Nutrient deficiencies that show now are expensive to correct later.",
       callout: { label: "What Aswenna does", text: "Watches the conditions that precede an outbreak and lets a farmer photograph an affected leaf for AI-assisted diagnosis and mitigation advice." },
       link: "Pest and disease", href: "#field" },
-    { icon: "wheat", stage: "Stage 04", when: "Harvest", title: "Harvest & Market Timing",
+    { icon: "wheat", photo: "/images/photos/market-trend.webp", stage: "Stage 04", when: "Harvest", title: "Harvest & Market Timing",
       text: "The crop is ready, but when and where it is sold decides what the season was worth. Storage conditions decide how much of it survives the wait.",
       callout: { label: "What Aswenna does", text: "Tracks wholesale prices from economic centres such as Dambulla and Piliyandala, and monitors storage temperature and humidity after harvest." },
       link: "Market analytics", href: "#features" },
@@ -459,31 +464,27 @@ export const contact = {
 };
 
 export const footer = {
-  blurb: "An IoT-enabled precision farming platform for Sri Lankan agriculture — soil intelligence, hyperlocal weather, AI recommendations, smart irrigation, crop-health monitoring and market intelligence.",
-  parentLine: "Aswenna is a project of Veyra Solutions.",
+  /* No paragraph explaining what Aswenna is: by the time a reader reaches the
+     footer the whole page has said it, and saying it again is filler. */
+  parentLine: "A project of Veyra Solutions",
+  tagline: "Smarter fields, greater future.",
+  cta: { label: "Let's grow something together", href: "#contact" },
   columns: [
     { title: "Platform", links: [
       { label: "Why Aswenna", href: "#why" }, { label: "Soil intelligence", href: "#soil" },
-      { label: "Across Maha & Yala", href: "#seasons" }, { label: "Field scanning", href: "#field" },
+      { label: "Across the seasons", href: "#seasons" }, { label: "Field scanning", href: "#field" },
       { label: "The Aswenna platform", href: "#platform" } ] },
     { title: "Technology", links: [
-      { label: "How it works", href: "#engine" }, { label: "Features & capabilities", href: "#features" },
+      { label: "How it works", href: "#engine" }, { label: "What we offer", href: "#features" },
       { label: "IoT ecosystem", href: "#hardware" }, { label: "Field installation", href: "#install" },
       { label: "Roadmap", href: "#roadmap" } ] },
-    { title: "Get in touch", links: [
+    { title: "Company", links: [
       { label: "Participation tiers", href: "#pricing" }, { label: "Frequently asked questions", href: "#faq" },
       { label: "Contact us", href: "#contact" } ] },
   ],
-  /* The roadmap disclaimer that used to sit here was removed: it already
-     appears in the roadmap section itself and in the FAQ, where a reader is
-     actually looking at the claim it qualifies. */
-  contactTitle: "Contact",
-  cta: {
-    title: "Thinking about your own plot?",
-    text: "Tell us where you farm and what you grow. A short message is enough to start.",
-    label: "Talk to the team",
-  },
-  meta: "Academic & agricultural research initiative",
+  getInTouch: "Get in touch",
+  invite: ["A conversation first.", "A better season, together."],
+  status: "An academic and agricultural research initiative.",
   backToTop: "Back to top",
 };
 

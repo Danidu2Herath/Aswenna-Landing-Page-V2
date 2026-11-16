@@ -134,7 +134,7 @@ export default function JourneySection() {
   };
 
   return (
-    <section className="section--dark journey" id="journey" data-dark>
+    <section className="section--light journey" id="journey">
       {/* ------------------------------------------------ desktop scrub */}
       <div
         className="journey__scroller"
