@@ -180,14 +180,6 @@
   margin-top: 14px;
 }
 
-/* A range input's real target is its thumb, so pad the control itself. */
-.demo__range {
-  height: 44px;
-  background-clip: content-box;
-  padding-block: 17px;
-  box-sizing: border-box;
-}
-
 @media (pointer: coarse) {
   .footer__col ul a,
   .contact__details a,

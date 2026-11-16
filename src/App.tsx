@@ -9,7 +9,6 @@ import FieldSection from "./components/FieldSection";
 import EngineSection from "./components/EngineSection";
 import ComparisonSection from "./components/ComparisonSection";
 import FeaturesSection from "./components/FeaturesSection";
-import DemoSection from "./components/DemoSection";
 import FieldFirstSection from "./components/FieldFirstSection";
 import HardwareSection from "./components/HardwareSection";
 import InstallSection from "./components/InstallSection";
@@ -37,7 +36,6 @@ export default function App() {
         <EngineSection />
         <ComparisonSection />
         <FeaturesSection />
-        <DemoSection />
         <FieldFirstSection />
         <HardwareSection />
         <InstallSection />
