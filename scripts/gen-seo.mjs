@@ -123,7 +123,6 @@ Sitemap: ${ORIGIN}/sitemap.xml
 const SECTIONS = [
   ...C.nav,
   { href: "#platform", label: "The Aswenna platform" },
-  { href: "#roadmap", label: "Roadmap" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -329,6 +328,11 @@ ${bullets(C.platform.screens, (s) => `- **${s.name}** — ${s.text}`)}
 
 ## ${heading(C.roadmap)}
 
+_Not shown on the landing page. It is published here because it is the
+evidence for the status note above: these are the phases that are planned
+and proposed, and nothing in them is deployed._
+
+
 ${C.roadmap.sub}
 
 ${C.roadmap.phases
@@ -358,7 +362,7 @@ ${C.contact.note}
 ---
 
 _Content last updated ${contentModified}, generated from src/data/content.ts. This
-file mirrors the page; where the two disagree, the page is correct._
+file carries the site's content; where the two disagree, the page is correct._
 `,
 );
 
@@ -372,7 +376,7 @@ writeFileSync(
       description: C.site.description,
       start_url: "/",
       display: "standalone",
-      background_color: "#F4F7F4",
+      background_color: "#EFF4EE",
       theme_color: "#1D4E2B",
       icons: [{ src: "/images/logos/aswenna-mark.svg", sizes: "any", type: "image/svg+xml" }],
     },

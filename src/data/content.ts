@@ -145,9 +145,33 @@ export const journey = {
     { n: "06", name: "Mature Plant", text: "A fully developed crop ready for its next agricultural stage." },
   ],
   adapts: {
+    eyebrow: "The cultivation year",
     title: "What the calendar adapts at every stage",
     sub: "Aswenna's intelligent cultivation calendar re-reads the plot at every stage and rewrites what it asks the farmer to do next.",
     items: ["Irrigation schedules", "Fertilizer application", "Crop maintenance", "Cultivation activities", "Weather-dependent adjustments"],
+    /* The ribbon. Maha runs roughly October to March and Yala roughly April
+       to September; the exact start shifts with the monsoon and the district,
+       so the spans here are indicative and the page says so.
+
+       `stage` indexes seasons.stages — the same four stages the page already
+       describes — rather than naming per-month activities, which would be an
+       agronomic claim this project has not made.  */
+    ribbonNote: "Season spans are indicative — the monsoon decides the exact start, and it differs by district.",
+    seasonLabels: { maha: "Maha season", yala: "Yala season" },
+    months: [
+      { m: "Oct", season: "maha", stage: 0 },
+      { m: "Nov", season: "maha", stage: 0 },
+      { m: "Dec", season: "maha", stage: 1 },
+      { m: "Jan", season: "maha", stage: 1 },
+      { m: "Feb", season: "maha", stage: 2 },
+      { m: "Mar", season: "maha", stage: 3 },
+      { m: "Apr", season: "yala", stage: 0 },
+      { m: "May", season: "yala", stage: 0 },
+      { m: "Jun", season: "yala", stage: 1 },
+      { m: "Jul", season: "yala", stage: 2 },
+      { m: "Aug", season: "yala", stage: 3 },
+      { m: "Sep", season: "yala", stage: 3 },
+    ],
   },
 };
 
@@ -199,9 +223,6 @@ export const engine = {
   eyebrow: "The intelligence engine",
   title: "How Aswenna Works.",
   sub: "A closed loop of five stages. Data leaves the field, becomes understanding, and returns to the farmer as an action.",
-  note: "The loop closes — every action in the field becomes the next round of data the platform senses.",
-  autoNote: "The loop runs on its own",
-  heldNote: "Paused on your choice — resuming shortly",
   stages: [
     { icon: "radar", name: "Sense", text: "Field nodes, weather stations, pest traps, satellites, and farmer photographs produce agricultural data." },
     { icon: "radio-tower", name: "Connect", text: "LoRaWAN technology connects field devices to village gateways, while mobile connectivity transfers data to the cloud." },
@@ -365,8 +386,10 @@ export const platform = {
   ],
 };
 
+/* Not rendered on the page any more. Kept because scripts/gen-seo.mjs
+   publishes it in llms-full.txt, where it is the evidence behind the
+   "planned, not deployed" status note. */
 export const roadmap = {
-  num: "15",
   eyebrow: "Strategic implementation",
   title: "The Roadmap.",
   sub: "Phases 01–03 define the project scope. Phase 04 collects future extensions. All phases describe planned capabilities, not deployed commercial operations.",
@@ -386,7 +409,7 @@ export const roadmap = {
 };
 
 export const faq = {
-  num: "16",
+  num: "15",
   eyebrow: "Questions",
   title: "Frequently Asked",
   accent: "Questions",
@@ -450,7 +473,7 @@ export const footer = {
     { title: "Technology", links: [
       { label: "How it works", href: "#engine" }, { label: "What we offer", href: "#features" },
       { label: "IoT ecosystem", href: "#hardware" }, { label: "Field installation", href: "#install" },
-      { label: "Roadmap", href: "#roadmap" } ] },
+    ] },
     { title: "Company", links: [
       { label: "Participation tiers", href: "#pricing" }, { label: "Frequently asked questions", href: "#faq" },
       { label: "Contact us", href: "#contact" } ] },
@@ -536,12 +559,23 @@ export const appUi = {
     season: "Maha season",
     month: "November",
     week: ["M", "T", "W", "T", "F", "S", "S"],
-    today: 3,
+    /* A month, not a single week: four tasks under a seven-day strip left
+       the bottom half of the screen empty, and a calendar that cannot show
+       a month is not showing much.
+
+       November 2025 begins on a Saturday, which is why `firstCol` is 5 on a
+       Monday-first grid, and it is the month the task dates already use:
+       17 Nov is a Monday, 20 Nov a Thursday, 29 Nov a Saturday. `marked`
+       must stay in step with `tasks` below. */
+    grid: { firstCol: 5, days: 30, today: 20, marked: [17, 20, 29] },
+    /* Grouped, because a month view that lists four tasks in one run leaves
+       the lower half of the screen empty and says nothing about when they
+       fall. The group label is carried on the first task of each group. */
     tasks: [
-      { icon: "droplets", title: "Second irrigation", when: "Mon 17 Nov", state: "done" },
+      { icon: "droplets", title: "Second irrigation", when: "Mon 17 Nov", state: "done", group: "This week" },
       { icon: "flask", title: "Top-dress urea", when: "Today · before noon", state: "today" },
       { icon: "bug", title: "Scout for leaf folder", when: "Thu 20 Nov", state: "next" },
-      { icon: "wheat", title: "Panicle initiation check", when: "Sat 29 Nov", state: "next" },
+      { icon: "wheat", title: "Panicle initiation check", when: "Sat 29 Nov", state: "next", group: "Later this month" },
     ],
     shift: { icon: "refresh", text: "Two tasks moved — rain forecast for Wednesday." },
   },

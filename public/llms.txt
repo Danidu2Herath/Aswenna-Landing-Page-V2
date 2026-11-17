@@ -35,7 +35,6 @@ something that can be bought or used today.
 - [Pricing](https://aswenna.lk/#pricing)
 - [FAQ](https://aswenna.lk/#faq)
 - [The Aswenna platform](https://aswenna.lk/#platform)
-- [Roadmap](https://aswenna.lk/#roadmap)
 - [Contact](https://aswenna.lk/#contact)
 
 ## Machine-readable

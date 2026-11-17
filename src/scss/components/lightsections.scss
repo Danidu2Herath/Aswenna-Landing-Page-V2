@@ -46,14 +46,6 @@
   }
   .eloop__row-n { color: var(--color-section-light-accent); }
 
-  .eloop__note {
-    background: var(--sl-panel);
-    border-color: var(--sl-line);
-    color: var(--sl-soft);
-
-    svg { color: var(--color-section-light-accent); }
-  }
-
   .eloop__track { stroke: var(--sl-line); }
   .eloop__trail { stroke: var(--color-section-light-accent); }
   .eloop__packet { fill: var(--color-section-light-accent); }
@@ -79,18 +71,6 @@
   .journey__tick.is-done .journey__tick-dot { background: var(--color-section-light-accent); }
   .journey__tick.is-active .journey__tick-dot { background: var(--color-section-light-accent); }
 
-  .journey__adapts {
-    background: var(--sl-panel);
-    border-color: var(--sl-line);
-  }
-  .journey__adapts-title { color: var(--sl-ink); }
-  .journey__adapts-sub { color: var(--sl-soft); }
-  .journey__adapts-list li {
-    background: rgba(255, 255, 255, 0.78);
-    border-color: var(--sl-line);
-    color: var(--sl-ink);
-  }
-  .journey__tick-check { background: var(--color-section-light-accent); color: #fff; }
 }
 
 /* --------------------------------------------- the growing spine (touch) */

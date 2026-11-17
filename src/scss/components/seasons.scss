@@ -175,3 +175,30 @@
 @media (prefers-reduced-motion: reduce) {
   .stage__photo, .stage__body { animation: none; }
 }
+
+/* ------------------------------- auto-cycle ------------------------------- */
+/* A drain bar along the bottom edge of the open row. It exists so the cycle
+   reads as a deliberate rhythm rather than the page moving on its own, and
+   it is removed outright the moment a visitor takes control. */
+.stage__timer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 100%;
+  transform-origin: left;
+  background: linear-gradient(90deg, rgba(173, 222, 192, 0.55), #ADDEC0);
+  animation-name: stage-drain;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+  pointer-events: none;
+}
+
+@keyframes stage-drain {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage__timer { display: none; }
+}

@@ -175,6 +175,8 @@ export default function EngineSection() {
                     type="button"
                     className={`eloop__row${i === active ? " is-active" : ""}`}
                     aria-pressed={i === active}
+                    onMouseEnter={() => select(i, true)}
+                    onFocus={() => select(i, true)}
                     onClick={() => select(i, true)}
                   >
                     <span className="eloop__row-n">{pad2(i + 1)}</span>
@@ -184,18 +186,6 @@ export default function EngineSection() {
               ))}
             </ol>
 
-            {/* Says out loud that the loop takes itself back, so a visitor who
-                clicked a stage knows the diagram has not stalled. */}
-            <p className={`eloop__note${held ? " is-held" : ""}`}>
-              <Icon name="refresh" />
-              <span>
-                {reduced
-                  ? t("engine.note", engine.note)
-                  : held
-                    ? t("engine.heldNote", engine.heldNote)
-                    : t("engine.note", engine.note)}
-              </span>
-            </p>
           </Reveal>
         </div>
       </div>
