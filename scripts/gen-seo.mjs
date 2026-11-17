@@ -11,7 +11,8 @@
  *
  *   node --experimental-strip-types scripts/gen-seo.mjs
  */
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync, statSync } from "node:fs";
+import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import * as C from "../src/data/content.ts";
@@ -20,20 +21,84 @@ const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, "..");
 
 /* ------------------------------------------------------------------ origin */
-const env = readFileSync(join(root, ".env"), "utf8");
-const match = /^VITE_SITE_URL\s*=\s*(.+)$/m.exec(env);
-if (!match) throw new Error("VITE_SITE_URL is missing from .env");
-const ORIGIN = match[1].trim().replace(/\/+$/, "");
+/* The deploy platform's own environment wins, so a host that injects
+   VITE_SITE_URL needs no .env file in the build image at all. */
+const fromFile = (name) => {
+  for (const file of [".env.local", ".env"]) {
+    try {
+      const m = new RegExp(`^${name}\\s*=\\s*(.+)$`, "m").exec(readFileSync(join(root, file), "utf8"));
+      if (m) return m[1].trim().replace(/^["']|["']$/g, "");
+    } catch {
+      /* file absent — try the next one */
+    }
+  }
+  return undefined;
+};
+
+const RAW = process.env.VITE_SITE_URL ?? fromFile("VITE_SITE_URL");
+if (!RAW) {
+  throw new Error(
+    "VITE_SITE_URL is not set.\n" +
+      "  Copy the template and fill it in:  cp .env.example .env\n" +
+      "  Or set it in your host's environment variables.",
+  );
+}
+const ORIGIN = RAW.replace(/\/+$/, "");
 if (!/^https?:\/\/[^/\s]+$/.test(ORIGIN)) {
   throw new Error(`VITE_SITE_URL does not look like an origin: ${ORIGIN}`);
 }
 
-const today = new Date().toISOString().slice(0, 10);
+/* <lastmod> must say when the content last changed, not when the site was
+   last built. A sitemap whose dates all equal the build date tells a crawler
+   nothing and is discounted, so this reads the last commit that touched the
+   copy and falls back to the file's own mtime outside a git checkout. */
+const contentFile = join(root, "src/data/content.ts");
+const contentModified = (() => {
+  try {
+    const iso = execFileSync("git", ["log", "-1", "--format=%cI", "--", contentFile], {
+      cwd: root,
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "ignore"],
+    }).trim();
+    if (iso) return iso.slice(0, 10);
+  } catch {
+    /* not a git checkout, or git is unavailable */
+  }
+  return statSync(contentFile).mtime.toISOString().slice(0, 10);
+})();
 
 /* --------------------------------------------------------------- robots.txt */
+/* AI crawlers are named explicitly and allowed. The project wants to be found
+   and described accurately, and a crawler that cannot read the page will
+   describe it from somewhere else instead. llms.txt is pointed at by name so
+   a tool that looks for it does not have to guess. */
+const AI_AGENTS = [
+  ["GPTBot", "OpenAI — ChatGPT browsing and training"],
+  ["OAI-SearchBot", "OpenAI — ChatGPT search index"],
+  ["ChatGPT-User", "OpenAI — fetches a page a user asked about"],
+  ["ClaudeBot", "Anthropic — Claude"],
+  ["Claude-User", "Anthropic — fetches a page a user asked about"],
+  ["Claude-SearchBot", "Anthropic — Claude search index"],
+  ["PerplexityBot", "Perplexity"],
+  ["Perplexity-User", "Perplexity — fetches a page a user asked about"],
+  ["Google-Extended", "Google — Gemini and AI Overviews"],
+  ["Applebot-Extended", "Apple Intelligence"],
+  ["Bingbot", "Microsoft Bing and Copilot"],
+  ["CCBot", "Common Crawl"],
+  ["Amazonbot", "Amazon"],
+  ["meta-externalagent", "Meta AI"],
+  ["cohere-ai", "Cohere"],
+  ["DuckAssistBot", "DuckDuckGo"],
+  ["YouBot", "You.com"],
+  ["Diffbot", "Diffbot"],
+  ["Timpibot", "Timpi"],
+];
+
 writeFileSync(
   join(root, "public/robots.txt"),
   `# ${C.site.name} — ${C.site.tagline}
+# ${C.site.description}
+
 User-agent: *
 Allow: /
 
@@ -41,6 +106,12 @@ Allow: /
 # of a preview deploy, which should not exist on the canonical origin anyway.
 Disallow: /*.json$
 
+# ---------------------------------------------------------------------------
+# AI and answer-engine crawlers — explicitly allowed.
+# A crawler that cannot read this page will describe the project from
+# somewhere less accurate. /llms.txt is the short version written for them.
+# ---------------------------------------------------------------------------
+${AI_AGENTS.map(([ua, who]) => `# ${who}\nUser-agent: ${ua}\nAllow: /\n`).join("\n")}
 Sitemap: ${ORIGIN}/sitemap.xml
 `,
 );
@@ -49,12 +120,16 @@ Sitemap: ${ORIGIN}/sitemap.xml
 /* One page, but its in-page sections are what people search for, so the
    fragments are listed too: Search Console accepts them and they can surface
    as jump links in a result. */
+const SECTIONS = [
+  ...C.nav,
+  { href: "#platform", label: "The Aswenna platform" },
+  { href: "#roadmap", label: "Roadmap" },
+  { href: "#contact", label: "Contact" },
+];
+
 const urls = [
   { loc: "/", priority: "1.0", changefreq: "weekly" },
-  ...C.nav.map((n) => ({ loc: `/${n.href}`, priority: "0.7", changefreq: "monthly" })),
-  { loc: "/#platform", priority: "0.8", changefreq: "monthly" },
-  { loc: "/#roadmap", priority: "0.6", changefreq: "monthly" },
-  { loc: "/#contact", priority: "0.8", changefreq: "monthly" },
+  ...SECTIONS.map((sec) => ({ loc: `/${sec.href}`, priority: "0.7", changefreq: "monthly" })),
 ];
 
 const seen = new Set();
@@ -63,7 +138,7 @@ const entries = urls
   .map(
     (u) => `  <url>
     <loc>${ORIGIN}${u.loc === "/" ? "/" : u.loc.replace("//", "/")}</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${contentModified}</lastmod>
     <changefreq>${u.changefreq}</changefreq>
     <priority>${u.priority}</priority>
   </url>`,
@@ -76,6 +151,214 @@ writeFileSync(
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${entries}
 </urlset>
+`,
+);
+
+/* ------------------------------------------------------------------ llms.txt */
+/* An AI tool that fetches a React page gets an empty <div> unless it runs the
+   JavaScript, so the content is published a second time as plain text.
+   llms.txt is the short orientation file; llms-full.txt is the whole page as
+   Markdown. Both are generated from the same content.ts the page renders, so
+   they cannot drift apart.
+
+   The status section is deliberate and comes first: the predictable failure
+   is a tool describing a research project as a product you can buy today. */
+const heading = (c) => [c.title, c.accent].filter(Boolean).join(" ").trim();
+const bullets = (xs, f) => xs.map(f).join("\n");
+
+const STATUS = `Aswenna is an academic and agricultural **research and development
+project**, not a deployed commercial service. Nothing on the site describes
+something that can be bought or used today.
+
+- Roadmap phases 01-03 describe the **planned** project scope.
+- Roadmap phase 04 collects **proposed** future extensions.
+- Pricing tiers are **indicative costs for a proposed pilot**, not a sales offer.
+- Application screens are **interface design concepts with illustrative
+  values**, not screenshots of a running system.
+- Every soil or weather value is labelled either **estimated** (derived from
+  regional databases for the mapped location) or **measured** (read by a device
+  or a handheld probe on that plot). The two are never presented as the same
+  thing.`;
+
+writeFileSync(
+  join(root, "public/llms.txt"),
+  `# ${C.site.name}
+
+> ${C.site.description}
+
+${C.site.name} — "${C.site.tagline}" — is a project of ${C.site.parent}, built for
+smallholder farming in Sri Lanka and offered in Sinhala, Tamil and English.
+
+## Status, before anything else
+
+${STATUS}
+
+## Full content
+
+- [${C.site.name} in full, as Markdown](${ORIGIN}/llms-full.txt): every section of
+  the page in plain text, generated from the same source the page renders.
+
+## Sections
+
+${bullets(SECTIONS, (sec) => `- [${sec.label}](${ORIGIN}/${sec.href})`)}
+
+## Machine-readable
+
+- [Sitemap](${ORIGIN}/sitemap.xml)
+- [Crawl policy](${ORIGIN}/robots.txt): AI crawlers are named and allowed
+- Structured data: JSON-LD in the page head — Organization, WebSite, WebPage,
+  ResearchProject, FAQPage
+
+## Contact
+
+- Email: ${C.contactDetails.email}
+- Phone: ${C.contactDetails.phones.map((p) => p.label).join(", ")}
+
+_Content last updated ${contentModified}. Generated from src/data/content.ts._
+`,
+);
+
+writeFileSync(
+  join(root, "public/llms-full.txt"),
+  `# ${C.site.name} — ${C.site.title}
+
+> ${C.site.description}
+
+| | |
+| --- | --- |
+| Tagline | ${C.site.tagline} |
+| Promise | ${C.site.promise} |
+| Run by | ${C.site.parent} |
+| Region | Sri Lanka |
+| Languages | English, Sinhala (si), Tamil (ta) |
+| Contact | ${C.contactDetails.email} · ${C.contactDetails.phones.map((p) => p.label).join(" · ")} |
+| Canonical URL | ${ORIGIN}/ |
+| Content last updated | ${contentModified} |
+
+## Status — read this first
+
+${STATUS}
+
+## ${heading(C.problems)}
+
+${C.problems.sub}
+
+${bullets(C.problems.items, (i) => `- **${i.title}** — ${i.text}`)}
+
+## ${heading(C.soil)}
+
+${C.soil.sub}
+
+${bullets(C.soil.capabilities, (c) => `- **${c.title}** — ${c.text}`)}
+
+## ${heading(C.seasons)}
+
+${C.seasons.sub}
+
+${C.seasons.stages
+  .map(
+    (s) => `### ${s.stage} · ${s.title} (${s.when})
+
+${s.text}
+
+${s.callout.label}: ${s.callout.text}`,
+  )
+  .join("\n\n")}
+
+## ${heading(C.engine)}
+
+${C.engine.sub}
+
+${C.engine.stages.map((s, i) => `${i + 1}. **${s.name}** — ${s.text}`).join("\n")}
+
+${C.engine.note}
+
+## ${heading(C.comparison)}
+
+${C.comparison.sub}
+
+| ${C.comparison.withoutLabel} | ${C.comparison.withLabel} |
+| --- | --- |
+${bullets(C.comparison.rows, (r) => `| ${r.without} | ${r.with} |`)}
+
+## ${heading(C.featureGroups)}
+
+${C.featureGroups.sub}
+
+${C.featureGroups.groups
+  .map(
+    (g) => `### ${g.title}
+
+_${g.label}_
+
+${g.note}
+
+${bullets(g.items, (it) => `- **${it.title}** — ${it.text}`)}`,
+  )
+  .join("\n\n")}
+
+## ${heading(C.hardware)}
+
+${C.hardware.sub}
+
+${bullets(C.hardware.components, (c) => `- ${c.name}`)}
+
+## ${heading(C.pricing)}
+
+${C.pricing.sub}
+
+${C.pricing.tiers
+  .map(
+    (t) => `### ${t.tag} — ${t.name}
+
+**${t.price}** (${t.unit})
+
+${t.text}
+
+${bullets(t.items, (i) => `- ${i}`)}`,
+  )
+  .join("\n\n")}
+
+${C.pricing.note}
+
+## ${heading(C.platform)}
+
+${C.platform.sub}
+
+${bullets(C.platform.screens, (s) => `- **${s.name}** — ${s.text}`)}
+
+## ${heading(C.roadmap)}
+
+${C.roadmap.sub}
+
+${C.roadmap.phases
+  .map(
+    (ph) => `### ${ph.n} — ${ph.name} (${ph.status})
+
+${bullets(ph.items, (i) => `- ${i}`)}`,
+  )
+  .join("\n\n")}
+
+${C.roadmap.note}
+
+## ${heading(C.faq)}
+
+${C.faq.items.map((f) => `### ${f.q}\n\n${f.a}`).join("\n\n")}
+
+## Contact
+
+${C.contact.text}
+
+- Email: ${C.contactDetails.email}
+- Phone: ${C.contactDetails.phones.map((p) => p.label).join(", ")}
+- Enquiry form: ${ORIGIN}/#contact
+
+${C.contact.note}
+
+---
+
+_Content last updated ${contentModified}, generated from src/data/content.ts. This
+file mirrors the page; where the two disagree, the page is correct._
 `,
 );
 
@@ -109,6 +392,15 @@ const graph = [
     telephone: C.contactDetails.phones.map((p) => p.href.replace("tel:", "")),
     address: { "@type": "PostalAddress", addressCountry: "LK" },
     logo: { "@type": "ImageObject", url: `${ORIGIN}/images/logos/aswenna-mark.svg` },
+    knowsLanguage: ["en", "si", "ta"],
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "enquiries",
+      email: C.contactDetails.email,
+      telephone: C.contactDetails.phones.map((ph) => ph.href.replace("tel:", "")),
+      areaServed: "LK",
+      availableLanguage: ["English", "Sinhala", "Tamil"],
+    },
   },
   {
     "@type": "WebSite",
@@ -127,6 +419,15 @@ const graph = [
     isPartOf: { "@id": `${ORIGIN}/#website` },
     about: { "@id": `${ORIGIN}/#project` },
     primaryImageOfPage: { "@type": "ImageObject", url: `${ORIGIN}/images/og-cover.jpg` },
+    description: C.site.description,
+    inLanguage: "en",
+    datePublished: "2025-01-01",
+    dateModified: contentModified,
+    hasPart: SECTIONS.map((sec) => ({
+      "@type": "WebPageElement",
+      name: sec.label,
+      url: `${ORIGIN}/${sec.href}`,
+    })),
   },
   /* Described as a research PROJECT, not as a product on sale: phases 01–03
      are planned scope and phase 04 is proposed, which is exactly what the

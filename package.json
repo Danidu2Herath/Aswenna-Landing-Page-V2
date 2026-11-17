@@ -6,12 +6,13 @@
   "type": "module",
   "scripts": {
     "dev": "npm run seo && vite",
-    "build": "npm run seo && tsc -b && vite build",
+    "build": "npm run seo && tsc -b && vite build && npm run prerender",
     "preview": "vite preview --port 4173",
     "seo": "node --experimental-strip-types scripts/gen-seo.mjs",
     "icons": "node scripts/build-icons.mjs",
     "lint": "oxlint",
-    "og": "node scripts/make-og.mjs"
+    "og": "node scripts/make-og.mjs",
+    "prerender": "vite build --ssr src/entry-server.tsx --outDir dist-ssr --logLevel warn && node scripts/prerender.mjs"
   },
   "dependencies": {
     "react": "^19.3.1",

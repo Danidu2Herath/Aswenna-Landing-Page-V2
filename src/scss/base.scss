@@ -10,8 +10,7 @@ html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-t
 
 body {
   margin: 0;
-  /* The page background is drawn by <BackgroundTexture />, which sits at z-index -1. */
-  background: transparent;
+  background: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-body);
   font-size: var(--text-base);
@@ -76,7 +75,7 @@ p { margin: 0; }
    LIGHT SECTIONS
    These two used to be `#000`. They are now a pale green band with dark ink,
    which means every rule inside them that assumed light-on-dark had to be
-   inverted — see components/_lightsections.scss.
+   inverted — see components/lightsections.scss.
    --------------------------------------------------------------------------- */
 .section--light {
   background: var(--color-section-light);
@@ -183,8 +182,6 @@ p { margin: 0; }
   transition: transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
 }
 .section--alt .card, .section--band .card { background: var(--color-surface); }
-.card--hover:hover { transform: scale(1.015); box-shadow: var(--shadow-md); }
-.card--muted { background: var(--color-surface-muted); }
 .card--flush { padding: 0; overflow: hidden; }
 
 .card__icon {
@@ -203,10 +200,6 @@ p { margin: 0; }
 
 /* --------------------------------- grids ---------------------------------- */
 .grid { display: grid; gap: 20px; }
-.grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-
 @media (max-width: 980px) {
   .grid--3, .grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
@@ -225,8 +218,6 @@ p { margin: 0; }
 .media img { width: 100%; height: 100%; object-fit: cover; }
 .media--16x9 { aspect-ratio: 16 / 9; }
 .media--4x3 { aspect-ratio: 4 / 3; }
-.media--square { aspect-ratio: 1 / 1; }
-
 .placeholder-tag {
   position: absolute;
   left: 12px;
@@ -269,14 +260,23 @@ p { margin: 0; }
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
 
-/* ------------------------------ reveal motion ----------------------------- */
-.reveal { opacity: 0; transform: translateY(22px); transition: opacity var(--duration-slow) var(--ease), transform var(--duration-slow) var(--ease); }
-.reveal.is-visible { opacity: 1; transform: none; }
+/* ------------------------------ reveal motion -----------------------------
+   Scoped to .js, which the inline script in index.html sets before the page
+   paints. Without it the page is pre-rendered HTML that nothing will ever
+   reveal, so starting at opacity 0 would hide the content from a crawler and
+   from anyone with JavaScript off. The unscoped default is therefore visible,
+   and hiding is the opt-in. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity var(--duration-slow) var(--ease), transform var(--duration-slow) var(--ease);
+}
+.js .reveal.is-visible { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  .reveal { opacity: 1; transform: none; }
+  .js .reveal { opacity: 1; transform: none; }
 }
 
 /* ===========================================================================

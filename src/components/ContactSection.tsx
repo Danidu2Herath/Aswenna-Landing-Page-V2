@@ -3,6 +3,7 @@ import Icon from "./Icon";
 import Reveal from "./Reveal";
 import { contact, contactDetails } from "../data/content";
 import { useI18n } from "../i18n";
+import { env } from "../env";
 
 /* ===========================================================================
    WHERE THE FORM SENDS
@@ -10,16 +11,15 @@ import { useI18n } from "../i18n";
    This is a static site: there is no server of ours to post to, so the form
    hands off to a form-relay service which emails the submission on.
 
-   FormSubmit needs no API key, but the address must be activated once:
-   submit the form yourself on the live site, then click the link in the
-   confirmation email FormSubmit sends to info@veyra.lk. Until that is done
-   every submission fails and the visitor sees the error state.
+   The relay URL is configuration, not code — it lives in .env as
+   VITE_CONTACT_ENDPOINT. See src/env.ts for why it is not, and cannot be,
+   a secret, and .env.example for how to set it.
 
-   To use something else (Formspree, Web3Forms, your own endpoint), change
-   ENDPOINT only — it must accept a POST of JSON and answer 2xx on success.
+   With FormSubmit the inbox must be activated once: submit the form on the
+   live site, then click the link in the confirmation email it sends to that
+   address. Until that is done every submission fails and the visitor sees
+   the error state.
    =========================================================================== */
-const ENDPOINT = "https://formsubmit.co/ajax/info@veyra.lk";
-const TIMEOUT_MS = 15000;
 
 type View = "form" | "success" | "error";
 type Field = keyof typeof contact.fields;
@@ -90,10 +90,10 @@ export default function ContactSection() {
     setStatus({ text: t("contact.sending", contact.sending) });
 
     const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+    const timer = setTimeout(() => controller.abort(), env.contactTimeoutMs);
 
     try {
-      const res = await fetch(ENDPOINT, {
+      const res = await fetch(env.contactEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(payload),
