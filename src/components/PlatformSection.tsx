@@ -40,6 +40,7 @@ export default function PlatformSection() {
 
   const resumeTimer = useRef<number | undefined>(undefined);
   const touchX = useRef<number | null>(null);
+  const names = useRef<HTMLUListElement>(null);
 
   const go = useCallback((next: number, fromUser = false) => {
     setActive((prev) => {
@@ -66,6 +67,23 @@ export default function PlatformSection() {
   }, [onScreen, paused, reduced, go]);
 
   useEffect(() => () => window.clearTimeout(resumeTimer.current), []);
+
+  /* Keep the active name in view inside its own strip.
+
+     This must NOT use scrollIntoView. That method scrolls every scrollable
+     ancestor, the document included, so each time the carousel advanced it
+     dragged the whole page back towards the section — the page oscillated a
+     couple of dozen pixels and could not be scrolled past. Setting
+     scrollLeft moves the strip and nothing else. */
+  useEffect(() => {
+    const strip = names.current;
+    if (!strip) return;
+    if (strip.scrollWidth <= strip.clientWidth + 1) return; // nothing to scroll
+    const btn = strip.children[active]?.firstElementChild as HTMLElement | undefined;
+    if (!btn) return;
+    const target = btn.offsetLeft - (strip.clientWidth - btn.offsetWidth) / 2;
+    strip.scrollTo({ left: Math.max(0, target), behavior: reduced ? "auto" : "smooth" });
+  }, [active, reduced]);
 
   const onKey = (e: React.KeyboardEvent) => {
     if (e.key === "ArrowRight") { e.preventDefault(); go(active + 1, true); }
@@ -102,7 +120,7 @@ export default function PlatformSection() {
           >
             {/* The names ride above the device. On a narrow screen the strip
                 scrolls sideways and keeps the active one in view. */}
-            <ul className="pcar__names" role="tablist" aria-label={t("platform.title", platform.title)}>
+            <ul className="pcar__names" ref={names} role="tablist" aria-label={t("platform.title", platform.title)}>
               {platform.screens.map((s, i) => (
                 <li key={s.name} role="presentation">
                   <button
@@ -112,11 +130,6 @@ export default function PlatformSection() {
                     tabIndex={i === active ? 0 : -1}
                     className={`pcar__name${i === active ? " is-active" : ""}`}
                     onClick={() => go(i, true)}
-                    ref={(el) => {
-                      if (el && i === active) {
-                        el.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "nearest", inline: "center" });
-                      }
-                    }}
                   >
                     <span className="pcar__name-n">{String(i + 1).padStart(2, "0")}</span>
                     {t(`platform.screens.${i}.name`, s.name)}

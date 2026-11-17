@@ -1,7 +1,6 @@
 import BackgroundTexture from "./components/BackgroundTexture";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
-import TrustBar from "./components/TrustBar";
 import ProblemsSection from "./components/ProblemsSection";
 import SoilSection from "./components/SoilSection";
 import JourneySection from "./components/JourneySection";
@@ -28,7 +27,6 @@ export default function App() {
       <Header />
       <main id="main">
         <Hero />
-        <TrustBar />
         <ProblemsSection />
         <SoilSection />
         <JourneySection />

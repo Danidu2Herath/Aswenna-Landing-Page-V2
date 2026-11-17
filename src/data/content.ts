@@ -60,16 +60,6 @@ export const hero = {
   ],
 };
 
-export const trustBar = {
-  label: "Built for Sri Lankan smallholdings",
-  items: [
-    { icon: "languages", text: "Sinhala, Tamil and English" },
-    { icon: "wifi-off", text: "Offline-first, built for low coverage" },
-    { icon: "message-square", text: "SMS and voice alerts" },
-    { icon: "shield-check", text: "Farmers own their field data" },
-  ],
-};
-
 export const partners = {
   note: "Aswenna is a project of Veyra Solutions.",
   logos: [
@@ -81,7 +71,7 @@ export const partners = {
 };
 
 export const problems = {
-  num: "02",
+  num: "01",
   eyebrow: "Why this matters",
   title: "Farming Shouldn't Be",
   accent: "a Gamble",
@@ -109,7 +99,7 @@ export const problems = {
 };
 
 export const soil = {
-  num: "03",
+  num: "02",
   eyebrow: "Below the surface",
   title: "Healthy Harvests Begin Beneath the Surface.",
   sub: "Every plot has its own characteristics. Understanding soil moisture, temperature, pH and nutrient conditions helps farmers make better cultivation decisions.",
@@ -132,7 +122,7 @@ export const soil = {
 };
 
 export const journey = {
-  num: "04",
+  num: "03",
   eyebrow: "The growth journey",
   title: "From Seed to Harvest.",
   sub: "A crop passes through six recognisable stages. Aswenna's intelligent cultivation calendar adapts its recommendations at each one.",
@@ -145,38 +135,15 @@ export const journey = {
     { n: "06", name: "Mature Plant", text: "A fully developed crop ready for its next agricultural stage." },
   ],
   adapts: {
-    eyebrow: "The cultivation year",
+    eyebrow: "In every season",
     title: "What the calendar adapts at every stage",
     sub: "Aswenna's intelligent cultivation calendar re-reads the plot at every stage and rewrites what it asks the farmer to do next.",
     items: ["Irrigation schedules", "Fertilizer application", "Crop maintenance", "Cultivation activities", "Weather-dependent adjustments"],
-    /* The ribbon. Maha runs roughly October to March and Yala roughly April
-       to September; the exact start shifts with the monsoon and the district,
-       so the spans here are indicative and the page says so.
-
-       `stage` indexes seasons.stages — the same four stages the page already
-       describes — rather than naming per-month activities, which would be an
-       agronomic claim this project has not made.  */
-    ribbonNote: "Season spans are indicative — the monsoon decides the exact start, and it differs by district.",
-    seasonLabels: { maha: "Maha season", yala: "Yala season" },
-    months: [
-      { m: "Oct", season: "maha", stage: 0 },
-      { m: "Nov", season: "maha", stage: 0 },
-      { m: "Dec", season: "maha", stage: 1 },
-      { m: "Jan", season: "maha", stage: 1 },
-      { m: "Feb", season: "maha", stage: 2 },
-      { m: "Mar", season: "maha", stage: 3 },
-      { m: "Apr", season: "yala", stage: 0 },
-      { m: "May", season: "yala", stage: 0 },
-      { m: "Jun", season: "yala", stage: 1 },
-      { m: "Jul", season: "yala", stage: 2 },
-      { m: "Aug", season: "yala", stage: 3 },
-      { m: "Sep", season: "yala", stage: 3 },
-    ],
   },
 };
 
 export const seasons = {
-  num: "05",
+  num: "04",
   eyebrow: "Across the cultivation year",
   title: "How Aswenna Protects You",
   accent: "Across the Seasons",
@@ -202,7 +169,7 @@ export const seasons = {
 };
 
 export const field = {
-  num: "06",
+  num: "05",
   eyebrow: "Field scanning",
   title: "Intelligence Across the Land.",
   sub: "Beyond a single sensor point, Aswenna reads the whole plot — its boundaries, its canopy, its weather and its risks.",
@@ -219,7 +186,7 @@ export const field = {
 };
 
 export const engine = {
-  num: "07",
+  num: "06",
   eyebrow: "The intelligence engine",
   title: "How Aswenna Works.",
   sub: "A closed loop of five stages. Data leaves the field, becomes understanding, and returns to the farmer as an action.",
@@ -233,7 +200,7 @@ export const engine = {
 };
 
 export const comparison = {
-  num: "08",
+  num: "07",
   eyebrow: "The Aswenna approach",
   title: "Replacing Guesswork",
   accent: "with Measurement",
@@ -253,7 +220,7 @@ export const comparison = {
 };
 
 export const featureGroups = {
-  num: "09",
+  num: "08",
   eyebrow: "Everything in one platform",
   title: "Features &",
   accent: "Capabilities",
@@ -292,7 +259,7 @@ export const featureGroups = {
 };
 
 export const fieldFirst = {
-  num: "10",
+  num: "09",
   eyebrow: "Designed for real conditions",
   title: "Designed for the Field,",
   accent: "Not an Office",
@@ -305,7 +272,7 @@ export const fieldFirst = {
 };
 
 export const hardware = {
-  num: "11",
+  num: "10",
   eyebrow: "Field technology",
   title: "The IoT Ecosystem.",
   sub: "Hardware built for village conditions — solar powered, long range, and shareable across a farmer organization.",
@@ -322,7 +289,7 @@ export const hardware = {
 };
 
 export const install = {
-  num: "12",
+  num: "11",
   eyebrow: "Hardware in the field",
   title: "How Field Hardware Installs",
   accent: "on Your Land",
@@ -344,7 +311,7 @@ export const install = {
 };
 
 export const pricing = {
-  num: "13",
+  num: "12",
   eyebrow: "Participation tiers",
   title: "Choose What Fits",
   accent: "Your Farm",
@@ -368,7 +335,7 @@ export const pricing = {
 };
 
 export const platform = {
-  num: "14",
+  num: "13",
   eyebrow: "Connected agriculture",
   title: "The Aswenna Platform.",
   sub: "Proposed interfaces for farmers, their organizations and the extension officers who support them.",
@@ -409,7 +376,7 @@ export const roadmap = {
 };
 
 export const faq = {
-  num: "15",
+  num: "14",
   eyebrow: "Questions",
   title: "Frequently Asked",
   accent: "Questions",
