@@ -151,17 +151,6 @@
 .contact__result-fallback a { color: var(--primary-700); font-weight: var(--weight-semibold); }
 
 /* ------------------------------ footer extras ----------------------------- */
-.footer__parent {
-  margin-top: 16px;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  font-size: var(--text-sm);
-  color: rgba(231, 242, 234, 0.86);
-}
-.footer__parent .icon { color: var(--tertiary-300); }
-.footer__col--contact a { display: flex; align-items: center; gap: 9px; }
-.footer__col--contact .icon { color: var(--tertiary-300); }
 .footer__cols { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 @media (max-width: 900px) { .footer__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
@@ -191,14 +180,6 @@
   margin-top: 14px;
 }
 
-/* A range input's real target is its thumb, so pad the control itself. */
-.demo__range {
-  height: 44px;
-  background-clip: content-box;
-  padding-block: 17px;
-  box-sizing: border-box;
-}
-
 @media (pointer: coarse) {
   .footer__col ul a,
   .contact__details a,
@@ -208,5 +189,4 @@
     align-items: center;
   }
   .footer__col ul { gap: 2px; }
-  .logos__item { min-height: 44px; }
 }

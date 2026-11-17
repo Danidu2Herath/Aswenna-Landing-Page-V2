@@ -1,0 +1,299 @@
+# Aswenna — Agricultural Intelligence Platform
+
+> An IoT-enabled precision farming platform for Sri Lankan agriculture — soil intelligence, hyperlocal weather, AI recommendations, smart irrigation, crop-health monitoring and market intelligence.
+
+| | |
+| --- | --- |
+| Tagline | Smarter fields, greater future |
+| Promise | Empowering Farmers, Growing Prosperity. |
+| Run by | Veyra Solutions |
+| Region | Sri Lanka |
+| Languages | English, Sinhala (si), Tamil (ta) |
+| Contact | info@veyra.lk · +94 78 259 6361 · +94 77 786 2375 |
+| Canonical URL | https://aswenna.lk/ |
+| Content last updated | 2026-11-16 |
+
+## Status — read this first
+
+Aswenna is an academic and agricultural **research and development
+project**, not a deployed commercial service. Nothing on the site describes
+something that can be bought or used today.
+
+- Roadmap phases 01-03 describe the **planned** project scope.
+- Roadmap phase 04 collects **proposed** future extensions.
+- Pricing tiers are **indicative costs for a proposed pilot**, not a sales offer.
+- Application screens are **interface design concepts with illustrative
+  values**, not screenshots of a running system.
+- Every soil or weather value is labelled either **estimated** (derived from
+  regional databases for the mapped location) or **measured** (read by a device
+  or a handheld probe on that plot). The two are never presented as the same
+  thing.
+
+## Farming Shouldn't Be a Gamble
+
+Season after season, the same decisions are made without the information needed to make them well.
+
+- **Soil Mismanagement** — Fertilizer is applied on a schedule rather than on what the soil actually needs, because the nutrient status of a particular plot is rarely known.
+- **Climate Vulnerability** — Rainfall arrives earlier or later than the cultivation plan assumed, and a schedule fixed at sowing cannot respond to it.
+- **Market Risk** — Many farmers plant the same crop in the same season, and the price at harvest reflects a supply nobody could see coming.
+- **Pest and Disease Pressure** — Outbreaks are noticed once damage is visible, by which point the window for a cheaper, lighter intervention has usually closed.
+- **Water Uncertainty** — Irrigation is judged by eye and by habit. Too little stresses the crop; too much wastes water that the next cultivation will need.
+- **Post-Harvest Loss** — Produce that survived the whole season is lost in storage or sold in a hurry, because storage conditions and buyers are both unknowns.
+
+## Healthy Harvests Begin Beneath the Surface.
+
+Every plot has its own characteristics. Understanding soil moisture, temperature, pH and nutrient conditions helps farmers make better cultivation decisions.
+
+- **Geo-located soil profiling** — A soil profile is built for the exact plot a farmer marks on the map.
+- **Soil moisture monitoring** — Moisture in the root zone is tracked so watering follows the soil, not the calendar.
+- **Soil temperature monitoring** — Temperature readings support sowing and germination decisions.
+- **Electrical conductivity (EC)** — EC measurements indicate salinity and overall nutrient balance in the soil.
+- **pH and NPK profiling** — Collected through handheld probes shared across a farmer organization.
+
+## How Aswenna Protects You Across the Seasons
+
+Every season moves through the same four stages. At each one there is a decision that data can inform.
+
+### Stage 01 · Land Prep & Nursery (Land preparation)
+
+Before anything is sown, the plot is mapped and profiled, so the season starts from the soil that is actually there rather than from last year's assumptions.
+
+What Aswenna does: Builds a geo-located soil profile for the plot and recommends crops suited to its conditions, the water available and recent price behaviour.
+
+### Stage 02 · Vegetative & Top-Dressing (Vegetative growth)
+
+The crop is establishing and demand for nutrients and water rises. This is where a schedule fixed weeks earlier starts to drift away from the field.
+
+What Aswenna does: Adjusts the cultivation calendar when rainfall or soil moisture changes, and triggers irrigation from measured moisture rather than from the date.
+
+### Stage 03 · Panicle & Soil Nutrition (Flowering)
+
+Humidity and leaf wetness climb, and so does the risk of an outbreak. Nutrient deficiencies that show now are expensive to correct later.
+
+What Aswenna does: Watches the conditions that precede an outbreak and lets a farmer photograph an affected leaf for AI-assisted diagnosis and mitigation advice.
+
+### Stage 04 · Harvest & Market Timing (Harvest)
+
+The crop is ready, but when and where it is sold decides what the season was worth. Storage conditions decide how much of it survives the wait.
+
+What Aswenna does: Tracks wholesale prices from economic centres such as Dambulla and Piliyandala, and monitors storage temperature and humidity after harvest.
+
+## How Aswenna Works.
+
+A closed loop of five stages. Data leaves the field, becomes understanding, and returns to the farmer as an action.
+
+1. **Sense** — Field nodes, weather stations, pest traps, satellites, and farmer photographs produce agricultural data.
+2. **Connect** — LoRaWAN technology connects field devices to village gateways, while mobile connectivity transfers data to the cloud.
+3. **Understand** — The cloud combines sensor readings, soil maps, weather forecasts, and market prices into a live profile for each plot.
+4. **Decide** — Rules and machine-learning models generate recommendations, cultivation-calendar updates, irrigation commands, and warnings.
+5. **Act** — Farmers receive advice via the app, SMS, or voice calls, while connected irrigation valves and pumps can operate automatically.
+
+The loop closes — every action in the field becomes the next round of data the platform senses.
+
+## Replacing Guesswork with Measurement
+
+The same decisions, made from what the plot reports rather than from what the season usually does.
+
+| Without Aswenna | With Aswenna |
+| --- | --- |
+| Fertilizer applied to a fixed schedule. | Applied against the plot's own soil profile and growth stage. |
+| Irrigation judged by eye. | Triggered when measured soil moisture crosses a set threshold. |
+| A cultivation plan fixed at sowing. | A calendar that rewrites itself when the forecast changes. |
+| Pests found once damage is visible. | Risk flagged from conditions, and diagnosis from a photograph. |
+| Crop choice follows the neighbours. | Choice weighed against soil, water, forecast and price history. |
+| Price discovered on the day of sale. | Wholesale trends and supply forecasts followed through the season. |
+| Advice that needs a smartphone and coverage. | Advice by app, SMS or voice call, in Sinhala, Tamil or English. |
+| Field data held by whoever collected it. | Field data owned by the farmer, exportable at any time. |
+
+## Features & Capabilities
+
+Start with no hardware at all, and add sensing and automation to the same account when it earns its place.
+
+### The Core Platform
+
+_Group 01 · No hardware required_
+
+Everything in this group runs on regional data, satellite imagery and what the farmer tells the app. No device needs to be bought or installed.
+
+- **Geo-located soil profiling** — Mark a plot on the map and receive a soil profile for that location, with every value labelled estimated or measured.
+- **Crop recommendation** — Soil conditions, weather forecasts, available water, historical prices and nearby planting patterns weighed together.
+- **Dynamic cultivation calendar** — A personalized schedule that adapts automatically when rainfall, soil conditions or forecasts change.
+- **Satellite crop-health maps** — Satellite imagery converted into vegetation-index (NDVI) maps that show which parts of a plot are under stress.
+- **Market trend analytics** — Wholesale prices from economic centres read alongside anonymized planting data to forecast supply conditions.
+- **AI-assisted diagnosis** — Photograph an affected leaf or pest and receive a probable match with mitigation advice to confirm with an officer.
+
+### IoT & Devices
+
+_Group 02 · Precision field automation_
+
+Devices are optional and can be shared across a farmer organization. Readings they produce are marked as measured, so they are never confused with regional estimates.
+
+- **Live soil monitoring** — ESP32-based nodes report soil moisture, temperature and electrical conductivity from the root zone of the plot.
+- **Smart irrigation** — Valves and pumps open when measured moisture drops below the lower threshold and close when it recovers.
+- **Hyperlocal weather** — Micro weather stations add rainfall, temperature, humidity, wind and leaf wetness for the village itself.
+- **Handheld pH and NPK probes** — Shared probes let an organization collect real nutrient readings without every farmer buying an instrument.
+- **Village LoRaWAN gateways** — Long-range, low-power links carry readings from field devices to a village gateway and on to the cloud.
+- **Device monitoring** — Battery level, signal strength and last-reported reading for every node, so a silent sensor is noticed.
+
+### Universal Access & Farmer Data Ownership
+
+_Group 03 · Access and ownership_
+
+A farmer without a smartphone, without coverage, or without a shared device still receives the advice their plot generates.
+
+- **SMS and voice delivery** — Alerts and recommendations reach a basic handset by text message or voice call when the app cannot be opened.
+- **Offline-first application** — The app works without a connection and synchronises when one returns, rather than failing in the field.
+- **Sinhala, Tamil and English** — The interface and the alerts are written in the language the farmer actually reads.
+- **The farmer owns the data** — Plot boundaries, readings and history belong to the farmer and can be exported at any time.
+- **Organization dashboards** — Farmer organizations and extension officers see an area-wide view built from data their members chose to share.
+
+## The IoT Ecosystem.
+
+Hardware built for village conditions — solar powered, long range, and shareable across a farmer organization.
+
+- ESP32-based soil monitoring nodes
+- Soil moisture sensors
+- Handheld pH and NPK soil probes
+- Micro weather stations
+- Smart pest traps
+- Irrigation controllers & water flow meters
+- Village LoRaWAN gateways
+- Solar-powered field power units
+
+## Choose What Fits Your Farm
+
+No hardware is required to begin. Hardware is added only when a farmer or an organization wants it.
+
+### Tier 0 — Software Only
+
+**LKR 0** (no hardware)
+
+The full platform on regional and satellite data.
+
+- Geo-located soil profiling
+- Crop recommendations
+- Dynamic cultivation calendar
+- Alerts, SMS and voice delivery
+- Market analytics and NDVI maps
+
+### Tier 1 — Shared Village Station
+
+**LKR 49,950** (per village, indicative)
+
+Shared by a farmer organization across a community.
+
+- Everything in Tier 0
+- Micro weather station
+- Village LoRaWAN gateway
+- Handheld pH and NPK probe
+- Community-level readings
+
+### Tier 2 — Plot Automation
+
+**LKR 26,990** (per plot, indicative)
+
+Dedicated sensing and automated watering on your own plot.
+
+- Everything in Tier 0
+- Dedicated soil monitoring node
+- Irrigation controller and flow meter
+- Live plot monitoring
+- Automated watering with manual override
+
+Indicative hardware costs for the proposed pilot. Aswenna is a research and development project, not a commercial service, and these figures are not a sales offer.
+
+## The Aswenna Platform.
+
+Proposed interfaces for farmers, their organizations and the extension officers who support them.
+
+- **Farmer dashboard** — Today's plot status, alerts and the next action.
+- **Land registration & mapping** — Draw a plot boundary and receive its soil profile.
+- **Soil integrity & monitoring** — Moisture, temperature, EC, pH and NPK over time.
+- **Crop recommendations** — Suitable and profitable crops for this plot and season.
+- **Cultivation calendar** — A schedule that rewrites itself when conditions change.
+- **Pests and alerts** — Outbreak risks, warnings and mitigation advice.
+- **Market analytics** — Wholesale price trends and supply forecasts.
+- **Device monitoring** — Node battery, signal and last-reported readings.
+- **Smart irrigation** — Thresholds, valve state and manual override.
+- **Extension officer area dashboard** — An area-wide view for officers supporting many farms.
+
+## The Roadmap.
+
+Phases 01–03 define the project scope. Phase 04 collects future extensions. All phases describe planned capabilities, not deployed commercial operations.
+
+### Phase 01 — Software Core (Planned)
+
+- Soil profiling
+- Crop recommendations
+- Cultivation calendar
+- Alerts
+- Market analytics
+- Satellite crop-health maps
+- SMS / voice alerts
+- Offline-first application
+
+### Phase 02 — Sensing Pilot (Planned)
+
+- Village gateway
+- Shared weather station
+- Handheld soil probe
+- Soil nodes on selected pilot plots
+
+### Phase 03 — Automation (Planned)
+
+- Automated irrigation controllers
+- Adaptive cultivation calendars
+- Planting-data supply forecasts
+- Digital twins
+- Organization dashboards
+
+### Phase 04 — Future Extensions (Proposed)
+
+- Smart pest traps
+- Post-harvest storage monitoring
+- QR traceability
+- Drone services
+- Elephant-intrusion warnings
+
+All phases above describe planned and proposed capabilities of the Aswenna project. They do not represent deployed commercial operations.
+
+## Frequently Asked Questions
+
+### Do I need to buy sensors or hardware?
+
+No. Tier 0 is the whole software platform with no hardware at all — soil profiling, crop recommendations, the cultivation calendar, alerts, market analytics and satellite crop-health maps. Hardware only adds measured readings from your own plot on top of that.
+
+### What if I do not have a smartphone or a signal?
+
+Alerts and recommendations can be delivered by SMS or by voice call to a basic handset, and the application itself is offline-first: it keeps working without a connection and synchronises when one returns.
+
+### How accurate are the soil values?
+
+It depends on where they come from, and Aswenna always tells you which. Estimated values are derived from regional soil databases for your mapped location. Measured values come from a field device or a handheld probe on your plot. The two are never mixed or presented as the same thing.
+
+### Who owns the data from my land?
+
+You do. Plot boundaries, readings and history belong to the farmer, and can be exported at any time. Data shared with a farmer organization or an extension officer is anonymized where it feeds area-wide analysis.
+
+### Is Aswenna available in Sinhala and Tamil?
+
+Yes. The interface and the alerts are planned in Sinhala, Tamil and English, because advice that cannot be read is not advice.
+
+### Is this available to use today?
+
+Not yet. Aswenna is an academic and agricultural research initiative. Phases 01 to 03 describe the planned project scope and Phase 04 collects proposed future extensions — none of it describes a deployed commercial service.
+
+## Contact
+
+Tell us about yourself and your land. If you are part of a farmer organization interested in a shared village station, mention it and we will come back to you.
+
+- Email: info@veyra.lk
+- Phone: +94 78 259 6361, +94 77 786 2375
+- Enquiry form: https://aswenna.lk/#contact
+
+We usually reply within a few working days.
+
+---
+
+_Content last updated 2026-11-16, generated from src/data/content.ts. This
+file mirrors the page; where the two disagree, the page is correct._

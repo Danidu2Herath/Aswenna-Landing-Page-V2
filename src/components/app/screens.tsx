@@ -67,7 +67,7 @@ export function DashboardScreen() {
 
       <div className="acard">
         <span className="acard__label">{t("appUi.dashboard.action.label", d.action.label)}</span>
-        <h4 className="acard__title">{t("appUi.dashboard.action.title", d.action.title)}</h4>
+        <p className="acard__title">{t("appUi.dashboard.action.title", d.action.title)}</p>
         <p className="acard__text">{t("appUi.dashboard.action.text", d.action.text)}</p>
         <div className="aaction">
           <span className="abtn" style={{ background: "var(--primary-700)", color: "#fff" }}>
@@ -104,7 +104,7 @@ export function SoilScreen() {
     <div className="appui">
       <div className="appui__head">
         <span>
-          <h4 className="appui__title">{t("appUi.soil.title", s.title)}</h4>
+          <p className="appui__title">{t("appUi.soil.title", s.title)}</p>
           <p className="appui__sub">{s.plot}</p>
         </span>
         <span className="appui__avatar">
@@ -169,7 +169,7 @@ export function CalendarScreen() {
     <div className="appui">
       <div className="appui__head">
         <span>
-          <h4 className="appui__title">{c.month}</h4>
+          <p className="appui__title">{c.month}</p>
           <p className="appui__sub">{t("appUi.calendar.season", c.season)}</p>
         </span>
         <span className="appui__avatar">
@@ -223,7 +223,7 @@ export function IrrigationScreen() {
     <div className="appui">
       <div className="appui__head">
         <span>
-          <h4 className="appui__title">{t("appUi.irrigation.title", g.title)}</h4>
+          <p className="appui__title">{t("appUi.irrigation.title", g.title)}</p>
           <p className="appui__sub">{g.plot}</p>
         </span>
         <span className={`avalve${open ? "" : " avalve--closed"}`}>
@@ -311,7 +311,7 @@ export function AlertsScreen() {
     <div className="appui">
       <div className="appui__head">
         <span>
-          <h4 className="appui__title">{t("appUi.alerts.headline", a.headline)}</h4>
+          <p className="appui__title">{t("appUi.alerts.headline", a.headline)}</p>
           <p className="appui__sub">{t("appUi.alerts.sub", a.sub)}</p>
         </span>
         <span className="appui__avatar">
@@ -359,7 +359,7 @@ export function MarketScreen() {
     <div className="appui">
       <div className="appui__head">
         <span>
-          <h4 className="appui__title">{t("appUi.market.title", m.title)}</h4>
+          <p className="appui__title">{t("appUi.market.title", m.title)}</p>
           <p className="appui__sub">{t("appUi.market.priceLabel", m.priceLabel)}</p>
         </span>
         <span className="appui__avatar">
@@ -410,7 +410,7 @@ export function MappingScreen() {
     <div className="appui">
       <div className="appui__head">
         <span>
-          <h4 className="appui__title">{t("appUiExtra.mapping.title", m.title)}</h4>
+          <p className="appui__title">{t("appUiExtra.mapping.title", m.title)}</p>
           <p className="appui__sub">{m.plot}</p>
         </span>
         <span className="appui__avatar">
@@ -482,7 +482,7 @@ export function CropsScreen() {
     <div className="appui">
       <div className="appui__head">
         <span>
-          <h4 className="appui__title">{t("appUiExtra.crops.title", c.title)}</h4>
+          <p className="appui__title">{t("appUiExtra.crops.title", c.title)}</p>
           <p className="appui__sub">{c.season}</p>
         </span>
         <span className="appui__avatar">
@@ -525,7 +525,7 @@ export function DevicesScreen() {
     <div className="appui">
       <div className="appui__head">
         <span>
-          <h4 className="appui__title">{t("appUiExtra.devices.title", d.title)}</h4>
+          <p className="appui__title">{t("appUiExtra.devices.title", d.title)}</p>
           <p className="appui__sub">{t("appUiExtra.devices.sub", d.sub)}</p>
         </span>
         <span className="appui__avatar">
@@ -570,7 +570,7 @@ export function OfficerScreen() {
     <div className="appui">
       <div className="appui__head">
         <span>
-          <h4 className="appui__title">{t("appUiExtra.officer.title", o.title)}</h4>
+          <p className="appui__title">{t("appUiExtra.officer.title", o.title)}</p>
           <p className="appui__sub">{o.sub}</p>
         </span>
         <span className="appui__avatar">
