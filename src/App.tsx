@@ -1,3 +1,4 @@
+import BackgroundTexture from "./components/BackgroundTexture";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import TrustBar from "./components/TrustBar";
@@ -14,7 +15,6 @@ import HardwareSection from "./components/HardwareSection";
 import InstallSection from "./components/InstallSection";
 import PricingSection from "./components/PricingSection";
 import PlatformSection from "./components/PlatformSection";
-import RoadmapSection from "./components/RoadmapSection";
 import FaqSection from "./components/FaqSection";
 import CtaSection from "./components/CtaSection";
 import ContactSection from "./components/ContactSection";
@@ -24,6 +24,7 @@ import ToTop from "./components/ToTop";
 export default function App() {
   return (
     <>
+      <BackgroundTexture />
       <Header />
       <main id="main">
         <Hero />
@@ -41,7 +42,6 @@ export default function App() {
         <InstallSection />
         <PricingSection />
         <PlatformSection />
-        <RoadmapSection />
         <FaqSection />
         <CtaSection />
         <ContactSection />

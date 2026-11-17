@@ -14,7 +14,15 @@
   /* 1. BRAND COLOURS */
   --brand-primary:   #0071E3;   /* Apple action blue */
   --brand-secondary: #6E6E73;   /* secondary label   */
-  --brand-tertiary:  #248A3D;   /* system green (AA on white) */
+  /* Darkened from Apple's #248A3D, which measured 3.94:1 on the tinted page
+     and failed AA for the 19px eyebrows. This clears it on every surface:
+     5.99:1 on the page, 5.48:1 on the alt band, 6.68:1 on a white card. */
+  --brand-tertiary:  #1A6A2E;
+
+  /* A blue dark enough for small text. The action blue is tuned for filled
+     buttons, where it carries white on top, not for 11px type on a light
+     panel, where it measures 4.43:1. */
+  --color-accent-ink: #0063C6;
   --brand-neutral:   #1D1D1F;   /* label             */
 
   /* 2. RAMPS */
@@ -63,15 +71,19 @@
   --neutral-900: #1D1D1F;
 
   /* 3. SEMANTIC COLOURS */
-  --color-bg:             #FFFFFF;
-  --color-bg-alt:         #F5F5F7;
+  /* The page is a light green field tint rather than white, so the white
+     cards and bands sit ON it instead of dissolving into it. */
+  --color-bg:             #EFF4EE;
+  --color-bg-alt:         #E3EBE2;
   --color-surface:        #FFFFFF;
-  --color-surface-muted:  #F5F5F7;
-  --color-surface-sunken: #FBFBFD;
+  --color-surface-muted:  #F6F9F5;
+  --color-surface-sunken: #FAFCF9;
 
   --color-text:            #1D1D1F;
-  --color-text-soft:       #6E6E73;
-  --color-text-muted:      #6E6E73;
+  /* Darker than Apple's #6E6E73, which measures only 4.17:1 on the alt band
+     and fails AA there. This clears it on every surface the page uses. */
+  --color-text-soft:       #5F5F64;
+  --color-text-muted:      #5F5F64;
   --color-text-inverse:    #FFFFFF;
   --color-text-on-primary: #F5F5F7;
 
@@ -112,7 +124,42 @@
   --color-footer-bg: #FFFFFF;
 
   --color-band-veil: #FFFFFF;
-  --color-alt-veil:  #F5F5F7;
+  --color-alt-veil:  #E3EBE2;
+
+  /* Card frames. On a tinted page a card needs an edge, or it reads as a
+     patch of lighter background rather than an object. The line is green
+     rather than grey so it belongs to the palette. */
+  --color-card-line:        rgba(26, 106, 46, 0.16);
+  --color-card-line-strong: rgba(26, 106, 46, 0.42);
+  --color-card-shadow:      0 1px 2px rgba(16, 38, 22, 0.04);
+  --color-card-shadow-lift: 0 10px 28px rgba(16, 38, 22, 0.10);
+
+  /* 3b. BACKGROUND — the sensor mesh behind the page, in the brand green.
+     The alphas are what make it visible: the previous theme set every one
+     of them to 0, so the canvas ran a loop and painted nothing. Keep them
+     low but non-zero; this layer should read as texture, never as content. */
+  --bg-photo:      none;
+  --bg-photo-tint: 239, 244, 238;
+  --bg-photo-scrim-top:  1;
+  --bg-photo-scrim-body: 1;
+  --bg-photo-scrim:      1;
+
+  --mesh-node-rgb:   26, 106, 46;
+  --mesh-link-rgb:   26, 106, 46;
+  --mesh-active-rgb: 29, 126, 54;
+  --mesh-glow-rgb:   47, 140, 72;
+  --mesh-node-alpha:   0.26;
+  --mesh-link-alpha:   0.15;
+  --mesh-active-alpha: 0.72;
+  --mesh-glow-alpha:   0.12;
+  --mesh-density:   15000;
+  --mesh-link-dist: 146;
+  --mesh-reach:     265;
+  --mesh-pull:      20;
+  --mesh-pulse-ms:  1500;
+
+  --texture-size: 26px;
+  --texture-dot:  rgba(26, 106, 46, 0.09);
 
   /* 4. TYPOGRAPHY — SF Pro on Apple devices, Inter elsewhere. */
   --font-heading: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Helvetica Neue", "Noto Sans Sinhala", "Noto Sans Tamil", Arial, sans-serif;

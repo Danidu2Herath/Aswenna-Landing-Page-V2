@@ -512,35 +512,49 @@
 }
 
 /* -------------------------------------------------------------- calendar */
-.aweek {
+/* ---------------------------------------------------- month grid (calendar) */
+.amonth {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 0.22em;
+  gap: 0.18em;
   margin-top: 0.5em;
 }
 
-.aweek__day {
+.amonth__dow {
+  text-align: center;
+  padding-bottom: 0.2em;
+  font-size: 0.58em;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.04em;
+  color: var(--neutral-500);
+}
+
+.amonth__pad { aspect-ratio: 1; }
+
+.amonth__day {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.25em;
-  padding: 0.35em 0;
-  border-radius: 0.55em;
-  font-size: 0.66em;
-  font-weight: var(--weight-semibold);
-  color: var(--neutral-500);
+  justify-content: center;
+  gap: 0.12em;
+  aspect-ratio: 1;
+  border-radius: 0.5em;
+  font-size: 0.6em;
+  font-weight: var(--weight-medium);
+  color: var(--neutral-600);
 
-  &.is-today { background: var(--primary-700); color: #fff; }
+  i { width: 0.28em; height: 0.28em; border-radius: 50%; background: transparent; }
 
-  i {
-    width: 0.32em;
-    height: 0.32em;
-    border-radius: var(--radius-pill);
-    background: var(--tertiary-400);
+  &.has-task i { background: var(--brand-tertiary); }
+
+  &.is-today {
+    background: var(--brand-primary);
+    color: #fff;
+    font-weight: var(--weight-bold);
+
+    i { background: rgba(255, 255, 255, 0.9); }
   }
-
-  &.is-empty i { background: transparent; }
-  &.is-today i { background: rgba(255, 255, 255, 0.85); }
 }
 
 .atasks {
@@ -550,6 +564,9 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  /* Takes the slack so the month view fills its screen instead of clumping
+     the tasks at the top and leaving the lower half blank. */
+  flex: 1 1 auto;
   min-height: 0;
 }
 
@@ -1164,3 +1181,14 @@
 }
 
 .adevice.is-warn .abattery__fill { background: var(--brand-secondary); }
+
+/* A date group inside the month view. */
+.atasks__group {
+  margin-top: 0.45em;
+  font-size: 0.62em;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--neutral-500);
+}
+.atasks__group:first-child { margin-top: 0; }
