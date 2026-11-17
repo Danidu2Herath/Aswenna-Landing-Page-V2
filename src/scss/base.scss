@@ -168,20 +168,27 @@ p { margin: 0; }
 .btn--outline-light { border: 1px solid #2997FF; color: #2997FF; background: transparent; }
 .btn--outline-light:hover { background: #2997FF; color: #fff; }
 
-.btn--light { background: #F5F5F7; color: #1D1D1F; }
-.btn--light:hover { background: #fff; }
+.btn--light { background: var(--color-surface); border: 1px solid var(--color-card-line); color: #1D1D1F; }
+.btn--light:hover { border-color: var(--color-card-line-strong); }
 .btn--lg { padding: 14px 28px; font-size: var(--text-base); }
 
 /* --------------------------------- cards ---------------------------------- */
-/* Apple tiles: flat #F5F5F7 on white, generous radius, no border. */
+/* A card is white with a green hairline frame. The page behind it is tinted,
+   so without the frame the card reads as a lighter patch of background
+   rather than as an object sitting on it. */
 .card {
-  background: var(--color-surface-muted);
-  border: 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-card-line);
   border-radius: var(--radius-lg);
   padding: 32px;
-  transition: transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+  box-shadow: var(--color-card-shadow);
+  transition:
+    transform var(--duration) var(--ease),
+    border-color var(--duration) var(--ease),
+    box-shadow var(--duration) var(--ease);
 }
-.section--alt .card, .section--band .card { background: var(--color-surface); }
+/* On a white band the frame does the separating on its own. */
+.section--band .card { box-shadow: none; }
 .card--flush { padding: 0; overflow: hidden; }
 
 .card__icon {

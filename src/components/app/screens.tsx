@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Icon from "../Icon";
 import { appUi, appUiExtra } from "../../data/content";
 import { useI18n } from "../../i18n";
@@ -177,29 +178,47 @@ export function CalendarScreen() {
         </span>
       </div>
 
-      <div className="aweek">
+      <div className="amonth">
         {c.week.map((day, i) => (
-          <span
-            key={`${day}-${i}`}
-            className={`aweek__day${i === c.today ? " is-today" : ""}${i === 1 || i === 5 ? " is-empty" : ""}`}
-          >
+          <span className="amonth__dow" key={`${day}-${i}`}>
             {day}
-            <i />
           </span>
         ))}
+        {Array.from({ length: c.grid.firstCol }, (_, i) => (
+          <span className="amonth__pad" key={`pad${i}`} />
+        ))}
+        {Array.from({ length: c.grid.days }, (_, i) => {
+          const d = i + 1;
+          return (
+            <span
+              className={`amonth__day${d === c.grid.today ? " is-today" : ""}${
+                c.grid.marked.includes(d) ? " has-task" : ""
+              }`}
+              key={d}
+            >
+              {d}
+              <i />
+            </span>
+          );
+        })}
       </div>
 
       <ul className="atasks">
         {c.tasks.map((task, i) => (
-          <li className={`atask atask--${task.state}`} key={task.title}>
-            <span className="atask__mark">
-              <Icon name={task.state === "done" ? "check" : task.icon} />
-            </span>
-            <span>
-              <span className="atask__title">{t(`appUi.calendar.tasks.${i}.title`, task.title)}</span>
-              <span className="atask__when">{task.when}</span>
-            </span>
-          </li>
+          <Fragment key={task.title}>
+            {"group" in task && task.group ? (
+              <li className="atasks__group">{t(`appUi.calendar.tasks.${i}.group`, task.group)}</li>
+            ) : null}
+            <li className={`atask atask--${task.state}`}>
+              <span className="atask__mark">
+                <Icon name={task.state === "done" ? "check" : task.icon} />
+              </span>
+              <span>
+                <span className="atask__title">{t(`appUi.calendar.tasks.${i}.title`, task.title)}</span>
+                <span className="atask__when">{task.when}</span>
+              </span>
+            </li>
+          </Fragment>
         ))}
       </ul>
 

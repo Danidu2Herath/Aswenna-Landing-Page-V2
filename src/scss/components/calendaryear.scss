@@ -1,0 +1,219 @@
+/* ===========================================================================
+   Cultivation year — the ribbon, the copy and the device.
+
+   The ribbon is the control: twelve months banded by season. Below it the
+   panel splits, copy left and device right, both anchored to the top edge so
+   the two columns share a baseline instead of floating against each other.
+   =========================================================================== */
+.cyear {
+  --cy-maha: #E6F3E9;
+  --cy-maha-ink: #1A6A2E;
+  --cy-yala: #FDF1DD;
+  --cy-yala-ink: #8A5A12;
+
+  padding: clamp(26px, 3.4vw, 44px);
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  border: 1px solid var(--color-card-line);
+  box-shadow: var(--color-card-shadow);
+}
+
+/* --------------------------------- ribbon --------------------------------- */
+.cyear__ribbon {
+  display: grid;
+  gap: 10px;
+}
+
+.cyear__bands {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+.cyear__band {
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  text-align: center;
+}
+.cyear__band--maha { background: var(--cy-maha); color: var(--cy-maha-ink); }
+.cyear__band--yala { background: var(--cy-yala); color: var(--cy-yala-ink); }
+
+.cyear__months {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.cyear__month {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 2px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-soft);
+  transition:
+    border-color var(--duration-fast) var(--ease),
+    color var(--duration-fast) var(--ease),
+    transform var(--duration-fast) var(--ease);
+}
+.cyear__month--maha { background: var(--cy-maha); }
+.cyear__month--yala { background: var(--cy-yala); }
+.cyear__month:hover { transform: translateY(-1px); }
+
+.cyear__month.is-active {
+  border-color: currentColor;
+  transform: translateY(-1px);
+}
+.cyear__month--maha.is-active { color: var(--cy-maha-ink); }
+.cyear__month--yala.is-active { color: var(--cy-yala-ink); }
+
+.cyear__note {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: var(--text-xs);
+  color: var(--color-text-soft);
+}
+.cyear__note .icon { width: 14px; height: 14px; flex: none; }
+
+/* --------------------------------- panel ---------------------------------- */
+.cyear__panel {
+  margin-top: clamp(24px, 3vw, 38px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  gap: clamp(28px, 3.4vw, 54px);
+  align-items: start;
+}
+
+.cyear__eyebrow {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cy-maha-ink);
+}
+.cyear__title {
+  margin-top: 8px;
+  font-size: clamp(1.5rem, 1.1rem + 1.3vw, 2.125rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.cyear__sub {
+  margin-top: 12px;
+  color: var(--color-text-soft);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+/* The stage block re-renders on every month, so it fades in and reads as a
+   response to the ribbon rather than as text that silently swapped. */
+.cyear__stage {
+  margin-top: 20px;
+  display: grid;
+  gap: 5px;
+  padding: 16px 18px;
+  border-radius: var(--radius-md);
+  background: var(--cy-maha);
+  animation: cyear-swap 320ms var(--ease) both;
+}
+.cyear__stage-label {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--cy-maha-ink);
+}
+.cyear__stage-name {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+}
+.cyear__stage-text {
+  font-size: var(--text-sm);
+  line-height: 1.45;
+  color: var(--color-text-soft);
+}
+
+@keyframes cyear-swap {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Equal-height rows, no orphan: three up on a wide panel, two below it. */
+.cyear__list {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  list-style: none;
+  padding: 0;
+}
+/* Five items in a two-column grid leaves a ragged orphan on the last row,
+   so the fifth spans the width and the row reads as deliberate. */
+.cyear__list li:last-child { grid-column: 1 / -1; }
+.cyear__list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-card-line);
+  background: var(--color-surface-muted);
+  font-size: var(--text-sm);
+  line-height: 1.3;
+}
+.cyear__tick {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--cy-maha-ink);
+  color: #fff;
+}
+.cyear__tick .icon { width: 12px; height: 12px; stroke-width: 3.2; }
+
+/* --------------------------------- device --------------------------------- */
+/* No caption under the device: the panel beside it already says what this is,
+   and the stacked caption was the cramped part of the old layout. */
+.cyear__device {
+  display: grid;
+  justify-items: center;
+}
+.cyear__device .phone { --ph-w: clamp(200px, 18vw, 244px); }
+
+/* ------------------------------- responsive ------------------------------- */
+@media (max-width: 900px) {
+  .cyear__panel { grid-template-columns: minmax(0, 1fr); }
+  .cyear__device { order: -1; }
+}
+
+@media (max-width: 620px) {
+  /* Twelve targets will not fit a phone, so the ribbon scrolls and the
+     months keep a tappable width rather than shrinking below it. */
+  .cyear__months {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+  }
+  .cyear__months::-webkit-scrollbar { display: none; }
+  .cyear__month { min-width: 56px; scroll-snap-align: center; }
+  .cyear__bands { display: none; }
+  .cyear__list { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cyear__stage { animation: none; }
+  .cyear__month:hover, .cyear__month.is-active { transform: none; }
+}

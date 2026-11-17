@@ -4,7 +4,7 @@
   "description": "An IoT-enabled precision farming platform for Sri Lankan agriculture — soil intelligence, hyperlocal weather, AI recommendations, smart irrigation, crop-health monitoring and market intelligence.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#F4F7F4",
+  "background_color": "#EFF4EE",
   "theme_color": "#1D4E2B",
   "icons": [
     {
