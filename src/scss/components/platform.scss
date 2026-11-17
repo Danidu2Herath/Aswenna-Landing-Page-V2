@@ -171,10 +171,29 @@
 
 /* ------------------------------- responsive ------------------------------- */
 @media (max-width: 720px) {
-  /* The arrows would crowd the device at this width; the names strip and a
-     swipe are enough, and both are larger targets than a 48px disc. */
-  .pcar__arrow { display: none; }
+  /* The arrows stay: a swipe is undiscoverable, and the names strip scrolls
+     out of view. They shrink and tuck against the device instead. */
+  .pcar__stage { gap: 6px; }
+  .pcar__arrow { width: 44px; height: 44px; }
+  .pcar__arrow .icon { width: 19px; height: 19px; }
   .pcar__caption-text { font-size: var(--text-base); }
+}
+
+@media (max-width: 420px) {
+  /* Below this the device plus two discs no longer fit side by side, so the
+     arrows drop under it as a pager — still 44px, still either side. */
+  .pcar__stage {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+      "device device"
+      "prev   next";
+    justify-content: center;
+    gap: 16px clamp(72px, 34vw, 140px);
+  }
+  .pcar__device { grid-area: device; justify-self: center; }
+  .pcar__arrow--prev { grid-area: prev; }
+  .pcar__arrow--next { grid-area: next; }
 }
 
 @media (prefers-reduced-motion: reduce) {
