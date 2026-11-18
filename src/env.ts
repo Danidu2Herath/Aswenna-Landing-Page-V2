@@ -36,7 +36,7 @@ function read(name: string, fallback: string): string {
 
 export const env = {
   /** Canonical origin of the deployed site. No trailing slash. */
-  siteUrl: read("VITE_SITE_URL", "https://aswenna.lk").replace(/\/+$/, ""),
+  siteUrl: read("VITE_SITE_URL", "https://aswenna.veyra.lk").replace(/\/+$/, ""),
 
   /**
    * Where the contact form POSTs. It must accept a JSON body and answer 2xx

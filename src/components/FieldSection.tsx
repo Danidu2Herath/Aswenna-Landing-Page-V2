@@ -2,6 +2,7 @@ import Icon from "./Icon";
 import Reveal from "./Reveal";
 import SectionHead from "./SectionHead";
 import { field } from "../data/content";
+import { imgSize } from "../data/imageSizes";
 import { useI18n } from "../i18n";
 
 export default function FieldSection() {
@@ -17,7 +18,7 @@ export default function FieldSection() {
               <article className="field__card">
                 {f.photo ? (
                   <div className="media media--5x3 field__media">
-                    <img src={f.photo} alt={f.alt} loading="lazy" />
+                    <img src={f.photo} alt={f.alt} loading="lazy" {...imgSize(f.photo)} />
                   </div>
                 ) : (
                   <div className="field__art" aria-hidden="true">

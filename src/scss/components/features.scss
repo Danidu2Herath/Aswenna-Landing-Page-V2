@@ -1,75 +1,220 @@
-.features__groups { margin-top: 56px; display: grid; gap: 24px; }
+/* ===========================================================================
+   Features — three scan columns, one line per capability.
 
-.fgroup {
-  padding: 30px;
-  border-radius: var(--radius-xl);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-}
+   Each column owns an accent, used for its rule, its number and its icons,
+   so the three groups are told apart by colour rather than by reading. All
+   three accents were measured against the tinted page: 5.99:1, 5.23:1 and
+   5.31:1, comfortably past AA.
 
-.fgroup__head { display: flex; align-items: center; gap: 16px; }
-.fgroup__icon {
-  display: grid;
-  place-items: center;
-  width: 48px;
-  height: 48px;
-  flex-shrink: 0;
-  border-radius: var(--radius-md);
-  background: var(--brand-primary);
-  color: var(--color-text-inverse);
-}
-.fgroup__label {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  font-weight: var(--weight-semibold);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
-.fgroup__title { margin-top: 4px; font-size: var(--text-xl); }
-
-.fgroup__grid {
-  margin-top: 24px;
+   A row opens on hover, focus or tap to show the sentence the old card
+   carried. The text is always in the DOM — only its height animates — so a
+   crawler, find-in-page and a screen reader all still reach it.
+   =========================================================================== */
+.fcols {
+  margin-top: clamp(32px, 4vw, 52px);
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  gap: clamp(22px, 2.8vw, 46px);
+  align-items: start;
 }
 
-.fitem {
-  padding: 20px;
-  border-radius: var(--radius-md);
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  transition: border-color var(--duration) var(--ease), transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+.fcol {
+  --fc-accent: #1A6A2E;
+  --fc-soft:   #E8F3EA;
+  --fc-line:   rgba(26, 106, 46, 0.12);
 }
-.fitem:hover { border-color: var(--color-border-accent); transform: translateY(-3px); box-shadow: var(--shadow-sm); }
-
-.fitem__icon {
-  display: grid;
-  place-items: center;
-  width: 34px;
-  height: 34px;
-  border-radius: var(--radius-sm);
-  background: var(--color-accent-soft);
-  color: var(--brand-primary);
-  margin-bottom: 12px;
+.fcol--2 {
+  --fc-accent: #0063C6;
+  --fc-soft:   #E6F1FD;
+  --fc-line:   rgba(0, 99, 198, 0.12);
 }
-.fitem__title { font-size: var(--text-sm); font-weight: var(--weight-semibold); }
-.fitem__text { margin-top: 7px; font-size: var(--text-xs); color: var(--color-text-soft); line-height: 1.6; }
+.fcol--3 {
+  --fc-accent: #7A4E0E;
+  --fc-soft:   #FBF2E0;
+  --fc-line:   rgba(122, 78, 14, 0.14);
+}
 
-.fgroup__note {
-  margin-top: 18px;
+/* ---------------------------------- head ---------------------------------- */
+.fcol__head {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  padding: 14px 18px;
-  border-radius: var(--radius-md);
-  background: var(--color-surface-muted);
-  font-size: var(--text-xs);
+  gap: 12px;
+  padding-bottom: 13px;
+  border-bottom: 2px solid var(--fc-accent);
+}
+
+.fcol__n {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  background: var(--fc-soft);
+  color: var(--fc-accent);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  font-variant-numeric: tabular-nums;
+}
+
+.fcol__title {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.012em;
+  text-wrap: balance;
+}
+
+.fcol__need {
+  display: block;
+  margin-top: 4px;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
   color: var(--color-text-soft);
 }
-.fgroup__note svg { flex-shrink: 0; margin-top: 1px; color: var(--brand-secondary); }
 
-@media (max-width: 980px) { .fgroup__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 640px) { .fgroup__grid { grid-template-columns: minmax(0, 1fr); } .fgroup { padding: 22px; } }
+/* ---------------------------------- rows ---------------------------------- */
+.fcol__list {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+}
+
+.frow + .frow { border-top: 1px solid var(--fc-line); }
+
+.frow__btn {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 13px 10px 13px 12px;
+  border-radius: var(--radius-sm);
+  text-align: left;
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  line-height: 1.3;
+  color: var(--color-text);
+  background: transparent;
+  transition:
+    background-color var(--duration-fast) var(--ease),
+    padding-left var(--duration-fast) var(--ease);
+}
+
+/* The accent bar slides out of the left edge rather than appearing, so a
+   sweep down the column reads as one moving marker. */
+.frow__btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--fc-accent);
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform var(--duration-fast) var(--ease);
+}
+
+.frow__icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  color: var(--fc-accent);
+  transition: transform var(--duration-fast) var(--ease);
+}
+.frow__icon .icon { width: 17px; height: 17px; }
+
+.frow__title { flex: 1; }
+
+.frow__sign {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 18px;
+  height: 18px;
+  color: var(--fc-accent);
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease), transform var(--duration) var(--ease);
+}
+.frow__sign .icon { width: 14px; height: 14px; stroke-width: 2.6; }
+
+.frow__btn:hover,
+.frow__btn:focus-visible {
+  background: var(--fc-soft);
+  padding-left: 16px;
+}
+.frow__btn:hover::before,
+.frow__btn:focus-visible::before { transform: scaleY(1); }
+.frow__btn:hover .frow__sign,
+.frow__btn:focus-visible .frow__sign { opacity: 0.75; }
+
+.frow.is-open .frow__btn { background: var(--fc-soft); padding-left: 16px; }
+.frow.is-open .frow__btn::before { transform: scaleY(1); }
+.frow.is-open .frow__icon { transform: scale(1.1); }
+.frow.is-open .frow__sign { opacity: 1; transform: rotate(135deg); }
+
+/* --------------------------------- reveal --------------------------------- */
+/* grid-template-rows 0fr -> 1fr animates to the content's real height with
+   no magic max-height, and the row collapses to exactly nothing when shut. */
+.frow__body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--duration) var(--ease);
+}
+.frow.is-open .frow__body { grid-template-rows: 1fr; }
+
+.frow__text {
+  overflow: hidden;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--color-text-soft);
+  /* The padding lives on the clipped child, so it is clipped away too and
+     a closed row adds no height at all. */
+  padding: 0 12px 0 43px;
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease), padding var(--duration) var(--ease);
+}
+.frow.is-open .frow__text { padding-block: 2px 14px; opacity: 1; }
+
+/* --------------------------------- footer --------------------------------- */
+.fcol__count {
+  margin-top: 14px;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--fc-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.fcol__note {
+  margin-top: 8px;
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  color: var(--color-text-soft);
+  text-wrap: pretty;
+}
+
+/* ------------------------------- responsive ------------------------------- */
+@media (max-width: 1080px) {
+  .fcols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* Two columns leaves the third alone on its own row; let it have the width
+     rather than sit in a half-empty grid cell. */
+  .fcol--3 { grid-column: 1 / -1; }
+  .fcol--3 .fcol__list { columns: 2; column-gap: clamp(22px, 2.8vw, 46px); }
+  .fcol--3 .frow { break-inside: avoid; }
+}
+
+@media (max-width: 680px) {
+  .fcols { grid-template-columns: minmax(0, 1fr); }
+  .fcol--3 .fcol__list { columns: auto; }
+  /* A tap is the only way in here, so the sign is always shown. */
+  .frow__sign { opacity: 0.45; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frow__body { transition: none; }
+  .frow__icon, .frow__sign, .frow__btn::before { transition: none; }
+}

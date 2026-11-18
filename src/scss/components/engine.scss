@@ -140,20 +140,6 @@
 }
 .eloop__row-name { font-size: var(--text-base); font-weight: var(--weight-semibold); }
 
-.eloop__note {
-  margin-top: 22px;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 14px 18px;
-  border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: rgba(231, 242, 234, 0.82);
-  font-size: var(--text-sm);
-}
-.eloop__note svg { flex-shrink: 0; margin-top: 2px; color: var(--tertiary-300); }
-
 @media (max-width: 1080px) {
   .eloop { grid-template-columns: minmax(0, 1fr); gap: 32px; }
 }
@@ -163,30 +149,4 @@
   .eloop__centre { width: 62%; }
   .eloop__centre-name { font-size: var(--text-lg); }
   .eloop__centre-text { font-size: var(--text-xs); }
-}
-
-/* ---------------------------------------------------------------------------
-   Hand-over feedback
-   Clicking a stage holds the loop for a few seconds and then it resumes on
-   its own. The note says so, and the refresh glyph stops turning while the
-   loop is being held, so the pause reads as deliberate rather than broken.
-   --------------------------------------------------------------------------- */
-.eloop__note .icon {
-  animation: eloop-turn 6s linear infinite;
-}
-
-.eloop__note.is-held {
-  color: var(--tertiary-200);
-}
-
-.eloop__note.is-held .icon {
-  animation-play-state: paused;
-}
-
-@keyframes eloop-turn {
-  to { transform: rotate(360deg); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .eloop__note .icon { animation: none; }
 }

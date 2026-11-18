@@ -10,8 +10,8 @@
 | Region | Sri Lanka |
 | Languages | English, Sinhala (si), Tamil (ta) |
 | Contact | info@veyra.lk · +94 78 259 6361 · +94 77 786 2375 |
-| Canonical URL | https://aswenna.lk/ |
-| Content last updated | 2026-11-16 |
+| Canonical URL | https://aswenna.veyra.lk/ |
+| Content last updated | 2026-11-18 |
 
 ## Status — read this first
 
@@ -88,7 +88,7 @@ A closed loop of five stages. Data leaves the field, becomes understanding, and 
 4. **Decide** — Rules and machine-learning models generate recommendations, cultivation-calendar updates, irrigation commands, and warnings.
 5. **Act** — Farmers receive advice via the app, SMS, or voice calls, while connected irrigation valves and pumps can operate automatically.
 
-The loop closes — every action in the field becomes the next round of data the platform senses.
+undefined
 
 ## Replacing Guesswork with Measurement
 
@@ -135,7 +135,7 @@ Devices are optional and can be shared across a farmer organization. Readings th
 - **Village LoRaWAN gateways** — Long-range, low-power links carry readings from field devices to a village gateway and on to the cloud.
 - **Device monitoring** — Battery level, signal strength and last-reported reading for every node, so a silent sensor is noticed.
 
-### Universal Access & Farmer Data Ownership
+### Universal Access
 
 _Group 03 · Access and ownership_
 
@@ -219,6 +219,11 @@ Proposed interfaces for farmers, their organizations and the extension officers 
 
 ## The Roadmap.
 
+_Not shown on the landing page. It is published here because it is the
+evidence for the status note above: these are the phases that are planned
+and proposed, and nothing in them is deployed._
+
+
 Phases 01–03 define the project scope. Phase 04 collects future extensions. All phases describe planned capabilities, not deployed commercial operations.
 
 ### Phase 01 — Software Core (Planned)
@@ -289,11 +294,11 @@ Tell us about yourself and your land. If you are part of a farmer organization i
 
 - Email: info@veyra.lk
 - Phone: +94 78 259 6361, +94 77 786 2375
-- Enquiry form: https://aswenna.lk/#contact
+- Enquiry form: https://aswenna.veyra.lk/#contact
 
 We usually reply within a few working days.
 
 ---
 
-_Content last updated 2026-11-16, generated from src/data/content.ts. This
-file mirrors the page; where the two disagree, the page is correct._
+_Content last updated 2026-11-18, generated from src/data/content.ts. This
+file carries the site's content; where the two disagree, the page is correct._

@@ -123,7 +123,6 @@ Sitemap: ${ORIGIN}/sitemap.xml
 const SECTIONS = [
   ...C.nav,
   { href: "#platform", label: "The Aswenna platform" },
-  { href: "#roadmap", label: "Roadmap" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -329,6 +328,11 @@ ${bullets(C.platform.screens, (s) => `- **${s.name}** — ${s.text}`)}
 
 ## ${heading(C.roadmap)}
 
+_Not shown on the landing page. It is published here because it is the
+evidence for the status note above: these are the phases that are planned
+and proposed, and nothing in them is deployed._
+
+
 ${C.roadmap.sub}
 
 ${C.roadmap.phases
@@ -358,7 +362,7 @@ ${C.contact.note}
 ---
 
 _Content last updated ${contentModified}, generated from src/data/content.ts. This
-file mirrors the page; where the two disagree, the page is correct._
+file carries the site's content; where the two disagree, the page is correct._
 `,
 );
 
@@ -372,7 +376,7 @@ writeFileSync(
       description: C.site.description,
       start_url: "/",
       display: "standalone",
-      background_color: "#F4F7F4",
+      background_color: "#EFF4EE",
       theme_color: "#1D4E2B",
       icons: [{ src: "/images/logos/aswenna-mark.svg", sizes: "any", type: "image/svg+xml" }],
     },
@@ -466,6 +470,24 @@ const jsonld = JSON.stringify({ "@context": "https://schema.org", "@graph": grap
 
 const indexPath = join(root, "index.html");
 let html = readFileSync(indexPath, "utf8");
+
+/* ------------------------------------------------- title and description */
+/* Written from content.ts so the two cannot drift from the structured data,
+   and so the lengths stay where a search result can show them whole. */
+{
+  const OPEN = "<!-- seo:head -->";
+  const CLOSE = "<!-- /seo:head -->";
+  const a = html.indexOf(OPEN);
+  const b = html.indexOf(CLOSE);
+  if (a === -1 || b === -1) throw new Error("the seo:head markers are missing from index.html");
+  const esc = (t) => t.replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;");
+  if (C.site.metaTitle.length > 65) console.warn(`seo: WARNING metaTitle is ${C.site.metaTitle.length} chars; a result shows about 60`);
+  if (C.site.metaDescription.length > 165) console.warn(`seo: WARNING metaDescription is ${C.site.metaDescription.length} chars; a result shows about 160`);
+  html = `${html.slice(0, a + OPEN.length)}
+    <title>${esc(C.site.metaTitle)}</title>
+    <meta name="description" content="${esc(C.site.metaDescription)}" />
+    ${html.slice(b)}`;
+}
 const OPEN = "<!-- seo:jsonld -->";
 const CLOSE = "<!-- /seo:jsonld -->";
 const a = html.indexOf(OPEN);

@@ -15,6 +15,15 @@ export const site = {
      paragraph; the paragraph is gone, the metadata still needs it. */
   description:
     "An IoT-enabled precision farming platform for Sri Lankan agriculture — soil intelligence, hyperlocal weather, AI recommendations, smart irrigation, crop-health monitoring and market intelligence.",
+
+  /* What a search result actually shows. Google cuts a title at roughly 60
+     characters and a description at roughly 160, so these are written to fit
+     rather than to be complete — `description` above stays long because the
+     structured data and the manifest have no such limit. Both are written
+     into index.html by scripts/gen-seo.mjs, so there is one source. */
+  metaTitle: "Aswenna — IoT precision farming for Sri Lankan farms",
+  metaDescription:
+    "Soil intelligence, hyperlocal weather, crop recommendations and market data for Sri Lankan smallholdings. In Sinhala, Tamil and English.",
 };
 
 export const contactDetails = {
@@ -60,16 +69,6 @@ export const hero = {
   ],
 };
 
-export const trustBar = {
-  label: "Built for Sri Lankan smallholdings",
-  items: [
-    { icon: "languages", text: "Sinhala, Tamil and English" },
-    { icon: "wifi-off", text: "Offline-first, built for low coverage" },
-    { icon: "message-square", text: "SMS and voice alerts" },
-    { icon: "shield-check", text: "Farmers own their field data" },
-  ],
-};
-
 export const partners = {
   note: "Aswenna is a project of Veyra Solutions.",
   logos: [
@@ -81,7 +80,7 @@ export const partners = {
 };
 
 export const problems = {
-  num: "02",
+  num: "01",
   eyebrow: "Why this matters",
   title: "Farming Shouldn't Be",
   accent: "a Gamble",
@@ -109,7 +108,7 @@ export const problems = {
 };
 
 export const soil = {
-  num: "03",
+  num: "02",
   eyebrow: "Below the surface",
   title: "Healthy Harvests Begin Beneath the Surface.",
   sub: "Every plot has its own characteristics. Understanding soil moisture, temperature, pH and nutrient conditions helps farmers make better cultivation decisions.",
@@ -132,7 +131,7 @@ export const soil = {
 };
 
 export const journey = {
-  num: "04",
+  num: "03",
   eyebrow: "The growth journey",
   title: "From Seed to Harvest.",
   sub: "A crop passes through six recognisable stages. Aswenna's intelligent cultivation calendar adapts its recommendations at each one.",
@@ -145,6 +144,7 @@ export const journey = {
     { n: "06", name: "Mature Plant", text: "A fully developed crop ready for its next agricultural stage." },
   ],
   adapts: {
+    eyebrow: "In every season",
     title: "What the calendar adapts at every stage",
     sub: "Aswenna's intelligent cultivation calendar re-reads the plot at every stage and rewrites what it asks the farmer to do next.",
     items: ["Irrigation schedules", "Fertilizer application", "Crop maintenance", "Cultivation activities", "Weather-dependent adjustments"],
@@ -152,7 +152,7 @@ export const journey = {
 };
 
 export const seasons = {
-  num: "05",
+  num: "04",
   eyebrow: "Across the cultivation year",
   title: "How Aswenna Protects You",
   accent: "Across the Seasons",
@@ -178,7 +178,7 @@ export const seasons = {
 };
 
 export const field = {
-  num: "06",
+  num: "05",
   eyebrow: "Field scanning",
   title: "Intelligence Across the Land.",
   sub: "Beyond a single sensor point, Aswenna reads the whole plot — its boundaries, its canopy, its weather and its risks.",
@@ -195,13 +195,10 @@ export const field = {
 };
 
 export const engine = {
-  num: "07",
+  num: "06",
   eyebrow: "The intelligence engine",
   title: "How Aswenna Works.",
   sub: "A closed loop of five stages. Data leaves the field, becomes understanding, and returns to the farmer as an action.",
-  note: "The loop closes — every action in the field becomes the next round of data the platform senses.",
-  autoNote: "The loop runs on its own",
-  heldNote: "Paused on your choice — resuming shortly",
   stages: [
     { icon: "radar", name: "Sense", text: "Field nodes, weather stations, pest traps, satellites, and farmer photographs produce agricultural data." },
     { icon: "radio-tower", name: "Connect", text: "LoRaWAN technology connects field devices to village gateways, while mobile connectivity transfers data to the cloud." },
@@ -212,7 +209,7 @@ export const engine = {
 };
 
 export const comparison = {
-  num: "08",
+  num: "07",
   eyebrow: "The Aswenna approach",
   title: "Replacing Guesswork",
   accent: "with Measurement",
@@ -232,13 +229,14 @@ export const comparison = {
 };
 
 export const featureGroups = {
-  num: "09",
+  num: "08",
   eyebrow: "Everything in one platform",
   title: "Features &",
   accent: "Capabilities",
   sub: "Start with no hardware at all, and add sensing and automation to the same account when it earns its place.",
+  countWord: "capabilities",
   groups: [
-    { id: "core", icon: "grid", label: "Group 01 · No hardware required", title: "The Core Platform",
+    { id: "core", icon: "grid", label: "Group 01 · No hardware required", need: "No hardware required", title: "The Core Platform",
       note: "Everything in this group runs on regional data, satellite imagery and what the farmer tells the app. No device needs to be bought or installed.",
       items: [
         { icon: "map-pin", title: "Geo-located soil profiling", text: "Mark a plot on the map and receive a soil profile for that location, with every value labelled estimated or measured." },
@@ -248,7 +246,7 @@ export const featureGroups = {
         { icon: "trending-up", title: "Market trend analytics", text: "Wholesale prices from economic centres read alongside anonymized planting data to forecast supply conditions." },
         { icon: "scan", title: "AI-assisted diagnosis", text: "Photograph an affected leaf or pest and receive a probable match with mitigation advice to confirm with an officer." },
       ] },
-    { id: "iot", icon: "cpu", label: "Group 02 · Precision field automation", title: "IoT & Devices",
+    { id: "iot", icon: "cpu", label: "Group 02 · Precision field automation", need: "Optional, and shareable", title: "IoT & Devices",
       note: "Devices are optional and can be shared across a farmer organization. Readings they produce are marked as measured, so they are never confused with regional estimates.",
       items: [
         { icon: "droplet", title: "Live soil monitoring", text: "ESP32-based nodes report soil moisture, temperature and electrical conductivity from the root zone of the plot." },
@@ -258,7 +256,7 @@ export const featureGroups = {
         { icon: "radio-tower", title: "Village LoRaWAN gateways", text: "Long-range, low-power links carry readings from field devices to a village gateway and on to the cloud." },
         { icon: "gauge", title: "Device monitoring", text: "Battery level, signal strength and last-reported reading for every node, so a silent sensor is noticed." },
       ] },
-    { id: "access", icon: "users", label: "Group 03 · Access and ownership", title: "Universal Access & Farmer Data Ownership",
+    { id: "access", icon: "users", label: "Group 03 · Access and ownership", need: "However the farmer connects", title: "Universal Access",
       note: "A farmer without a smartphone, without coverage, or without a shared device still receives the advice their plot generates.",
       items: [
         { icon: "message-square", title: "SMS and voice delivery", text: "Alerts and recommendations reach a basic handset by text message or voice call when the app cannot be opened." },
@@ -271,7 +269,7 @@ export const featureGroups = {
 };
 
 export const fieldFirst = {
-  num: "10",
+  num: "09",
   eyebrow: "Designed for real conditions",
   title: "Designed for the Field,",
   accent: "Not an Office",
@@ -284,7 +282,7 @@ export const fieldFirst = {
 };
 
 export const hardware = {
-  num: "11",
+  num: "10",
   eyebrow: "Field technology",
   title: "The IoT Ecosystem.",
   sub: "Hardware built for village conditions — solar powered, long range, and shareable across a farmer organization.",
@@ -301,7 +299,7 @@ export const hardware = {
 };
 
 export const install = {
-  num: "12",
+  num: "11",
   eyebrow: "Hardware in the field",
   title: "How Field Hardware Installs",
   accent: "on Your Land",
@@ -323,7 +321,7 @@ export const install = {
 };
 
 export const pricing = {
-  num: "13",
+  num: "12",
   eyebrow: "Participation tiers",
   title: "Choose What Fits",
   accent: "Your Farm",
@@ -347,7 +345,7 @@ export const pricing = {
 };
 
 export const platform = {
-  num: "14",
+  num: "13",
   eyebrow: "Connected agriculture",
   title: "The Aswenna Platform.",
   sub: "Proposed interfaces for farmers, their organizations and the extension officers who support them.",
@@ -365,8 +363,10 @@ export const platform = {
   ],
 };
 
+/* Not rendered on the page any more. Kept because scripts/gen-seo.mjs
+   publishes it in llms-full.txt, where it is the evidence behind the
+   "planned, not deployed" status note. */
 export const roadmap = {
-  num: "15",
   eyebrow: "Strategic implementation",
   title: "The Roadmap.",
   sub: "Phases 01–03 define the project scope. Phase 04 collects future extensions. All phases describe planned capabilities, not deployed commercial operations.",
@@ -386,7 +386,7 @@ export const roadmap = {
 };
 
 export const faq = {
-  num: "16",
+  num: "14",
   eyebrow: "Questions",
   title: "Frequently Asked",
   accent: "Questions",
@@ -450,7 +450,7 @@ export const footer = {
     { title: "Technology", links: [
       { label: "How it works", href: "#engine" }, { label: "What we offer", href: "#features" },
       { label: "IoT ecosystem", href: "#hardware" }, { label: "Field installation", href: "#install" },
-      { label: "Roadmap", href: "#roadmap" } ] },
+    ] },
     { title: "Company", links: [
       { label: "Participation tiers", href: "#pricing" }, { label: "Frequently asked questions", href: "#faq" },
       { label: "Contact us", href: "#contact" } ] },
@@ -536,12 +536,23 @@ export const appUi = {
     season: "Maha season",
     month: "November",
     week: ["M", "T", "W", "T", "F", "S", "S"],
-    today: 3,
+    /* A month, not a single week: four tasks under a seven-day strip left
+       the bottom half of the screen empty, and a calendar that cannot show
+       a month is not showing much.
+
+       November 2025 begins on a Saturday, which is why `firstCol` is 5 on a
+       Monday-first grid, and it is the month the task dates already use:
+       17 Nov is a Monday, 20 Nov a Thursday, 29 Nov a Saturday. `marked`
+       must stay in step with `tasks` below. */
+    grid: { firstCol: 5, days: 30, today: 20, marked: [17, 20, 29] },
+    /* Grouped, because a month view that lists four tasks in one run leaves
+       the lower half of the screen empty and says nothing about when they
+       fall. The group label is carried on the first task of each group. */
     tasks: [
-      { icon: "droplets", title: "Second irrigation", when: "Mon 17 Nov", state: "done" },
+      { icon: "droplets", title: "Second irrigation", when: "Mon 17 Nov", state: "done", group: "This week" },
       { icon: "flask", title: "Top-dress urea", when: "Today · before noon", state: "today" },
       { icon: "bug", title: "Scout for leaf folder", when: "Thu 20 Nov", state: "next" },
-      { icon: "wheat", title: "Panicle initiation check", when: "Sat 29 Nov", state: "next" },
+      { icon: "wheat", title: "Panicle initiation check", when: "Sat 29 Nov", state: "next", group: "Later this month" },
     ],
     shift: { icon: "refresh", text: "Two tasks moved — rain forecast for Wednesday." },
   },

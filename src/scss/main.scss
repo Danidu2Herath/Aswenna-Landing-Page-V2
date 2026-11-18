@@ -7,14 +7,15 @@
 @use "tokens";
 @use "base";
 
+@use "components/background";
 @use "components/header";
 @use "components/language";
 @use "components/hero";
-@use "components/trustbar";
 @use "components/problems";
 @use "components/soil";
 @use "components/journey";
 @use "components/mobilejourney";
+@use "components/calendaryear";
 @use "components/seasons";
 @use "components/field";
 @use "components/engine";
@@ -25,7 +26,6 @@
 @use "components/install";
 @use "components/pricing";
 @use "components/platform";
-@use "components/roadmap";
 @use "components/faq";
 @use "components/cta";
 @use "components/contact";

@@ -3,7 +3,7 @@ import Icon from "./Icon";
 import Reveal from "./Reveal";
 import SectionHead from "./SectionHead";
 import Plant from "./Plant";
-import AppPhone from "./app/AppPhone";
+import CalendarYear from "./CalendarYear";
 import { journey } from "../data/content";
 import { useI18n } from "../i18n";
 import { clamp01, docTop, rafThrottle, scrollBehavior } from "../lib/util";
@@ -230,29 +230,10 @@ export default function JourneySection() {
       </div>
 
       {/* ------------------------------------------------- adapts panel */}
-      <div className="section section--tight container">
+      {/* Supplies the section's closing gap, since .journey itself ends at 0. */}
+      <div className="section container">
         <Reveal>
-          <div className="journey__adapts">
-            <div className="journey__adapts-copy">
-              <h3 className="journey__adapts-title">{t("journey.adapts.title", journey.adapts.title)}</h3>
-              <p className="journey__adapts-sub">{t("journey.adapts.sub", journey.adapts.sub)}</p>
-              <ul className="journey__adapts-list">
-                {journey.adapts.items.map((item, i) => (
-                  <li key={item}>
-                    <span className="journey__tick-check">
-                      <Icon name="check" />
-                    </span>
-                    {t(`journey.adapts.items.${i}`, item)}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            {/* The calendar screen replaces the decorative gradient panel:
-                this is the thing that actually rewrites itself. */}
-            <div className="journey__phone">
-              <AppPhone screen="calendar" size="sm" />
-            </div>
-          </div>
+          <CalendarYear />
         </Reveal>
       </div>
     </section>

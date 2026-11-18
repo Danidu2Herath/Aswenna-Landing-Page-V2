@@ -1,0 +1,99 @@
+/* ===========================================================================
+   Cultivation year — the ribbon, the copy and the device.
+
+   The ribbon is the control: twelve months banded by season. Below it the
+   panel splits, copy left and device right, both anchored to the top edge so
+   the two columns share a baseline instead of floating against each other.
+   =========================================================================== */
+.cyear {
+  --cy-accent: #1A6A2E;
+  --cy-accent-soft: #E6F3E9;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(28px, 3.4vw, 56px);
+  align-items: center;
+  padding: clamp(26px, 3.4vw, 44px);
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  border: 1px solid var(--color-card-line);
+  box-shadow: var(--color-card-shadow);
+}
+
+/* --------------------------------- panel ---------------------------------- */
+
+.cyear__eyebrow {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cy-accent);
+}
+.cyear__title {
+  margin-top: 8px;
+  font-size: clamp(1.5rem, 1.1rem + 1.3vw, 2.125rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.cyear__sub {
+  margin-top: 12px;
+  color: var(--color-text-soft);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+/* Equal-height rows, no orphan: three up on a wide panel, two below it. */
+.cyear__list {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  list-style: none;
+  padding: 0;
+}
+/* Five items in a two-column grid leaves a ragged orphan on the last row,
+   so the fifth spans the width and the row reads as deliberate. */
+.cyear__list li:last-child { grid-column: 1 / -1; }
+.cyear__list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-card-line);
+  background: var(--color-surface-muted);
+  font-size: var(--text-sm);
+  line-height: 1.3;
+}
+.cyear__tick {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--cy-accent);
+  color: #fff;
+}
+.cyear__tick .icon { width: 12px; height: 12px; stroke-width: 3.2; }
+
+/* --------------------------------- device --------------------------------- */
+/* No caption under the device: the panel beside it already says what this is,
+   and the stacked caption was the cramped part of the old layout. */
+.cyear__device {
+  display: grid;
+  justify-items: center;
+}
+.cyear__device .phone { --ph-w: clamp(200px, 18vw, 244px); }
+
+/* ------------------------------- responsive ------------------------------- */
+@media (max-width: 900px) {
+  .cyear { grid-template-columns: minmax(0, 1fr); }
+  .cyear__device { order: -1; }
+}
+
+@media (max-width: 620px) {
+  .cyear__list { grid-template-columns: minmax(0, 1fr); }
+}
