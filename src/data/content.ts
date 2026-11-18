@@ -39,8 +39,6 @@ export const ui = {
   openMenu: "Open menu",
   closeMenu: "Close menu",
   primaryNav: "Primary",
-  language: "Language",
-  chooseLanguage: "Choose a language",
   backToTop: "Back to top",
   skipToContent: "Skip to content",
 };

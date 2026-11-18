@@ -8,7 +8,8 @@
 | Promise | Empowering Farmers, Growing Prosperity. |
 | Run by | Veyra Solutions |
 | Region | Sri Lanka |
-| Languages | English, Sinhala (si), Tamil (ta) |
+| This page | English only |
+| Planned platform languages | Sinhala, Tamil, English |
 | Contact | info@veyra.lk · +94 78 259 6361 · +94 77 786 2375 |
 | Canonical URL | https://aswenna.veyra.lk/ |
 | Content last updated | 2026-11-18 |
