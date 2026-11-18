@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import Icon from "./Icon";
 import { hero, partners } from "../data/content";
+import { imgSize } from "../data/imageSizes";
 import { useI18n } from "../i18n";
 
 /**
@@ -67,7 +68,7 @@ export default function Hero() {
         <ul className="hero__partners-row">
           {partners.logos.map((logo) => (
             <li className={`hero__partner ${logo.cls}`} key={logo.src}>
-              <img src={logo.src} alt={logo.alt} loading="lazy" />
+              <img src={logo.src} alt={logo.alt} loading="lazy" {...imgSize(logo.src)} />
             </li>
           ))}
         </ul>

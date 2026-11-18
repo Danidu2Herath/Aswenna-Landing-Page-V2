@@ -2,6 +2,7 @@ import Icon from "./Icon";
 import Reveal from "./Reveal";
 import SectionHead from "./SectionHead";
 import { problems } from "../data/content";
+import { imgSize } from "../data/imageSizes";
 import { useI18n } from "../i18n";
 
 export default function ProblemsSection() {
@@ -17,7 +18,7 @@ export default function ProblemsSection() {
             <Reveal as="article" delay={i * 70} key={p.title}>
               <div className="problem">
                 <div className="media media--16x9 problem__media">
-                  <img src={p.photo} alt={p.alt} loading="lazy" />
+                  <img src={p.photo} alt={p.alt} loading="lazy" {...imgSize(p.photo)} />
                   <span className="problem__tag">{t(`problems.items.${i}.tag`, p.tag)}</span>
                 </div>
                 <div className="problem__body">
@@ -32,7 +33,7 @@ export default function ProblemsSection() {
         <Reveal>
           <article className="gap">
             <div className="media gap__media">
-              <img src={problems.gap.photo} alt={problems.gap.alt} loading="lazy" />
+              <img src={problems.gap.photo} alt={problems.gap.alt} loading="lazy" {...imgSize(problems.gap.photo)} />
               <span className="problem__tag">{problems.gap.tag}</span>
             </div>
             <div className="gap__body">
