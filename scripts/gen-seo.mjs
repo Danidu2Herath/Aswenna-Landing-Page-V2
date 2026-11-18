@@ -186,7 +186,8 @@ writeFileSync(
 > ${C.site.description}
 
 ${C.site.name} — "${C.site.tagline}" — is a project of ${C.site.parent}, built for
-smallholder farming in Sri Lanka and offered in Sinhala, Tamil and English.
+smallholder farming in Sri Lanka. The platform is planned in Sinhala, Tamil
+and English; this page is published in English only.
 
 ## Status, before anything else
 
@@ -229,7 +230,8 @@ writeFileSync(
 | Promise | ${C.site.promise} |
 | Run by | ${C.site.parent} |
 | Region | Sri Lanka |
-| Languages | English, Sinhala (si), Tamil (ta) |
+| This page | English only |
+| Planned platform languages | Sinhala, Tamil, English |
 | Contact | ${C.contactDetails.email} · ${C.contactDetails.phones.map((p) => p.label).join(" · ")} |
 | Canonical URL | ${ORIGIN}/ |
 | Content last updated | ${contentModified} |
@@ -412,7 +414,10 @@ const graph = [
     url: `${ORIGIN}/`,
     name: C.site.name,
     description: C.site.description,
-    inLanguage: ["en", "si", "ta"],
+    /* The SITE, not the product. This page is published in English only;
+       the Sinhala and Tamil the platform plans are a product capability,
+       described in the content, not a translation of this page. */
+    inLanguage: "en",
     publisher: { "@id": `${ORIGIN}/#organization` },
   },
   {

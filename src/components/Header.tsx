@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Icon from "./Icon";
-import LanguageSwitcher from "./LanguageSwitcher";
-import { LANGUAGES, useI18n } from "../i18n";
+import { useI18n } from "../i18n";
 import { nav, site, ui } from "../data/content";
 import { rafThrottle } from "../lib/util";
 
@@ -19,7 +18,7 @@ import { rafThrottle } from "../lib/util";
  * what is actually underneath is the only way to get both right.
  */
 export default function Header() {
-  const { lang, setLang, t } = useI18n();
+  const { t } = useI18n();
   const [stuck, setStuck] = useState(false);
   const [overDark, setOverDark] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -114,7 +113,6 @@ export default function Header() {
           </nav>
 
           <div className="header__actions">
-            <LanguageSwitcher />
             <a className="btn btn--primary header__cta" href="#contact">
               <span>{t("ui.getStarted", ui.getStarted)}</span>
               <Icon name="arrow-right" />
@@ -155,26 +153,6 @@ export default function Header() {
           <a className="btn btn--primary btn--lg" href="#contact">
             {t("ui.getStarted", ui.getStarted)}
           </a>
-          <div className="langstack" role="group" aria-label={t("ui.chooseLanguage", ui.chooseLanguage)}>
-            <span className="langstack__label">
-              <Icon name="globe" />
-              <span>{t("ui.language", ui.language)}</span>
-            </span>
-            <div className="langstack__options">
-              {LANGUAGES.map((l) => (
-                <button
-                  type="button"
-                  key={l.code}
-                  className={`langstack__option${l.code === lang ? " is-active" : ""}`}
-                  lang={l.code}
-                  aria-pressed={l.code === lang}
-                  onClick={() => setLang(l.code)}
-                >
-                  {l.native}
-                </button>
-              ))}
-            </div>
-          </div>
         </div>
       </header>
     </>

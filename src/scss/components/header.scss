@@ -14,7 +14,6 @@
    blur to refract, so it reads as a smudge. A crisp, nearly opaque pill with
    a light blur keeps the text legible and the edges clean. */
 .header--stuck .header__nav ul,
-.header--stuck .lang__button,
 .header--stuck .header__burger,
 .header--stuck .brand {
   background: var(--header-light-bg);
@@ -23,7 +22,6 @@
 }
 @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
   .header--stuck .header__nav ul,
-  .header--stuck .lang__button,
   .header--stuck .header__burger,
   .header--stuck .brand {
     -webkit-backdrop-filter: var(--header-light-blur);
@@ -38,7 +36,6 @@
    through it instead of being covered by a pale slab.
    --------------------------------------------------------------------------- */
 .header--over-dark .header__nav ul,
-.header--over-dark .lang__button,
 .header--over-dark .header__burger,
 .header--over-dark .brand {
   background: var(--header-dark-bg);
@@ -48,7 +45,6 @@
 }
 @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
   .header--over-dark .header__nav ul,
-  .header--over-dark .lang__button,
   .header--over-dark .header__burger,
   .header--over-dark .brand {
     -webkit-backdrop-filter: var(--header-dark-blur);
@@ -57,7 +53,6 @@
 }
 
 .header--over-dark .brand__name,
-.header--over-dark .lang__code { color: var(--header-dark-ink); }
 .header--over-dark .brand__tag { color: var(--header-dark-ink-soft); }
 .header--over-dark .header__nav a { color: var(--header-dark-ink-soft); }
 .header--over-dark .header__nav a:hover,
@@ -214,10 +209,6 @@ html[lang="ta"] .header__nav a {
 @media (max-width: 420px) {
   :root { --gutter: 16px; }
 
-  .lang__code,
-  .lang__chev { display: none; }
-  .lang__button { padding: 11px; }
-
   .header__actions { gap: 6px; }
   .brand img { width: 32px; height: 32px; }
   .brand__name { font-size: var(--text-base); }
@@ -249,15 +240,12 @@ html[lang="ta"] .header__nav a {
 
 .header .brand,
 .header .header__nav ul,
-.header .lang__button,
 .header .header__burger,
 .header--stuck .brand,
 .header--stuck .header__nav ul,
-.header--stuck .lang__button,
 .header--stuck .header__burger,
 .header--over-dark .brand,
 .header--over-dark .header__nav ul,
-.header--over-dark .lang__button,
 .header--over-dark .header__burger {
   background: transparent;
   border-color: transparent;
