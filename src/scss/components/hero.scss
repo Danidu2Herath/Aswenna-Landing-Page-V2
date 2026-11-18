@@ -187,7 +187,54 @@
   justify-content: center;
   gap: 20px clamp(32px, 5vw, 64px);
 }
-/* Every mark rendered as flat white, like the reference strip. */
+/* At rest every mark is flattened to white, like the reference strip, so the
+   row reads as one row rather than four competing logos.
+
+   On hover the real artwork comes back. That needs a light plate underneath:
+   these marks are not all light. ATP is pure black line art and would simply
+   vanish against the hero photograph, and the IIT crest is a dark maroon.
+   The plate fades in with the filter coming off, so whatever the logo's own
+   colours are, they land on something they can be read against. */
+.hero__partner {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  isolation: isolate;
+}
+
+/* The plate is dark by default, because three of the four marks are light
+   artwork: the Aswenna and Veyra files are drawn in #FFFFFF, and the IIT
+   crest carries WHITE lettering, so a white plate swallows its name — which
+   is exactly what the first version of this did. ATP is the exception and
+   opts into a light plate below. */
+.hero__partner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: rgba(6, 16, 9, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 24px rgba(4, 12, 6, 0.36);
+  opacity: 0;
+  transform: scale(0.92);
+  transition:
+    opacity var(--duration) var(--ease),
+    transform var(--duration) var(--ease);
+}
+
+/* Black line art. Measured at 0 light pixels, so it would simply disappear
+   on the dark plate. */
+.hero__partner--dark-art::before {
+  background: rgba(255, 255, 255, 0.94);
+  border-color: rgba(4, 12, 6, 0.12);
+}
+
 .hero__partner img {
   height: 28px;
   width: auto;
@@ -195,10 +242,37 @@
   object-fit: contain;
   filter: brightness(0) invert(1);
   opacity: 0.85;
-  transition: opacity var(--duration-fast) var(--ease);
+  transition:
+    opacity var(--duration-fast) var(--ease),
+    filter var(--duration) var(--ease);
 }
-.hero__partner:hover img { opacity: 1; }
+
+.hero__partner:hover::before,
+.hero__partner:focus-within::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* `filter: none` is what shows the real image. */
+.hero__partner:hover img,
+.hero__partner:focus-within img {
+  filter: none;
+  opacity: 1;
+}
+
 .hero__partner--tall img { height: 36px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__partner::before { transform: none; transition: opacity 1ms; }
+  .hero__partner img { transition: none; }
+}
+
+/* A plate that only appears on hover is no use on a touch screen, so there
+   the real artwork is shown from the start, plate and all. */
+@media (hover: none) {
+  .hero__partner::before { opacity: 1; transform: scale(1); }
+  .hero__partner img { filter: none; opacity: 1; }
+}
 
 /* -------------------------------- motion ---------------------------------- */
 @keyframes hero-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }

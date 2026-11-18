@@ -75,7 +75,10 @@ export const partners = {
     { src: "/images/logos/aswenna-white.svg", alt: "Aswenna", cls: "" },
     { src: "/images/logos/veyra-placeholder.svg", alt: "Veyra Solutions", cls: "" },
     { src: "/images/logos/iit.png", alt: "Informatics Institute of Technology", cls: "hero__partner--tall" },
-    { src: "/images/logos/atp.webp", alt: "Agile Team Project", cls: "" },
+    /* Drawn in black ink — measured, 0 light pixels — so on hover it needs a
+       light plate behind it. Every other mark here is light artwork and
+       takes the default dark plate. */
+    { src: "/images/logos/atp.webp", alt: "Agile Team Project", cls: "hero__partner--dark-art" },
   ],
 };
 
