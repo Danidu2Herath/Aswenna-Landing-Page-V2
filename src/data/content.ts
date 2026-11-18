@@ -225,8 +225,9 @@ export const featureGroups = {
   title: "Features &",
   accent: "Capabilities",
   sub: "Start with no hardware at all, and add sensing and automation to the same account when it earns its place.",
+  countWord: "capabilities",
   groups: [
-    { id: "core", icon: "grid", label: "Group 01 · No hardware required", title: "The Core Platform",
+    { id: "core", icon: "grid", label: "Group 01 · No hardware required", need: "No hardware required", title: "The Core Platform",
       note: "Everything in this group runs on regional data, satellite imagery and what the farmer tells the app. No device needs to be bought or installed.",
       items: [
         { icon: "map-pin", title: "Geo-located soil profiling", text: "Mark a plot on the map and receive a soil profile for that location, with every value labelled estimated or measured." },
@@ -236,7 +237,7 @@ export const featureGroups = {
         { icon: "trending-up", title: "Market trend analytics", text: "Wholesale prices from economic centres read alongside anonymized planting data to forecast supply conditions." },
         { icon: "scan", title: "AI-assisted diagnosis", text: "Photograph an affected leaf or pest and receive a probable match with mitigation advice to confirm with an officer." },
       ] },
-    { id: "iot", icon: "cpu", label: "Group 02 · Precision field automation", title: "IoT & Devices",
+    { id: "iot", icon: "cpu", label: "Group 02 · Precision field automation", need: "Optional, and shareable", title: "IoT & Devices",
       note: "Devices are optional and can be shared across a farmer organization. Readings they produce are marked as measured, so they are never confused with regional estimates.",
       items: [
         { icon: "droplet", title: "Live soil monitoring", text: "ESP32-based nodes report soil moisture, temperature and electrical conductivity from the root zone of the plot." },
@@ -246,7 +247,7 @@ export const featureGroups = {
         { icon: "radio-tower", title: "Village LoRaWAN gateways", text: "Long-range, low-power links carry readings from field devices to a village gateway and on to the cloud." },
         { icon: "gauge", title: "Device monitoring", text: "Battery level, signal strength and last-reported reading for every node, so a silent sensor is noticed." },
       ] },
-    { id: "access", icon: "users", label: "Group 03 · Access and ownership", title: "Universal Access & Farmer Data Ownership",
+    { id: "access", icon: "users", label: "Group 03 · Access and ownership", need: "However the farmer connects", title: "Universal Access",
       note: "A farmer without a smartphone, without coverage, or without a shared device still receives the advice their plot generates.",
       items: [
         { icon: "message-square", title: "SMS and voice delivery", text: "Alerts and recommendations reach a basic handset by text message or voice call when the app cannot be opened." },
