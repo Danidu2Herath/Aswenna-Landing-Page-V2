@@ -143,9 +143,24 @@
   color: var(--color-text);
 }
 
+/* The panel hangs BELOW the bar, positioned against the viewport.
+
+   It used to be laid out in normal flow, which worked while .header was a
+   block. .header is now a 52px flex row, so the panel became its second flex
+   item: squeezed to 145px of leftover width and centred in 52px of height,
+   which pushed its first three links ~198px ABOVE the top of the screen
+   where they could not be seen or tapped. Positioning it takes it out of
+   that flex row for good. */
 .mobile-nav {
   display: none;
-  margin: 12px var(--gutter) 0;
+  position: fixed;
+  top: calc(var(--header-height) + 8px);
+  left: var(--gutter);
+  right: var(--gutter);
+  /* Never taller than the space under the bar; scroll inside if it is. */
+  max-height: calc(100svh - var(--header-height) - 24px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 14px;
   border-radius: var(--radius-lg);
   background: var(--color-surface);
@@ -154,7 +169,11 @@
 }
 .mobile-nav.is-open { display: block; }
 .mobile-nav ul { display: flex; flex-direction: column; margin-bottom: 12px; }
-.mobile-nav a {
+
+/* Scoped to the list. As `.mobile-nav a` it also hit the Get started button
+   and, being more specific than .btn--primary, painted its label grey on
+   blue — 1.35:1, which is why the button looked empty. */
+.mobile-nav ul a {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -163,8 +182,8 @@
   font-weight: var(--weight-medium);
   color: var(--color-text-soft);
 }
-.mobile-nav a:hover { background: var(--color-surface-sunken); color: var(--color-text); }
-.mobile-nav .btn { width: 100%; }
+.mobile-nav ul a:hover { background: var(--color-surface-sunken); color: var(--color-text); }
+.mobile-nav .btn { width: 100%; justify-content: center; }
 
 @media (max-width: 1180px) {
   .header__nav { display: none; }
