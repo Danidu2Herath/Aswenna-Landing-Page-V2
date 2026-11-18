@@ -11,7 +11,7 @@
 | Languages | English, Sinhala (si), Tamil (ta) |
 | Contact | info@veyra.lk · +94 78 259 6361 · +94 77 786 2375 |
 | Canonical URL | https://aswenna.lk/ |
-| Content last updated | 2026-11-17 |
+| Content last updated | 2026-11-18 |
 
 ## Status — read this first
 
@@ -300,5 +300,5 @@ We usually reply within a few working days.
 
 ---
 
-_Content last updated 2026-11-17, generated from src/data/content.ts. This
+_Content last updated 2026-11-18, generated from src/data/content.ts. This
 file carries the site's content; where the two disagree, the page is correct._

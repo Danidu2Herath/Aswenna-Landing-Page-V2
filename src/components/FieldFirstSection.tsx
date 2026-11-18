@@ -3,6 +3,7 @@ import Reveal from "./Reveal";
 import SectionHead from "./SectionHead";
 import AppPhone from "./app/AppPhone";
 import { fieldFirst } from "../data/content";
+import { imgSize } from "../data/imageSizes";
 import { useI18n } from "../i18n";
 
 export default function FieldFirstSection() {
@@ -39,6 +40,7 @@ export default function FieldFirstSection() {
                   src="/images/photos/connectivity-gap.webp"
                   alt="Paddy fields and coconut palms in rural Sri Lanka"
                   loading="lazy"
+                  {...imgSize("/images/photos/connectivity-gap.webp")}
                 />
               </div>
               <div className="ffirst__device">
