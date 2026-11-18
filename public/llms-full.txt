@@ -135,7 +135,7 @@ Devices are optional and can be shared across a farmer organization. Readings th
 - **Village LoRaWAN gateways** — Long-range, low-power links carry readings from field devices to a village gateway and on to the cloud.
 - **Device monitoring** — Battery level, signal strength and last-reported reading for every node, so a silent sensor is noticed.
 
-### Universal Access & Farmer Data Ownership
+### Universal Access
 
 _Group 03 · Access and ownership_
 
