@@ -15,6 +15,15 @@ export const site = {
      paragraph; the paragraph is gone, the metadata still needs it. */
   description:
     "An IoT-enabled precision farming platform for Sri Lankan agriculture — soil intelligence, hyperlocal weather, AI recommendations, smart irrigation, crop-health monitoring and market intelligence.",
+
+  /* What a search result actually shows. Google cuts a title at roughly 60
+     characters and a description at roughly 160, so these are written to fit
+     rather than to be complete — `description` above stays long because the
+     structured data and the manifest have no such limit. Both are written
+     into index.html by scripts/gen-seo.mjs, so there is one source. */
+  metaTitle: "Aswenna — IoT precision farming for Sri Lankan farms",
+  metaDescription:
+    "Soil intelligence, hyperlocal weather, crop recommendations and market data for Sri Lankan smallholdings. In Sinhala, Tamil and English.",
 };
 
 export const contactDetails = {

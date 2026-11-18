@@ -3,6 +3,7 @@ import Icon from "./Icon";
 import Reveal from "./Reveal";
 import SectionHead from "./SectionHead";
 import { seasons } from "../data/content";
+import { imgSize } from "../data/imageSizes";
 import { useI18n } from "../i18n";
 import { useMediaQuery, useOnScreen, useReducedMotion } from "../hooks";
 
@@ -97,7 +98,7 @@ export default function SeasonsSection() {
                 >
                   {isOpen ? (
                     <>
-                      <img className="stage__photo" src={s.photo} alt="" aria-hidden="true" loading="lazy" />
+                      <img className="stage__photo" src={s.photo} alt="" aria-hidden="true" loading="lazy" {...imgSize(s.photo)} />
                       <span className="stage__veil" aria-hidden="true" />
                     </>
                   ) : null}

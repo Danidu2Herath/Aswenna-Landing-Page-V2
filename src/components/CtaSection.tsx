@@ -1,6 +1,7 @@
 import Icon from "./Icon";
 import Reveal from "./Reveal";
 import { cta, site } from "../data/content";
+import { imgSize } from "../data/imageSizes";
 import { useI18n } from "../i18n";
 
 export default function CtaSection() {
@@ -9,7 +10,7 @@ export default function CtaSection() {
   return (
     <section className="cta" id="cta" data-dark>
       <div className="cta__panel">
-        <img className="cta__photo" src={cta.photo} alt="" aria-hidden="true" loading="lazy" />
+        <img className="cta__photo" src={cta.photo} alt="" aria-hidden="true" loading="lazy" {...imgSize(cta.photo)} />
         <div className="cta__veil" aria-hidden="true" />
         <Reveal className="container cta__inner">
           <span className="cta__eyebrow">

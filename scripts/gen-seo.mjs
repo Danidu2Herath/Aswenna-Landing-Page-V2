@@ -470,6 +470,24 @@ const jsonld = JSON.stringify({ "@context": "https://schema.org", "@graph": grap
 
 const indexPath = join(root, "index.html");
 let html = readFileSync(indexPath, "utf8");
+
+/* ------------------------------------------------- title and description */
+/* Written from content.ts so the two cannot drift from the structured data,
+   and so the lengths stay where a search result can show them whole. */
+{
+  const OPEN = "<!-- seo:head -->";
+  const CLOSE = "<!-- /seo:head -->";
+  const a = html.indexOf(OPEN);
+  const b = html.indexOf(CLOSE);
+  if (a === -1 || b === -1) throw new Error("the seo:head markers are missing from index.html");
+  const esc = (t) => t.replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;");
+  if (C.site.metaTitle.length > 65) console.warn(`seo: WARNING metaTitle is ${C.site.metaTitle.length} chars; a result shows about 60`);
+  if (C.site.metaDescription.length > 165) console.warn(`seo: WARNING metaDescription is ${C.site.metaDescription.length} chars; a result shows about 160`);
+  html = `${html.slice(0, a + OPEN.length)}
+    <title>${esc(C.site.metaTitle)}</title>
+    <meta name="description" content="${esc(C.site.metaDescription)}" />
+    ${html.slice(b)}`;
+}
 const OPEN = "<!-- seo:jsonld -->";
 const CLOSE = "<!-- /seo:jsonld -->";
 const a = html.indexOf(OPEN);
