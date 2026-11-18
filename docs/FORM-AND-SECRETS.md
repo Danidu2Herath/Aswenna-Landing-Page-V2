@@ -14,6 +14,7 @@ Read §1 to set the form up. Read §4 before you put any key anywhere.
 2. [Which service to use](#2-which-service-to-use)
 3. [Where every credential lives](#3-where-every-credential-lives)
 4. [What `VITE_` really means](#4-what-vite_-really-means)
+   - [4a. Can we encrypt the env file?](#4a-can-we-encrypt-the-env-file)
 5. [Holding a real secret: the serverless step](#5-holding-a-real-secret-the-serverless-step)
 6. [Precautions and what to do if a key leaks](#6-precautions-and-what-to-do-if-a-key-leaks)
 7. [Can anyone read our code in DevTools?](#7-can-anyone-read-our-code-in-devtools)
@@ -38,10 +39,15 @@ committed template with no real values in it.
 ### Step 2 — fill it in
 
 ```bash
-VITE_SITE_URL=https://aswenna.lk
+VITE_SITE_URL=https://aswenna.veyra.lk
 VITE_CONTACT_ENDPOINT=https://formsubmit.co/ajax/info@veyra.lk
 VITE_CONTACT_TIMEOUT_MS=15000
 ```
+
+The file has two halves. **Section 1 is public** — every `VITE_` value is
+inlined into the bundle and readable by any visitor. **Section 2 is secret** —
+no `VITE_` prefix, read only by server-side code, never shipped. The build
+refuses to run if a secret-looking name appears in the public half (§4a).
 
 | Variable | What it does |
 | --- | --- |
@@ -143,7 +149,7 @@ current production bundle:
 ```
 https://formsubmit.co/ajax/info@veyra.lk
 VITE_CONTACT_TIMEOUT_MS:`15000`
-VITE_SITE_URL:`https://aswenna.lk`
+VITE_SITE_URL:`https://aswenna.veyra.lk`
 ```
 
 Anyone can get that with View Source and about five seconds of looking.
@@ -176,6 +182,77 @@ tiers) or move to §5 and rate-limit server-side.
 
 ---
 
+## 4a. "Can we encrypt the env file?"
+
+Short answer: **you can, and for the three variables currently in it, it
+would protect nothing.**
+
+Encryption tools for env files — [dotenvx](https://dotenvx.com),
+[SOPS](https://github.com/getsops/sops), [git-crypt](https://github.com/AGWA/git-crypt)
+— encrypt the *values at rest*, so the file can be committed safely and shared
+with the team without a side channel. That is a genuine benefit.
+
+What it does **not** do is make the values private once the site is built.
+The build has to decrypt them to inline them. Follow the chain:
+
+```
+.env (encrypted)  →  build decrypts  →  value inlined into the JS  →  served to every visitor
+```
+
+The last arrow is the one that matters, and encryption happens two steps
+earlier. A `VITE_` value is published whether the file it came from was
+encrypted or not.
+
+**So encryption is worth adding when:**
+
+- you want to commit the env file so the team shares one source
+- you have **Section 2** secrets (no `VITE_` prefix), which never reach the
+  browser and so stay genuinely secret
+- you want an audit trail of config changes in git
+
+**It is not worth adding to hide a `VITE_` value.** That value is public by
+construction, and treating it as hidden is worse than knowing it is not.
+
+If you want it set up, dotenvx is the smallest step:
+
+```bash
+npm install --save-dev @dotenvx/dotenvx
+npx dotenvx encrypt            # rewrites .env with encrypted values + a public key
+```
+
+It writes a `DOTENV_PRIVATE_KEY` that must **not** be committed — it goes in
+the host's secret store. The build becomes `dotenvx run -- npm run build`.
+Note you would then commit `.env` itself and keep ignoring `.env.keys`.
+
+### The guard that actually helps
+
+`npm run build` runs `scripts/check-env.mjs` before and after the build. It
+refuses to build if a `VITE_` name looks like a secret — `SECRET`, `PASSWORD`,
+`TOKEN`, `PRIVATE`, `API_KEY`, `SMTP`, `STRIPE`, `AWS_` and others — and it
+scans the built bundle for well-known key shapes (`sk_live_`, `ghp_`, `AKIA`,
+`AIza`, PEM blocks, Slack tokens).
+
+Demonstrated: adding `VITE_SMTP_PASSWORD` and `VITE_STRIPE_SECRET_KEY` to
+`.env` stops the build with exit code 1 and names both.
+
+```
+  BUILD STOPPED — a secret would be published.
+
+    VITE_SMTP_PASSWORD
+      in .env
+    VITE_STRIPE_SECRET_KEY
+      in .env
+```
+
+This is the protection that matters, because the realistic failure is not
+someone stealing your `.env` — it is someone adding a key to it with a
+`VITE_` prefix on a Friday afternoon and shipping it.
+
+If a name is genuinely public, add it to `ALLOWED` in that script with a
+comment saying why.
+
+---
+
 ## 5. Holding a real secret: the serverless step
 
 The moment you need a credential the public must not have — sending mail from
@@ -195,7 +272,7 @@ Create `functions/api/contact.js`:
 export async function onRequestPost({ request, env }) {
   const origin = request.headers.get("origin") ?? "";
   // Only your own site may post here.
-  if (!origin.endsWith("aswenna.lk")) {
+  if (!origin.endsWith("aswenna.veyra.lk")) {
     return new Response("Forbidden", { status: 403 });
   }
 
@@ -417,6 +494,7 @@ effort not spent on the three that are.
 - [ ] No `.map` file is served — `find dist -name "*.map"` is empty
 - [ ] Security headers are set on the host, CSP tested in report-only first
 - [ ] GitHub secret scanning and push protection are on
+- [ ] `npm run build` passes its env check (it runs automatically, before and after the build)
 - [ ] Nothing secret is in a `VITE_` variable — if it is, it is already public, so rotate it
 
 ---

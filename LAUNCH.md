@@ -11,7 +11,7 @@ These four things will embarrass you if they ship as they are.
 
 | | What | Where |
 | --- | --- | --- |
-| ☐ | **Set the real domain** in `.env` and rebuild. Every canonical, Open Graph and sitemap URL comes from it; right now it says `https://aswenna.lk`. | `.env` |
+| ☐ | **Set the real domain** in `.env` and rebuild. Every canonical, Open Graph and sitemap URL comes from it; right now it says `https://aswenna.veyra.lk`. | `.env` |
 | ☐ | **Activate the contact form.** Submit it once on the live site and click the confirmation email FormSubmit sends to info@veyra.lk. Until then every enquiry fails. | see README |
 | ☐ | **Replace the Veyra logo.** It is a placeholder shape. | `public/images/logos/veyra-placeholder.svg` |
 | ☐ | **Have a native speaker read the Sinhala and Tamil.** Only interface chrome is translated, and nobody on this side can see an error in it. | `src/i18n/si.ts`, `ta.ts` |

@@ -23,24 +23,24 @@ something that can be bought or used today.
 
 ## Full content
 
-- [Aswenna in full, as Markdown](https://aswenna.lk/llms-full.txt): every section of
+- [Aswenna in full, as Markdown](https://aswenna.veyra.lk/llms-full.txt): every section of
   the page in plain text, generated from the same source the page renders.
 
 ## Sections
 
-- [Why Aswenna](https://aswenna.lk/#why)
-- [How it works](https://aswenna.lk/#engine)
-- [Features](https://aswenna.lk/#features)
-- [Hardware](https://aswenna.lk/#install)
-- [Pricing](https://aswenna.lk/#pricing)
-- [FAQ](https://aswenna.lk/#faq)
-- [The Aswenna platform](https://aswenna.lk/#platform)
-- [Contact](https://aswenna.lk/#contact)
+- [Why Aswenna](https://aswenna.veyra.lk/#why)
+- [How it works](https://aswenna.veyra.lk/#engine)
+- [Features](https://aswenna.veyra.lk/#features)
+- [Hardware](https://aswenna.veyra.lk/#install)
+- [Pricing](https://aswenna.veyra.lk/#pricing)
+- [FAQ](https://aswenna.veyra.lk/#faq)
+- [The Aswenna platform](https://aswenna.veyra.lk/#platform)
+- [Contact](https://aswenna.veyra.lk/#contact)
 
 ## Machine-readable
 
-- [Sitemap](https://aswenna.lk/sitemap.xml)
-- [Crawl policy](https://aswenna.lk/robots.txt): AI crawlers are named and allowed
+- [Sitemap](https://aswenna.veyra.lk/sitemap.xml)
+- [Crawl policy](https://aswenna.veyra.lk/robots.txt): AI crawlers are named and allowed
 - Structured data: JSON-LD in the page head — Organization, WebSite, WebPage,
   ResearchProject, FAQPage
 
