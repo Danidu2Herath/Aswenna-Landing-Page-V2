@@ -1,13 +1,37 @@
 node_modules
 dist
+dist-ssr
 *.tsbuildinfo
 scripts/.og.html
 .DS_Store
 
-# Local environment. .env.example is the committed template and must stay
-# tracked, so it is excluded from the rule above it.
+# ---------------------------------------------------------------------------
+# Secrets. Every .env variant is ignored, whatever the suffix, because the
+# gap that bites is the one nobody listed: .env.production and .env.staging
+# are not covered by a ".env.local" rule.
+# .env.example is the committed template, so it is excepted below.
+# ---------------------------------------------------------------------------
 .env
-.env.local
-.env.*.local
+.env.*
 !.env.example
-dist-ssr
+
+# Credential files that land in a project by accident
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_rsa.*
+id_ed25519
+id_ed25519.*
+secrets.json
+credentials.json
+service-account*.json
+.npmrc
+.netrc
+gha-creds-*.json
+
+# Editor and OS noise that can carry local paths or tokens
+.idea/
+.vscode/
+*.swp
