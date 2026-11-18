@@ -145,6 +145,11 @@ JavaScript the content is simply visible; the animation is the opt-in.
 
 ## Configuration — the `.env` file
 
+> **Full guide:** [`docs/FORM-AND-SECRETS.md`](docs/FORM-AND-SECRETS.md) —
+> setting the form up end to end, where every credential belongs, how to move
+> a real secret to a serverless function, and an honest answer on what can
+> and cannot be hidden from browser DevTools.
+
 Everything that differs between your machine, a preview deploy and production
 lives in `.env`. It is gitignored. `.env.example` is the committed template.
 
