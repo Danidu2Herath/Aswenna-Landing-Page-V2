@@ -89,4 +89,4 @@ Allow: /
 User-agent: Timpibot
 Allow: /
 
-Sitemap: https://aswenna.lk/sitemap.xml
+Sitemap: https://aswenna.veyra.lk/sitemap.xml

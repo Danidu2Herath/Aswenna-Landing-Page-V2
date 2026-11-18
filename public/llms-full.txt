@@ -10,7 +10,7 @@
 | Region | Sri Lanka |
 | Languages | English, Sinhala (si), Tamil (ta) |
 | Contact | info@veyra.lk · +94 78 259 6361 · +94 77 786 2375 |
-| Canonical URL | https://aswenna.lk/ |
+| Canonical URL | https://aswenna.veyra.lk/ |
 | Content last updated | 2026-11-18 |
 
 ## Status — read this first
@@ -294,7 +294,7 @@ Tell us about yourself and your land. If you are part of a farmer organization i
 
 - Email: info@veyra.lk
 - Phone: +94 78 259 6361, +94 77 786 2375
-- Enquiry form: https://aswenna.lk/#contact
+- Enquiry form: https://aswenna.veyra.lk/#contact
 
 We usually reply within a few working days.
 
