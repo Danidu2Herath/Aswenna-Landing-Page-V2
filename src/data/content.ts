@@ -21,7 +21,7 @@ export const site = {
      rather than to be complete - `description` above stays long because the
      structured data and the manifest have no such limit. Both are written
      into index.html by scripts/gen-seo.mjs, so there is one source. */
-  metaTitle: "Agriculture Intelligence Platform",
+  metaTitle: "Aswenna | Agriculture Intelligence Platform",
   metaDescription:
     "Soil intelligence, hyperlocal weather, crop recommendations and market data for Sri Lankan smallholdings. In Sinhala, Tamil and English.",
 };
