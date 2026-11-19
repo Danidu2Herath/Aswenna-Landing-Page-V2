@@ -10,8 +10,8 @@ import { prefersReducedMotion } from "../lib/util";
  * then the links, then the address written large enough to actually use, then
  * the name and the small print.
  *
- * No paragraph restating what Aswenna is — the page above has just spent
- * twenty sections on that — and no photograph behind the wordmark; the name
+ * No paragraph restating what Aswenna is - the page above has just spent
+ * twenty sections on that - and no photograph behind the wordmark; the name
  * is the picture.
  */
 export default function Footer() {

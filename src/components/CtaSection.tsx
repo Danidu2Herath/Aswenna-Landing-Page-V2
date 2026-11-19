@@ -29,7 +29,7 @@ export default function CtaSection() {
             </a>
           </div>
           <p className="cta__brand">
-            <strong>{site.name.toUpperCase()}</strong> — <span>{t("site.promise", site.promise)}</span>
+            <strong>{site.name.toUpperCase()}</strong> - <span>{t("site.promise", site.promise)}</span>
           </p>
         </Reveal>
       </div>

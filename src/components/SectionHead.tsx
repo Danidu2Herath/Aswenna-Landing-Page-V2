@@ -8,7 +8,7 @@ type Props = {
   sub?: string;
   center?: boolean;
   display?: boolean;
-  /** Content path, e.g. "problems" — leaves are looked up under it. */
+  /** Content path, e.g. "problems" - leaves are looked up under it. */
   keyBase?: string;
 };
 

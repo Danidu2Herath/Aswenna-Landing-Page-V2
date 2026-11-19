@@ -7,7 +7,7 @@ import { Bars, Sparkline } from "./charts";
 /* ==========================================================================
    The screens of the proposed Aswenna application.
 
-   Every value shown is illustrative — see the note at the top of the app
+   Every value shown is illustrative - see the note at the top of the app
    section of js/content.ts. The Estimated / Measured distinction that governs
    the rest of the site is kept inside the mockups too.
    ========================================================================== */

@@ -5,7 +5,7 @@ except where it says so.
 
 ---
 
-## 1. Before you publish — the blocking list
+## 1. Before you publish - the blocking list
 
 These four things will embarrass you if they ship as they are.
 
@@ -29,11 +29,11 @@ Then, worth ten minutes each:
 `npm run build` makes a `dist/` folder of static files. In rough order of
 suitability:
 
-1. **Cloudflare Pages** — free, a global edge network with a point of presence
+1. **Cloudflare Pages** - free, a global edge network with a point of presence
    in Colombo, free SSL, deploys on `git push`. Fastest option for Sri Lankan
    visitors.
-2. **Netlify** or **Vercel** — same idea, equally easy, marginally further away.
-3. **Your own nginx** — only if you already run one. You gain nothing and take
+2. **Netlify** or **Vercel** - same idea, equally easy, marginally further away.
+3. **Your own nginx** - only if you already run one. You gain nothing and take
    on TLS renewal.
 
 Settings for any of them: build command `npm run build`, output directory
@@ -45,7 +45,7 @@ production can differ.
 - Buy the domain through a registrar that supports **DNSSEC** and gives you
   free DNS hosting. `.lk` domains go through LK Domain Registry.
 - Point the apex and `www` at the host, and make one of them redirect to the
-  other. Pick one and never change it — a site that answers on both dilutes
+  other. Pick one and never change it - a site that answers on both dilutes
   every link it ever earns.
 - Make sure **info@veyra.lk actually receives mail and someone reads it daily**
   before you put it on a public page. An unanswered enquiry is worse than no
@@ -57,10 +57,10 @@ production can differ.
 
 You cannot improve what you did not measure from day one.
 
-- **Google Search Console** — verify by DNS TXT, submit
+- **Google Search Console** - verify by DNS TXT, submit
   `https://your-domain/sitemap.xml`. This is the only tool that tells you what
   people actually search for before they land on you. Check it weekly.
-- **Analytics** — use **Plausible** or **Umami** rather than Google Analytics:
+- **Analytics** - use **Plausible** or **Umami** rather than Google Analytics:
   a few kilobytes instead of ~45 KB, no cookie banner needed in most
   jurisdictions, and a dashboard that someone non-technical will actually open.
 - **Set one goal**: contact-form submissions. Everything else is vanity.
@@ -84,9 +84,9 @@ your own origin with `font-display: swap`. ~1 hour.
 
 **4. Write three real pages.** A landing page alone has nothing for Google to
 rank on anything except your own name. Three articles that answer what farmers
-and officers actually type — *"what is the right soil moisture for paddy in the
+and officers actually type - *"what is the right soil moisture for paddy in the
 Maha season"*, *"how LoRaWAN works where there is no mobile signal"*, *"how to
-read a soil test report"* — will out-perform any amount of tuning on this one
+read a soil test report"* - will out-perform any amount of tuning on this one
 page. Write them in Sinhala as well as English. This is the highest-value
 non-technical work available to you.
 
@@ -97,7 +97,7 @@ app screens, with Sinhala voice-over. It is what you will post everywhere else.
 forward PDFs; they do not forward URLs. Make it the same content, download it
 from the site, and track the downloads.
 
-## 6. Getting the first users — Sri Lanka specifically
+## 6. Getting the first users - Sri Lanka specifically
 
 Search traffic will take months. These will not.
 
@@ -105,7 +105,7 @@ Search traffic will take months. These will not.
   and agriculture instructors in each divisional secretariat already talk to the
   farmers you want. One officer who likes this reaches hundreds of people you
   cannot. The extension-officer dashboard in the platform section exists for
-  exactly this conversation — lead with it.
+  exactly this conversation - lead with it.
 - **Farmer organisations (govi sanvidhana) and producer co-operatives.** The
   shared village station in the pricing tiers is designed around their
   economics, not an individual smallholder's. That is the pitch.
@@ -115,7 +115,7 @@ Search traffic will take months. These will not.
   credibility.
 - **WhatsApp, not Twitter.** Sri Lankan agricultural communities organise in
   WhatsApp and Viber groups. Make the link and the PDF easy to forward, and
-  make the OG card legible at thumbnail size — it already is.
+  make the OG card legible at thumbnail size - it already is.
 - **Facebook, not LinkedIn.** For this audience, Facebook groups are where the
   conversation happens. Post the demo video there.
 - **Agritech and climate-adaptation funding calls.** ADB, FAO, World Bank
@@ -134,7 +134,7 @@ them, and that network is the only distribution channel that matters here.
 2. Analytics: visitors, which sections they reach, where they leave.
 3. Contact form: submissions, and **how long you took to reply**.
 
-If submissions are flat but traffic is rising, the page is not converting —
+If submissions are flat but traffic is rising, the page is not converting -
 change the first screen and the call to action, not the colours. If traffic is
 flat, you have a distribution problem, not a website problem, and section 6 is
 where to spend the week.

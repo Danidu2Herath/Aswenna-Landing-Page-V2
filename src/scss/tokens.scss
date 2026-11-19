@@ -1,10 +1,10 @@
 /* ==========================================================================
-   ASWENNA — DESIGN TOKENS
+   ASWENNA - DESIGN TOKENS
    --------------------------------------------------------------------------
    Every colour, size and timing the site uses lives here as a CSS custom
    property. Change a value here and it updates everywhere, at runtime, with
    no rebuild of anything but this stylesheet.
-   Palette: Apple-style — white / #F5F5F7 canvas, #1D1D1F ink, system blue
+   Palette: Apple-style - white / #F5F5F7 canvas, #1D1D1F ink, system blue
    for actions, system green for "live / growth" highlights.
    To bring back the forest-green brand, point --brand-primary and the
    --primary-* ramp at greens again.
@@ -74,7 +74,7 @@
   /* The page is a light field tint rather than white, so the cards and bands
      sit ON it instead of dissolving into it.
 
-     The whole surface set is warmed towards a lower colour temperature — the
+     The whole surface set is warmed towards a lower colour temperature - the
      effect True Tone has on a MacBook display. The greens stay, the white
      point moves: #FFFFFF cards become #FFFCF4, and the page loses its blue
      cast. Measured after the shift: ink 15.40:1 on the page, muted grey
@@ -140,7 +140,7 @@
   --color-card-shadow:      0 1px 2px rgba(16, 38, 22, 0.04);
   --color-card-shadow-lift: 0 10px 28px rgba(16, 38, 22, 0.10);
 
-  /* 3b. BACKGROUND — the sensor mesh behind the page, in the brand green.
+  /* 3b. BACKGROUND - the sensor mesh behind the page, in the brand green.
      The alphas are what make it visible: the previous theme set every one
      of them to 0, so the canvas ran a loop and painted nothing. Keep them
      low but non-zero; this layer should read as texture, never as content. */
@@ -167,14 +167,14 @@
   --texture-size: 26px;
   --texture-dot:  rgba(26, 106, 46, 0.09);
 
-  /* 4. TYPOGRAPHY — SF Pro on Apple devices, Inter elsewhere. */
+  /* 4. TYPOGRAPHY - SF Pro on Apple devices, Inter elsewhere. */
   --font-heading: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Helvetica Neue", "Noto Sans Sinhala", "Noto Sans Tamil", Arial, sans-serif;
   --font-body:    -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Helvetica Neue", "Noto Sans Sinhala", "Noto Sans Tamil", Arial, sans-serif;
   --font-mono:    ui-monospace, "SF Mono", Menlo, monospace;
 
   --text-xs:   0.75rem;
   --text-sm:   0.875rem;
-  --text-base: 1.0625rem;   /* 17px — Apple body */
+  --text-base: 1.0625rem;   /* 17px - Apple body */
   --text-lg:   1.1875rem;   /* 19px */
   --text-xl:   1.3125rem;   /* 21px */
   --text-2xl:  1.5rem;

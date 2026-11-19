@@ -172,7 +172,7 @@
 
 /* Scoped to the list. As `.mobile-nav a` it also hit the Get started button
    and, being more specific than .btn--primary, painted its label grey on
-   blue — 1.35:1, which is why the button looked empty. */
+   blue - 1.35:1, which is why the button looked empty. */
 .mobile-nav ul a {
   display: flex;
   align-items: center;
@@ -299,7 +299,7 @@ html[lang="ta"] .header__nav a {
 }
 
 /* At the very top of the page the bar sits over the hero photograph:
-   no material at all, just white type — like the reference. */
+   no material at all, just white type - like the reference. */
 .header.header--over-dark:not(.header--stuck) {
   background: transparent;
   border-bottom-color: transparent;

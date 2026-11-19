@@ -1,7 +1,7 @@
 # The contact form, credentials, and what can actually be hidden
 
 Everything about the enquiry form: how to point it at an inbox, where each
-credential belongs, and — the part most guides get wrong — what a visitor can
+credential belongs, and - the part most guides get wrong - what a visitor can
 read out of the site no matter what you do.
 
 Read §1 to set the form up. Read §4 before you put any key anywhere.
@@ -27,7 +27,7 @@ Read §1 to set the form up. Read §4 before you put any key anywhere.
 The site is static. There is no server of ours, so the form hands the
 submission to a relay service that emails it on.
 
-### Step 1 — create your env file
+### Step 1 - create your env file
 
 ```bash
 cp .env.example .env
@@ -36,7 +36,7 @@ cp .env.example .env
 `.env` is gitignored and must never be committed. `.env.example` is the
 committed template with no real values in it.
 
-### Step 2 — fill it in
+### Step 2 - fill it in
 
 ```bash
 VITE_SITE_URL=https://aswenna.veyra.lk
@@ -44,8 +44,8 @@ VITE_CONTACT_ENDPOINT=https://formsubmit.co/ajax/info@veyra.lk
 VITE_CONTACT_TIMEOUT_MS=15000
 ```
 
-The file has two halves. **Section 1 is public** — every `VITE_` value is
-inlined into the bundle and readable by any visitor. **Section 2 is secret** —
+The file has two halves. **Section 1 is public** - every `VITE_` value is
+inlined into the bundle and readable by any visitor. **Section 2 is secret** -
 no `VITE_` prefix, read only by server-side code, never shipped. The build
 refuses to run if a secret-looking name appears in the public half (§4a).
 
@@ -55,33 +55,33 @@ refuses to run if a secret-looking name appears in the public half (§4a).
 | `VITE_CONTACT_ENDPOINT` | where the form POSTs. Must accept a JSON body and answer 2xx. |
 | `VITE_CONTACT_TIMEOUT_MS` | how long to wait before showing the error panel. |
 
-### Step 3 — activate the inbox (required, easy to forget)
+### Step 3 - activate the inbox (required, easy to forget)
 
 FormSubmit needs no API key, but it will not send anything until the address
 is confirmed **once**:
 
 1. Deploy the site.
 2. Submit the form yourself on the live site.
-3. FormSubmit emails `info@veyra.lk` — click the activation link in it.
+3. FormSubmit emails `info@veyra.lk` - click the activation link in it.
 
 **Until that is done every submission fails** and visitors see the error
 panel. It cannot be done from localhost; FormSubmit needs the live origin.
 
-### Step 4 — set the same variables on your host
+### Step 4 - set the same variables on your host
 
 Netlify, Vercel, Cloudflare Pages and GitHub Actions each have a place to set
 build environment variables. Set them there and you do not need a `.env` file
-in the build image at all — a host variable wins over the file.
+in the build image at all - a host variable wins over the file.
 
-- **Netlify** — Site configuration → Environment variables
-- **Vercel** — Project → Settings → Environment Variables
-- **Cloudflare Pages** — Settings → Environment variables → Production
-- **GitHub Actions** — Settings → Secrets and variables → Actions → Variables
+- **Netlify** - Site configuration → Environment variables
+- **Vercel** - Project → Settings → Environment Variables
+- **Cloudflare Pages** - Settings → Environment variables → Production
+- **GitHub Actions** - Settings → Secrets and variables → Actions → Variables
 
 The build fails loudly if `VITE_SITE_URL` is missing, naming the variable and
 the command that fixes it, so a misconfigured deploy cannot ship silently.
 
-### Step 5 — verify
+### Step 5 - verify
 
 ```bash
 npm run build && npm run preview
@@ -99,12 +99,12 @@ Changing service is a one-line change to `VITE_CONTACT_ENDPOINT`. No code.
 | Service | Key needed? | Notes |
 | --- | --- | --- |
 | **FormSubmit** (current) | No | Free, no account. The inbox address is part of the URL, so it is public. One-time activation. |
-| **Formspree** | No — form ID only | `https://formspree.io/f/YOUR_FORM_ID`. The ID is public but reveals no address. Free tier is limited per month. |
-| **Web3Forms** | Yes — an access key | `https://api.web3forms.com/submit`, key sent in the body. The key is public too (see §4) but reveals no address and can be rotated. |
+| **Formspree** | No - form ID only | `https://formspree.io/f/YOUR_FORM_ID`. The ID is public but reveals no address. Free tier is limited per month. |
+| **Web3Forms** | Yes - an access key | `https://api.web3forms.com/submit`, key sent in the body. The key is public too (see §4) but reveals no address and can be rotated. |
 | **Your own endpoint** | Your choice | §5. The only option that can hold a real secret. |
 
 **If you do not want `info@veyra.lk` visible in the page source, FormSubmit is
-the wrong choice** — the address is literally in the URL. Formspree or
+the wrong choice** - the address is literally in the URL. Formspree or
 Web3Forms hide the destination behind an opaque ID.
 
 ---
@@ -115,10 +115,10 @@ The rule: **nothing secret is ever typed into a file that git tracks.**
 
 | What | Where it goes | Committed? |
 | --- | --- | --- |
-| `VITE_*` values for local work | `.env` | No — gitignored |
+| `VITE_*` values for local work | `.env` | No - gitignored |
 | `VITE_*` values for production | the host's environment variables UI | No |
-| The list of variable names and what they do | `.env.example` | Yes — no real values |
-| A genuine secret (SMTP password, API key with write access, database URL) | the host's **secret** store, read by a server function | No — and never in a `VITE_` variable |
+| The list of variable names and what they do | `.env.example` | Yes - no real values |
+| A genuine secret (SMTP password, API key with write access, database URL) | the host's **secret** store, read by a server function | No - and never in a `VITE_` variable |
 
 `.gitignore` covers every `.env` variant (`.env`, `.env.production`,
 `.env.staging`, …) rather than a hand-listed few, plus `*.pem`, `*.key`,
@@ -155,7 +155,7 @@ VITE_SITE_URL:`https://aswenna.veyra.lk`
 Anyone can get that with View Source and about five seconds of looking.
 
 **That is fine for what is in there now.** A relay URL and a public contact
-address are meant to be public — the inbox is on the website. What protects
+address are meant to be public - the inbox is on the website. What protects
 that mailbox is the relay's spam handling and the honeypot, not the URL being
 secret.
 
@@ -187,9 +187,9 @@ tiers) or move to §5 and rate-limit server-side.
 Short answer: **you can, and for the three variables currently in it, it
 would protect nothing.**
 
-Encryption tools for env files — [dotenvx](https://dotenvx.com),
+Encryption tools for env files - [dotenvx](https://dotenvx.com),
 [SOPS](https://github.com/getsops/sops), [git-crypt](https://github.com/AGWA/git-crypt)
-— encrypt the *values at rest*, so the file can be committed safely and shared
+- encrypt the *values at rest*, so the file can be committed safely and shared
 with the team without a side channel. That is a genuine benefit.
 
 What it does **not** do is make the values private once the site is built.
@@ -220,15 +220,15 @@ npm install --save-dev @dotenvx/dotenvx
 npx dotenvx encrypt            # rewrites .env with encrypted values + a public key
 ```
 
-It writes a `DOTENV_PRIVATE_KEY` that must **not** be committed — it goes in
+It writes a `DOTENV_PRIVATE_KEY` that must **not** be committed - it goes in
 the host's secret store. The build becomes `dotenvx run -- npm run build`.
 Note you would then commit `.env` itself and keep ignoring `.env.keys`.
 
 ### The guard that actually helps
 
 `npm run build` runs `scripts/check-env.mjs` before and after the build. It
-refuses to build if a `VITE_` name looks like a secret — `SECRET`, `PASSWORD`,
-`TOKEN`, `PRIVATE`, `API_KEY`, `SMTP`, `STRIPE`, `AWS_` and others — and it
+refuses to build if a `VITE_` name looks like a secret - `SECRET`, `PASSWORD`,
+`TOKEN`, `PRIVATE`, `API_KEY`, `SMTP`, `STRIPE`, `AWS_` and others - and it
 scans the built bundle for well-known key shapes (`sk_live_`, `ghp_`, `AKIA`,
 `AIza`, PEM blocks, Slack tokens).
 
@@ -236,7 +236,7 @@ Demonstrated: adding `VITE_SMTP_PASSWORD` and `VITE_STRIPE_SECRET_KEY` to
 `.env` stops the build with exit code 1 and names both.
 
 ```
-  BUILD STOPPED — a secret would be published.
+  BUILD STOPPED - a secret would be published.
 
     VITE_SMTP_PASSWORD
       in .env
@@ -245,7 +245,7 @@ Demonstrated: adding `VITE_SMTP_PASSWORD` and `VITE_STRIPE_SECRET_KEY` to
 ```
 
 This is the protection that matters, because the realistic failure is not
-someone stealing your `.env` — it is someone adding a key to it with a
+someone stealing your `.env` - it is someone adding a key to it with a
 `VITE_` prefix on a Friday afternoon and shipping it.
 
 If a name is genuinely public, add it to `ALLOWED` in that script with a
@@ -255,8 +255,8 @@ comment saying why.
 
 ## 5. Holding a real secret: the serverless step
 
-The moment you need a credential the public must not have — sending mail from
-your own SMTP, writing to a database, calling a paid API — the static site
+The moment you need a credential the public must not have - sending mail from
+your own SMTP, writing to a database, calling a paid API - the static site
 cannot do it. You need code that runs on a server, where the key lives in the
 server's environment and never reaches the browser.
 
@@ -288,7 +288,7 @@ export async function onRequestPost({ request, env }) {
     },
     body: JSON.stringify({
       to: env.CONTACT_INBOX,
-      subject: `Aswenna enquiry — ${data.firstName ?? ""} ${data.lastName ?? ""}`.trim(),
+      subject: `Aswenna enquiry - ${data.firstName ?? ""} ${data.lastName ?? ""}`.trim(),
       text: JSON.stringify(data, null, 2),
     }),
   });
@@ -312,7 +312,7 @@ Then point the form at your own endpoint:
 VITE_CONTACT_ENDPOINT=/api/contact
 ```
 
-That value is public — and it does not matter, because it is just a path on
+That value is public - and it does not matter, because it is just a path on
 your own site.
 
 ### Netlify
@@ -355,7 +355,7 @@ Set `MAIL_API_KEY` in Netlify's environment variables and mark it secret.
 
 - Never paste a secret into chat, an issue, a commit message or a screenshot.
 - One key per environment. A leaked staging key should not touch production.
-- Give every key the narrowest scope the job needs — send-only, never admin.
+- Give every key the narrowest scope the job needs - send-only, never admin.
 - Rotate on a schedule, and whenever someone leaves the project.
 - Turn on GitHub **secret scanning** and **push protection** (Settings →
   Code security). It blocks a push that contains a recognised key format.
@@ -371,7 +371,7 @@ git diff --staged     # read what you are actually committing
 
 1. **Rotate it first.** Revoke the old one at the provider, immediately.
    Assume it is compromised the second it touches a remote.
-2. Only then clean history — `git filter-repo`, or BFG Repo-Cleaner.
+2. Only then clean history - `git filter-repo`, or BFG Repo-Cleaner.
 3. Force-push and have every collaborator re-clone.
 
 Deleting the file in a new commit **does not help**. The value stays in the
@@ -407,16 +407,16 @@ answer, and it is the one real control you have:
 1. **Secrets live server-side** (§5). A key the browser never receives cannot
    be read from the browser.
 2. **Never ship source maps to production.** They turn a minified bundle back
-   into your original, commented source. This project does not generate them —
+   into your original, commented source. This project does not generate them -
    verified: there are no `.map` files in `dist/`. Keep it that way, and if
    you ever need them for error tracking, upload them to the tracker privately
    rather than serving them.
 3. **Enforce rules on the server, not the client.** Client-side validation is
-   for helpfulness. Any limit that matters — rate limits, authorisation, who
-   may see what — must be checked again by something the user does not
+   for helpfulness. Any limit that matters - rate limits, authorisation, who
+   may see what - must be checked again by something the user does not
    control.
 4. **Keep the repository private** if the source is commercially sensitive.
-   That protects your *history, comments and unreleased work* — not the
+   That protects your *history, comments and unreleased work* - not the
    shipped bundle, which is public the moment you deploy.
 5. **Add a Content-Security-Policy header.** This does not hide your code, but
    it is the highest-value security header you can add: it stops injected
@@ -440,12 +440,12 @@ answer, and it is the one real control you have:
    the reveal animations, the feature rows, the mesh and all 20 images still
    work.
 
-   **About that hash.** `index.html` carries one inline script — the single
+   **About that hash.** `index.html` carries one inline script - the single
    line that adds the `js` class before the first paint. A policy without the
    hash blocks it, and because the scroll-reveal animations are scoped to
    `.js`, blocking it silently kills every animation on the page. The first
    draft of this policy did exactly that; it was caught by testing rather
-   than by reading. The hash is the right fix, not `'unsafe-inline'` — adding
+   than by reading. The hash is the right fix, not `'unsafe-inline'` - adding
    `'unsafe-inline'` to `script-src` would defeat most of the point of having
    a CSP at all.
 
@@ -463,7 +463,7 @@ answer, and it is the one real control you have:
    Set it as a header on your host (`_headers` on Netlify and Cloudflare
    Pages, `vercel.json` on Vercel). Roll it out with
    `Content-Security-Policy-Report-Only` first and watch the console for a
-   day — an over-tight policy breaks things quietly.
+   day - an over-tight policy breaks things quietly.
 
    Add these alongside it:
 
@@ -486,16 +486,16 @@ effort not spent on the three that are.
 
 ## 8. Checklist before launch
 
-- [ ] `.env` exists locally and is **not** tracked — `git check-ignore -v .env` prints a rule
+- [ ] `.env` exists locally and is **not** tracked - `git check-ignore -v .env` prints a rule
 - [ ] The same variables are set in the host's environment UI
 - [ ] `VITE_SITE_URL` is the real domain, and the build was run after setting it
 - [ ] The FormSubmit address has been activated by clicking the link in its email
 - [ ] A test enquiry has arrived in the real inbox from the live site
-- [ ] No `.map` file is served — `find dist -name "*.map"` is empty
+- [ ] No `.map` file is served - `find dist -name "*.map"` is empty
 - [ ] Security headers are set on the host, CSP tested in report-only first
 - [ ] GitHub secret scanning and push protection are on
 - [ ] `npm run build` passes its env check (it runs automatically, before and after the build)
-- [ ] Nothing secret is in a `VITE_` variable — if it is, it is already public, so rotate it
+- [ ] Nothing secret is in a `VITE_` variable - if it is, it is already public, so rotate it
 
 ---
 

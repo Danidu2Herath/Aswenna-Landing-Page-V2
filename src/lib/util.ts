@@ -1,4 +1,4 @@
-/** Shared helpers — the vanilla build's util.js, typed. */
+/** Shared helpers - the vanilla build's util.js, typed. */
 
 export const clamp01 = (v: number) => (v < 0 ? 0 : v > 1 ? 1 : v);
 export const clamp = (v: number, lo: number, hi: number) => (v < lo ? lo : v > hi ? hi : v);
@@ -6,7 +6,7 @@ export const clamp = (v: number, lo: number, hi: number) => (v < lo ? lo : v > h
 const motionQuery =
   typeof window !== "undefined" ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
 
-/** Live reduced-motion preference — read at call time, never cached. */
+/** Live reduced-motion preference - read at call time, never cached. */
 export const prefersReducedMotion = () => Boolean(motionQuery?.matches);
 
 /** True on a device whose primary pointer is coarse, i.e. a touch screen. */

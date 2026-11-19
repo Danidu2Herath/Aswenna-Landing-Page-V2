@@ -9,8 +9,8 @@ import { useI18n } from "../i18n";
  * the screen itself on the right.
  *
  * There is deliberately no Maha/Yala ribbon here. The calendar is not a
- * two-season feature — it re-reads the plot whenever conditions change, in
- * whatever season the farmer is planting — and banding the panel by season
+ * two-season feature - it re-reads the plot whenever conditions change, in
+ * whatever season the farmer is planting - and banding the panel by season
  * said otherwise.
  */
 const A = journey.adapts;
@@ -42,8 +42,7 @@ export default function CalendarYear() {
         <Phone
           tab={tab}
           size="sm"
-          concept={false}
-          label="Cultivation calendar — interface design concept for the Aswenna application"
+          label="Cultivation calendar - interface design concept for the Aswenna application"
         >
           <Screen />
         </Phone>

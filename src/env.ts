@@ -12,7 +12,7 @@
    JavaScript bundle that is served to every visitor. Anyone can read them
    with View Source. A VITE_ variable is configuration, not a secret.
 
-   That is fine for the values below — a form-relay URL and a public inbox
+   That is fine for the values below - a form-relay URL and a public inbox
    address are meant to be public, and the relay is what protects the mailbox,
    not obscurity. Anything that must stay private (an SMTP password, a
    database URL, a Stripe secret key) cannot live in a static site at all: it
@@ -29,7 +29,7 @@ function read(name: string, fallback: string): string {
   // say so loudly in development and quietly use the fallback in production
   // rather than shipping a page with a broken form.
   if (import.meta.env.DEV) {
-    console.warn(`[env] ${name} is not set in .env — falling back to "${fallback}".`);
+    console.warn(`[env] ${name} is not set in .env - falling back to "${fallback}".`);
   }
   return fallback;
 }

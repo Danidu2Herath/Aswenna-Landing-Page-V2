@@ -2,7 +2,7 @@ import { useId } from "react";
 import { clamp01 } from "../lib/util";
 
 /**
- * The crop, drawn from a single 0..1 progress value — scrubbed by scroll on
+ * The crop, drawn from a single 0..1 progress value - scrubbed by scroll on
  * desktop, frozen per card on mobile.
  *
  * Everything that grows is a stroked path with pathLength="1", so a dash

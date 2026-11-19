@@ -1,5 +1,5 @@
-# Aswenna — Smarter fields, greater future
-# An IoT-enabled precision farming platform for Sri Lankan agriculture — soil intelligence, hyperlocal weather, AI recommendations, smart irrigation, crop-health monitoring and market intelligence.
+# Aswenna - Smarter fields, greater future
+# An IoT-enabled precision farming platform for Sri Lankan agriculture - soil intelligence, hyperlocal weather, AI recommendations, smart irrigation, crop-health monitoring and market intelligence.
 
 User-agent: *
 Allow: /
@@ -9,31 +9,31 @@ Allow: /
 Disallow: /*.json$
 
 # ---------------------------------------------------------------------------
-# AI and answer-engine crawlers — explicitly allowed.
+# AI and answer-engine crawlers - explicitly allowed.
 # A crawler that cannot read this page will describe the project from
 # somewhere less accurate. /llms.txt is the short version written for them.
 # ---------------------------------------------------------------------------
-# OpenAI — ChatGPT browsing and training
+# OpenAI - ChatGPT browsing and training
 User-agent: GPTBot
 Allow: /
 
-# OpenAI — ChatGPT search index
+# OpenAI - ChatGPT search index
 User-agent: OAI-SearchBot
 Allow: /
 
-# OpenAI — fetches a page a user asked about
+# OpenAI - fetches a page a user asked about
 User-agent: ChatGPT-User
 Allow: /
 
-# Anthropic — Claude
+# Anthropic - Claude
 User-agent: ClaudeBot
 Allow: /
 
-# Anthropic — fetches a page a user asked about
+# Anthropic - fetches a page a user asked about
 User-agent: Claude-User
 Allow: /
 
-# Anthropic — Claude search index
+# Anthropic - Claude search index
 User-agent: Claude-SearchBot
 Allow: /
 
@@ -41,11 +41,11 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-# Perplexity — fetches a page a user asked about
+# Perplexity - fetches a page a user asked about
 User-agent: Perplexity-User
 Allow: /
 
-# Google — Gemini and AI Overviews
+# Google - Gemini and AI Overviews
 User-agent: Google-Extended
 Allow: /
 

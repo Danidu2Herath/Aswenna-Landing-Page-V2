@@ -20,7 +20,7 @@ export default function AppPhone({ screen, size = "md", withCaption = true, clas
       tab={tab}
       size={size}
       className={className}
-      label={`${title} — interface design concept for the Aswenna application`}
+      label={`${title} - interface design concept for the Aswenna application`}
       caption={withCaption ? { title, text: t(`${path}.caption`, meta.caption) } : undefined}
     >
       <Screen />

@@ -1,5 +1,5 @@
 /**
- * Builds images/icons.svg — one <symbol> per icon the page uses.
+ * Builds images/icons.svg - one <symbol> per icon the page uses.
  *
  * Geometry is lifted from an installed `lucide-react` so the shapes are the
  * real thing rather than hand-redrawn. Run it only when the icon list changes:

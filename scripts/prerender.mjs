@@ -11,7 +11,7 @@
  *   vite build --ssr src/entry-server.tsx --outDir dist-ssr
  *   node scripts/prerender.mjs
  *
- * The browser still mounts the real application over this markup — it is the
+ * The browser still mounts the real application over this markup - it is the
  * first paint and the index, not a replacement for the app. Nothing here is
  * interactive until React takes over, which is why the markup is generated
  * with renderToStaticMarkup and not hydrated: a hydration mismatch on a
@@ -33,7 +33,7 @@ const body = render().replace(/^(?:<link\b[^>]*>)+/, "");
 const html = readFileSync(indexPath, "utf8");
 const MARKER = '<div id="app-root"></div>';
 if (!html.includes(MARKER)) {
-  throw new Error(`${MARKER} is missing from dist/index.html — nothing to pre-render into`);
+  throw new Error(`${MARKER} is missing from dist/index.html - nothing to pre-render into`);
 }
 
 writeFileSync(indexPath, html.replace(MARKER, `<div id="app-root">${body}</div>`));

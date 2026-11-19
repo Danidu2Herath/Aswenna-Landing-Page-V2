@@ -1,6 +1,6 @@
 /* ==========================================================================
    THE FOUR STAGES OF A SEASON
-   Rows that open one at a time — on hover where there is a pointer, on tap
+   Rows that open one at a time - on hover where there is a pointer, on tap
    where there is not. The open row carries its own photograph.
    ========================================================================== */
 .stages {
@@ -46,7 +46,7 @@
   color: #fff;
 }
 
-/* The base stylesheet colours every h1–h4, which beats the inherited white. */
+/* The base stylesheet colours every h1-h4, which beats the inherited white. */
 .stage.is-open h3,
 .stage.is-open .stage__title { color: #fff; }
 

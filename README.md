@@ -1,4 +1,4 @@
-# Aswenna — landing page
+# Aswenna - landing page
 
 Marketing site for **Aswenna**, the Agricultural Intelligence Platform.
 _Smarter fields, greater future._ A project of **Veyra Solutions**.
@@ -9,13 +9,13 @@ runtime from one file.
 
 ```bash
 npm install
-cp .env.example .env    # required — the build fails without it
+cp .env.example .env    # required - the build fails without it
 npm run dev             # http://localhost:5173
 npm run build           # -> dist/   (regenerates the SEO files first)
 npm run preview         # serve the built site
 ```
 
-`npm run build` produces a static `dist/` folder. It needs no server of its own —
+`npm run build` produces a static `dist/` folder. It needs no server of its own -
 any static host will do (Netlify, Vercel, Cloudflare Pages, GitHub Pages, or
 plain nginx).
 
@@ -25,12 +25,12 @@ plain nginx).
 
 ```
 index.html             the document head: title, meta, Open Graph, JSON-LD
-.env                   your configuration — NOT committed
+.env                   your configuration - NOT committed
 .env.example           the committed template; copy it to .env
 src/
   main.tsx             entry point; mounts <App/> inside <LanguageProvider/>
   App.tsx              the section order of the page
-  data/content.ts      ALL copy, in one file — including the app-screen content
+  data/content.ts      ALL copy, in one file - including the app-screen content
   i18n/                language provider + Sinhala and Tamil strings
   env.ts               reads .env, and why VITE_ values are not secret
   lib/util.ts          clamp, rAF throttle, motion/touch queries
@@ -61,8 +61,8 @@ public/images/         photos, logos, the icon sprite
 
 ## SEO
 
-Everything that has to agree about the site is generated from two sources —
-`.env` for the origin and `src/data/content.ts` for the copy — by
+Everything that has to agree about the site is generated from two sources -
+`.env` for the origin and `src/data/content.ts` for the copy - by
 `scripts/gen-seo.mjs`, which runs automatically before every build.
 
 It writes:
@@ -78,7 +78,7 @@ It writes:
 
 The FAQ markup is generated from the real FAQ, so the six questions can appear
 as rich results. The project is described as a **ResearchProject**, not as a
-released `SoftwareApplication`: phases 01–03 are planned scope and phase 04 is
+released `SoftwareApplication`: phases 01-03 are planned scope and phase 04 is
 proposed, and the structured data must not claim more than the page does.
 
 `<lastmod>` and `dateModified` come from the last commit that touched
@@ -91,7 +91,7 @@ Three things make the content legible to a crawler or an assistant that is not
 a full browser:
 
 1. **The page is pre-rendered** (below), so the HTML already contains the text.
-2. **`/llms.txt`** is the short version, and leads with what Aswenna is *not* —
+2. **`/llms.txt`** is the short version, and leads with what Aswenna is *not* -
    the predictable failure is a tool describing a research project as a product
    you can buy today.
 3. **`/llms-full.txt`** is every section as Markdown. Both are generated from
@@ -129,7 +129,7 @@ node scripts/prerender.mjs                      render it into dist/index.html
 ```
 
 `src/entry-server.tsx` renders exactly what `main.tsx` mounts. The browser
-still boots the real application over that markup — the pre-render is the
+still boots the real application over that markup - the pre-render is the
 first paint and the index, not a replacement for the app. It uses
 `renderToStaticMarkup` rather than hydration on purpose: a hydration mismatch
 on a media query would be a worse failure than rendering once more.
@@ -137,15 +137,15 @@ on a media query would be a worse failure than rendering once more.
 **One thing this requires:** the scroll-reveal animations are scoped to a `.js`
 class that an inline script in `<head>` sets before the first paint. Without
 that scoping the pre-rendered content would sit at `opacity: 0` forever for
-anyone without JavaScript — visible to a text parser, invisible to a person,
+anyone without JavaScript - visible to a text parser, invisible to a person,
 and the kind of thing a search engine treats as hidden text. With no
 JavaScript the content is simply visible; the animation is the opt-in.
 
 ---
 
-## Configuration — the `.env` file
+## Configuration - the `.env` file
 
-> **Full guide:** [`docs/FORM-AND-SECRETS.md`](docs/FORM-AND-SECRETS.md) —
+> **Full guide:** [`docs/FORM-AND-SECRETS.md`](docs/FORM-AND-SECRETS.md) -
 > setting the form up end to end, where every credential belongs, how to move
 > a real secret to a serverless function, and an honest answer on what can
 > and cannot be hidden from browser DevTools.
@@ -174,10 +174,10 @@ variable if it is absent, so a misconfigured deploy cannot ship silently.
 
 Netlify, Vercel, Cloudflare Pages and GitHub Actions all have a place to set
 environment variables for a build. Set the same names there and you do not
-need a `.env` file in the build image at all — a variable in the host's
+need a `.env` file in the build image at all - a variable in the host's
 environment wins over the file.
 
-### These values are NOT secret — read this before adding one
+### These values are NOT secret - read this before adding one
 
 Vite replaces every `import.meta.env.VITE_*` with its literal value **at build
 time**. The value ends up in plain text inside the JavaScript bundle served to
@@ -189,7 +189,7 @@ address are meant to be public, and what protects the mailbox is the relay's
 own spam handling, not the URL being hidden.
 
 **Anything that must actually stay private cannot live in a static site at
-all.** An SMTP password, an API key with write access, a database URL — those
+all.** An SMTP password, an API key with write access, a database URL - those
 need a server or a serverless function that holds the key and that the browser
 calls. If you reach that point, the smallest step is a serverless function on
 whichever host you deploy to: the browser posts to `/api/contact`, the function
@@ -197,7 +197,7 @@ holds the key and talks to the mail service.
 
 ---
 
-## The contact form — ACTION REQUIRED BEFORE LAUNCH
+## The contact form - ACTION REQUIRED BEFORE LAUNCH
 
 `src/components/ContactSection.tsx` posts the enquiry to the relay named by
 `VITE_CONTACT_ENDPOINT`, which emails it to **info@veyra.lk**. This is a static
@@ -208,7 +208,7 @@ live site, then click the link in the confirmation email FormSubmit sends to
 info@veyra.lk. **Until that is done every submission fails** and the visitor is
 shown the error state with the address to email directly.
 
-To use something else, change `VITE_CONTACT_ENDPOINT` in `.env` — no code
+To use something else, change `VITE_CONTACT_ENDPOINT` in `.env` - no code
 changes:
 
 ```bash
@@ -227,7 +227,7 @@ so an enquiry is never simply lost.
 
 ## The mobile application screens
 
-`src/components/app/` renders ten interface designs — farmer dashboard, land
+`src/components/app/` renders ten interface designs - farmer dashboard, land
 registration, soil monitoring, crop recommendations, cultivation calendar,
 pests and alerts, market analytics, device monitoring, smart irrigation and the
 extension-officer area dashboard.
@@ -245,7 +245,7 @@ a whole device, because every length inside it is in `em`.
 
 They appear in the hero (dashboard), the soil section (soil monitoring), the
 growth journey (calendar), the field-first section (alerts), and the platform
-section, where the list and the device are wired together — pick an entry and
+section, where the list and the device are wired together - pick an entry and
 that screen appears.
 
 ---
@@ -254,7 +254,7 @@ that screen appears.
 
 Full "liquid glass" needs something with contrast behind it to refract. Over
 the pale sage page there is nothing to catch, so a heavy blur just reads as a
-smudge — which is why the header now uses a crisp, nearly opaque pill there.
+smudge - which is why the header now uses a crisp, nearly opaque pill there.
 
 Over a dark section it does the opposite: `Header.tsx` measures what is
 underneath the middle of the bar on every scroll frame and adds
@@ -267,15 +267,15 @@ Only one is ever live, and the breakpoint is matched between CSS and JS
 (`SCRUB_QUERY` in `JourneySection.tsx`, the media query in
 `_mobilejourney.scss`).
 
-- **Desktop, fine pointer, motion allowed** — the section pins and the crop
+- **Desktop, fine pointer, motion allowed** - the section pins and the crop
   grows continuously as you scroll through it.
-- **Touch, narrow, or reduced motion** — the **growing spine**.
+- **Touch, narrow, or reduced motion** - the **growing spine**.
 
 ### The growing spine
 
 A vertical timeline with the crop in a **sticky** viewer above it. The crop
-still grows continuously with scroll — it is the same 0..1 value the desktop
-scrub uses — but the page is never pinned.
+still grows continuously with scroll - it is the same 0..1 value the desktop
+scrub uses - but the page is never pinned.
 
 Sticky is not pinned, and the difference is the whole point. The section is an
 ordinary height, scrolling never stalls, and flicking past costs one swipe
@@ -285,8 +285,8 @@ card row that replaced it fought the iOS edge-swipe-back. Growth also reads
 top-to-bottom here, which is the natural direction of a phone and the direction
 a plant actually grows.
 
-Tapping a node scrolls until the reading anchor — the bottom edge of the sticky
-viewer — sits in the **middle** of that stage. Two details matter and both were
+Tapping a node scrolls until the reading anchor - the bottom edge of the sticky
+viewer - sits in the **middle** of that stage. Two details matter and both were
 bugs first:
 
 - `.jspine__tail` is a **sibling** of the list, not a pseudo-element inside it.
@@ -302,7 +302,7 @@ English is the base: `useI18n().t()` falls back to it for anything a translation
 has not covered, so nothing can break by being missing.
 
 > **The translations need a native speaker.** What is translated is interface
-> chrome — navigation, buttons, the trust strip, the contact form, the footer
+> chrome - navigation, buttons, the trust strip, the contact form, the footer
 > headings. The long-form agricultural copy is deliberately still English.
 > Machine-translating agronomy terminology into languages this site's readers
 > speak natively would produce errors invisible to whoever wrote it.
@@ -315,15 +315,15 @@ white wordmark that is invisible on a light background, and the supplied **ATP**
 mark is black line art that is invisible on a dark one. On the dark band IIT
 works as supplied and ATP is inverted to white in CSS (`.logos__item--invert`).
 
-- `public/images/logos/aswenna-white.svg` — drawn for the dark band
-- `public/images/logos/veyra-placeholder.svg` — **PLACEHOLDER**, replace it
-- `public/images/logos/iit.png`, `atp.webp` — as supplied
+- `public/images/logos/aswenna-white.svg` - drawn for the dark band
+- `public/images/logos/veyra-placeholder.svg` - **PLACEHOLDER**, replace it
+- `public/images/logos/iit.png`, `atp.webp` - as supplied
 
 ## Accessibility
 
 - Skip link, one `<h1>`, sequential headings, visible focus rings.
 - Every interactive target meets the 24px WCAG 2.5.8 minimum.
-- All text measured on the rendered page clears **WCAG AA** — 506 text blocks,
+- All text measured on the rendered page clears **WCAG AA** - 506 text blocks,
   tightest 4.35:1. Measured by sampling the real painted background under each
   text node, not by comparing declared colours.
 - Live regions only become live once a person has interacted, so the ambient
@@ -335,7 +335,7 @@ works as supplied and ATP is inverted to white in CSS (`.logos__item--invert`).
 Unchanged from the brief and worth keeping:
 
 - No invented statistics, sensor readings or agricultural claims.
-- Roadmap phases are labelled **Planned** (01–03) and **Proposed** (04), never as
+- Roadmap phases are labelled **Planned** (01-03) and **Proposed** (04), never as
   deployed operations.
 - The platform section says "**Proposed** interfaces" in its own sentence.
 - **Estimated** (regional databases) and **Measured** (field devices) values are

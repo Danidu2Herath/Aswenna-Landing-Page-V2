@@ -1,10 +1,10 @@
 /**
  * Generates everything SEO-related that has to agree with the site content:
  *
- *   public/robots.txt      — crawl rules plus the sitemap pointer
- *   public/sitemap.xml     — the URL set for Google Search Console
+ *   public/robots.txt      - crawl rules plus the sitemap pointer
+ *   public/sitemap.xml     - the URL set for Google Search Console
  *   public/site.webmanifest
- *   index.html             — the JSON-LD block, between the seo:jsonld markers
+ *   index.html             - the JSON-LD block, between the seo:jsonld markers
  *
  * One source for the origin (VITE_SITE_URL in .env) and one source for the
  * copy (src/data/content.ts), so none of it can drift out of step.
@@ -29,7 +29,7 @@ const fromFile = (name) => {
       const m = new RegExp(`^${name}\\s*=\\s*(.+)$`, "m").exec(readFileSync(join(root, file), "utf8"));
       if (m) return m[1].trim().replace(/^["']|["']$/g, "");
     } catch {
-      /* file absent — try the next one */
+      /* file absent - try the next one */
     }
   }
   return undefined;
@@ -73,15 +73,15 @@ const contentModified = (() => {
    describe it from somewhere else instead. llms.txt is pointed at by name so
    a tool that looks for it does not have to guess. */
 const AI_AGENTS = [
-  ["GPTBot", "OpenAI — ChatGPT browsing and training"],
-  ["OAI-SearchBot", "OpenAI — ChatGPT search index"],
-  ["ChatGPT-User", "OpenAI — fetches a page a user asked about"],
-  ["ClaudeBot", "Anthropic — Claude"],
-  ["Claude-User", "Anthropic — fetches a page a user asked about"],
-  ["Claude-SearchBot", "Anthropic — Claude search index"],
+  ["GPTBot", "OpenAI - ChatGPT browsing and training"],
+  ["OAI-SearchBot", "OpenAI - ChatGPT search index"],
+  ["ChatGPT-User", "OpenAI - fetches a page a user asked about"],
+  ["ClaudeBot", "Anthropic - Claude"],
+  ["Claude-User", "Anthropic - fetches a page a user asked about"],
+  ["Claude-SearchBot", "Anthropic - Claude search index"],
   ["PerplexityBot", "Perplexity"],
-  ["Perplexity-User", "Perplexity — fetches a page a user asked about"],
-  ["Google-Extended", "Google — Gemini and AI Overviews"],
+  ["Perplexity-User", "Perplexity - fetches a page a user asked about"],
+  ["Google-Extended", "Google - Gemini and AI Overviews"],
   ["Applebot-Extended", "Apple Intelligence"],
   ["Bingbot", "Microsoft Bing and Copilot"],
   ["CCBot", "Common Crawl"],
@@ -96,7 +96,7 @@ const AI_AGENTS = [
 
 writeFileSync(
   join(root, "public/robots.txt"),
-  `# ${C.site.name} — ${C.site.tagline}
+  `# ${C.site.name} - ${C.site.tagline}
 # ${C.site.description}
 
 User-agent: *
@@ -107,7 +107,7 @@ Allow: /
 Disallow: /*.json$
 
 # ---------------------------------------------------------------------------
-# AI and answer-engine crawlers — explicitly allowed.
+# AI and answer-engine crawlers - explicitly allowed.
 # A crawler that cannot read this page will describe the project from
 # somewhere less accurate. /llms.txt is the short version written for them.
 # ---------------------------------------------------------------------------
@@ -185,7 +185,7 @@ writeFileSync(
 
 > ${C.site.description}
 
-${C.site.name} — "${C.site.tagline}" — is a project of ${C.site.parent}, built for
+${C.site.name} - "${C.site.tagline}" - is a project of ${C.site.parent}, built for
 smallholder farming in Sri Lanka. The platform is planned in Sinhala, Tamil
 and English; this page is published in English only.
 
@@ -206,7 +206,7 @@ ${bullets(SECTIONS, (sec) => `- [${sec.label}](${ORIGIN}/${sec.href})`)}
 
 - [Sitemap](${ORIGIN}/sitemap.xml)
 - [Crawl policy](${ORIGIN}/robots.txt): AI crawlers are named and allowed
-- Structured data: JSON-LD in the page head — Organization, WebSite, WebPage,
+- Structured data: JSON-LD in the page head - Organization, WebSite, WebPage,
   ResearchProject, FAQPage
 
 ## Contact
@@ -220,7 +220,7 @@ _Content last updated ${contentModified}. Generated from src/data/content.ts._
 
 writeFileSync(
   join(root, "public/llms-full.txt"),
-  `# ${C.site.name} — ${C.site.title}
+  `# ${C.site.name} - ${C.site.title}
 
 > ${C.site.description}
 
@@ -236,7 +236,7 @@ writeFileSync(
 | Canonical URL | ${ORIGIN}/ |
 | Content last updated | ${contentModified} |
 
-## Status — read this first
+## Status - read this first
 
 ${STATUS}
 
@@ -244,13 +244,13 @@ ${STATUS}
 
 ${C.problems.sub}
 
-${bullets(C.problems.items, (i) => `- **${i.title}** — ${i.text}`)}
+${bullets(C.problems.items, (i) => `- **${i.title}** - ${i.text}`)}
 
 ## ${heading(C.soil)}
 
 ${C.soil.sub}
 
-${bullets(C.soil.capabilities, (c) => `- **${c.title}** — ${c.text}`)}
+${bullets(C.soil.capabilities, (c) => `- **${c.title}** - ${c.text}`)}
 
 ## ${heading(C.seasons)}
 
@@ -270,7 +270,7 @@ ${s.callout.label}: ${s.callout.text}`,
 
 ${C.engine.sub}
 
-${C.engine.stages.map((s, i) => `${i + 1}. **${s.name}** — ${s.text}`).join("\n")}
+${C.engine.stages.map((s, i) => `${i + 1}. **${s.name}** - ${s.text}`).join("\n")}
 
 ${C.engine.note}
 
@@ -294,7 +294,7 @@ _${g.label}_
 
 ${g.note}
 
-${bullets(g.items, (it) => `- **${it.title}** — ${it.text}`)}`,
+${bullets(g.items, (it) => `- **${it.title}** - ${it.text}`)}`,
   )
   .join("\n\n")}
 
@@ -310,7 +310,7 @@ ${C.pricing.sub}
 
 ${C.pricing.tiers
   .map(
-    (t) => `### ${t.tag} — ${t.name}
+    (t) => `### ${t.tag} - ${t.name}
 
 **${t.price}** (${t.unit})
 
@@ -326,7 +326,7 @@ ${C.pricing.note}
 
 ${C.platform.sub}
 
-${bullets(C.platform.screens, (s) => `- **${s.name}** — ${s.text}`)}
+${bullets(C.platform.screens, (s) => `- **${s.name}** - ${s.text}`)}
 
 ## ${heading(C.roadmap)}
 
@@ -339,7 +339,7 @@ ${C.roadmap.sub}
 
 ${C.roadmap.phases
   .map(
-    (ph) => `### ${ph.n} — ${ph.name} (${ph.status})
+    (ph) => `### ${ph.n} - ${ph.name} (${ph.status})
 
 ${bullets(ph.items, (i) => `- ${i}`)}`,
   )
@@ -373,7 +373,7 @@ writeFileSync(
   join(root, "public/site.webmanifest"),
   `${JSON.stringify(
     {
-      name: `${C.site.name} — ${C.site.title}`,
+      name: `${C.site.name} - ${C.site.title}`,
       short_name: C.site.name,
       description: C.site.description,
       start_url: "/",
@@ -424,7 +424,7 @@ const graph = [
     "@type": "WebPage",
     "@id": `${ORIGIN}/#webpage`,
     url: `${ORIGIN}/`,
-    name: `${C.site.name} — ${C.site.tagline}`,
+    name: `${C.site.name} - ${C.site.tagline}`,
     isPartOf: { "@id": `${ORIGIN}/#website` },
     about: { "@id": `${ORIGIN}/#project` },
     primaryImageOfPage: { "@type": "ImageObject", url: `${ORIGIN}/images/og-cover.jpg` },
@@ -438,7 +438,7 @@ const graph = [
       url: `${ORIGIN}/${sec.href}`,
     })),
   },
-  /* Described as a research PROJECT, not as a product on sale: phases 01–03
+  /* Described as a research PROJECT, not as a product on sale: phases 01-03
      are planned scope and phase 04 is proposed, which is exactly what the
      page says. Marking it up as a released SoftwareApplication would be a
      claim the project does not make. */

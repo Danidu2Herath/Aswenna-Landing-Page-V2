@@ -35,7 +35,7 @@ function readTheme(el: Element) {
  * The page backdrop: the photograph under a scrim that eases back as you
  * scroll, a faint dot grid, and a sensor mesh on a canvas over them.
  *
- * The cursor behaves like a village gateway — nodes near it wake, lean in and
+ * The cursor behaves like a village gateway - nodes near it wake, lean in and
  * link back. With reduced motion or on a touch device a single static frame is
  * drawn and no animation loop ever starts.
  */
@@ -219,7 +219,7 @@ export default function BackgroundTexture() {
         ripples = ripples.filter((r) => now - r.born < RIPPLE_MS);
         for (const r of ripples) {
           // Clicks are stamped with performance.now() while the loop runs on
-          // the frame timestamp, which can be a frame earlier — clamp, or the
+          // the frame timestamp, which can be a frame earlier - clamp, or the
           // radius goes negative.
           const t = clamp01((now - r.born) / RIPPLE_MS);
           const eased = 1 - (1 - t) ** 2;

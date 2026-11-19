@@ -4,7 +4,7 @@ import Reveal from "./Reveal";
 import SectionHead from "./SectionHead";
 import Phone from "./app/Phone";
 import { SCREENS } from "./app/screens";
-import { platform, platformScreens, appUi } from "../data/content";
+import { platform, platformScreens } from "../data/content";
 import { useI18n } from "../i18n";
 import { useOnScreen, useReducedMotion } from "../hooks";
 
@@ -13,7 +13,7 @@ import { useOnScreen, useReducedMotion } from "../hooks";
  * the current one picked out, and arrows either side to step through.
  *
  * It advances on its own so a visitor who touches nothing still sees all ten
- * screens. Any deliberate action — an arrow, a name, a swipe — takes the
+ * screens. Any deliberate action - an arrow, a name, a swipe - takes the
  * carousel over and holds it; the cycle resumes a while later so the thing
  * never ends up permanently stopped on screen 03 because somebody clicked
  * once and walked away.
@@ -72,7 +72,7 @@ export default function PlatformSection() {
 
      This must NOT use scrollIntoView. That method scrolls every scrollable
      ancestor, the document included, so each time the carousel advanced it
-     dragged the whole page back towards the section — the page oscillated a
+     dragged the whole page back towards the section - the page oscillated a
      couple of dozen pixels and could not be scrolled past. Setting
      scrollLeft moves the strip and nothing else. */
   useEffect(() => {
@@ -155,9 +155,8 @@ export default function PlatformSection() {
                   key={name}
                   tab={tab}
                   size="md"
-                  concept={false}
                   className={dir > 0 ? "is-next" : "is-prev"}
-                  label={`${t(`${path}.title`, meta.title)} — interface design concept for the Aswenna application`}
+                  label={`${t(`${path}.title`, meta.title)} - interface design concept for the Aswenna application`}
                 >
                   <Screen />
                 </Phone>
@@ -175,10 +174,6 @@ export default function PlatformSection() {
 
             <div className="pcar__caption" aria-live="polite">
               <p className="pcar__caption-text">{t(`platform.screens.${active}.text`, screenCopy.text)}</p>
-              <span className="phone__concept">
-                <Icon name="info" />
-                {t("appUi.conceptNote", appUi.conceptNote)}
-              </span>
             </div>
 
             <ol className="pcar__dots" aria-hidden="true">

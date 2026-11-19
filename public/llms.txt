@@ -1,8 +1,8 @@
 # Aswenna
 
-> An IoT-enabled precision farming platform for Sri Lankan agriculture — soil intelligence, hyperlocal weather, AI recommendations, smart irrigation, crop-health monitoring and market intelligence.
+> An IoT-enabled precision farming platform for Sri Lankan agriculture - soil intelligence, hyperlocal weather, AI recommendations, smart irrigation, crop-health monitoring and market intelligence.
 
-Aswenna — "Smarter fields, greater future" — is a project of Veyra Solutions, built for
+Aswenna - "Smarter fields, greater future" - is a project of Veyra Solutions, built for
 smallholder farming in Sri Lanka. The platform is planned in Sinhala, Tamil
 and English; this page is published in English only.
 
@@ -42,7 +42,7 @@ something that can be bought or used today.
 
 - [Sitemap](https://aswenna.veyra.lk/sitemap.xml)
 - [Crawl policy](https://aswenna.veyra.lk/robots.txt): AI crawlers are named and allowed
-- Structured data: JSON-LD in the page head — Organization, WebSite, WebPage,
+- Structured data: JSON-LD in the page head - Organization, WebSite, WebPage,
   ResearchProject, FAQPage
 
 ## Contact
@@ -50,4 +50,4 @@ something that can be bought or used today.
 - Email: info@veyra.lk
 - Phone: +94 78 259 6361, +94 77 786 2375
 
-_Content last updated 2026-11-18. Generated from src/data/content.ts._
+_Content last updated 2026-11-19. Generated from src/data/content.ts._

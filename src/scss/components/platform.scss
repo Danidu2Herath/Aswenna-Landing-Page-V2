@@ -1,5 +1,5 @@
 /* ===========================================================================
-   Platform — the app carousel.
+   Platform - the app carousel.
 
    One device centred, the screen names riding above it, arrows either side.
    The names strip is the primary control; the arrows are for people who
@@ -181,7 +181,7 @@
 
 @media (max-width: 420px) {
   /* Below this the device plus two discs no longer fit side by side, so the
-     arrows drop under it as a pager — still 44px, still either side. */
+     arrows drop under it as a pager - still 44px, still either side. */
   .pcar__stage {
     display: grid;
     grid-template-columns: auto auto;
