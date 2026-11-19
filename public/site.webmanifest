@@ -1,7 +1,7 @@
 {
   "name": "Aswenna - Agriculture Intelligence Platform",
   "short_name": "Aswenna",
-  "description": "An IoT-enabled precision farming platform for Sri Lankan agriculture - soil intelligence, hyperlocal weather, AI recommendations, smart irrigation, crop-health monitoring and market intelligence.",
+  "description": "A precision farming platform for Sri Lankan agriculture - soil intelligence, hyperlocal weather, AI recommendations, smart irrigation, crop-health monitoring and market intelligence.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#EFF4EE",
