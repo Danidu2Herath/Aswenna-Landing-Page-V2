@@ -72,7 +72,11 @@ export const partners = {
   logos: [
     { src: "/images/logos/aswenna-white.svg", alt: "Aswenna", cls: "" },
     { src: "/images/logos/veyra-placeholder.svg", alt: "Veyra Solutions", cls: "" },
-    { src: "/images/logos/iit.png", alt: "Informatics Institute of Technology", cls: "hero__partner--tall" },
+    /* Flattening this to white turns the crest into a solid blob: the circular
+       device and the "IIT" letters disappear. Greyscale keeps them, and the
+       brightness lifts it off the dark hero. */
+    { src: "/images/logos/iit.png", alt: "Informatics Institute of Technology", cls: "hero__partner--tall hero__partner--mono" },
+    { src: "/images/logos/westminster.svg", alt: "University of Westminster", cls: "hero__partner--dark-art" },
     /* Drawn in black ink - measured, 0 light pixels - so on hover it needs a
        light plate behind it. Every other mark here is light artwork and
        takes the default dark plate. */
