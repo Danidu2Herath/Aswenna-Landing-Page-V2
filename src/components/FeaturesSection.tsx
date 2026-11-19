@@ -50,16 +50,22 @@ export default function FeaturesSection() {
           {featureGroups.groups.map((g, i) => (
             <Reveal className={`fcol fcol--${i + 1}`} delay={i * 70} key={g.id}>
               <div onMouseLeave={leaveColumn}>
+                {/* A graphic header, so the three groups read as three objects
+                    rather than three columns of text. The icon is the group's
+                    own; no photograph, because section 07 just used one and
+                    section 13 shows the device — this needs to look different
+                    from both of its neighbours. */}
                 <header className="fcol__head">
-                  <span className="fcol__n">{String(i + 1).padStart(2, "0")}</span>
-                  <span>
-                    <h3 className="fcol__title" id={`fcol-${g.id}`}>
-                      {t(`featureGroups.groups.${i}.title`, g.title)}
-                    </h3>
-                    {/* The requirement, not the marketing label: this is the
-                        line that tells a visitor whether they can start. */}
-                    <span className="fcol__need">{t(`featureGroups.groups.${i}.need`, g.need)}</span>
+                  <span className="fcol__icon" aria-hidden="true">
+                    <Icon name={g.icon} />
                   </span>
+                  <span className="fcol__n">{String(i + 1).padStart(2, "0")}</span>
+                  <h3 className="fcol__title" id={`fcol-${g.id}`}>
+                    {t(`featureGroups.groups.${i}.title`, g.title)}
+                  </h3>
+                  {/* The requirement, not the marketing label: this is the
+                      line that tells a visitor whether they can start. */}
+                  <span className="fcol__need">{t(`featureGroups.groups.${i}.need`, g.need)}</span>
                 </header>
 
                 <ul className="fcol__list" aria-labelledby={`fcol-${g.id}`}>

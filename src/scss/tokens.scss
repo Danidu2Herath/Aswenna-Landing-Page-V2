@@ -71,13 +71,19 @@
   --neutral-900: #1D1D1F;
 
   /* 3. SEMANTIC COLOURS */
-  /* The page is a light green field tint rather than white, so the white
-     cards and bands sit ON it instead of dissolving into it. */
-  --color-bg:             #EFF4EE;
-  --color-bg-alt:         #E3EBE2;
-  --color-surface:        #FFFFFF;
-  --color-surface-muted:  #F6F9F5;
-  --color-surface-sunken: #FAFCF9;
+  /* The page is a light field tint rather than white, so the cards and bands
+     sit ON it instead of dissolving into it.
+
+     The whole surface set is warmed towards a lower colour temperature — the
+     effect True Tone has on a MacBook display. The greens stay, the white
+     point moves: #FFFFFF cards become #FFFCF4, and the page loses its blue
+     cast. Measured after the shift: ink 15.40:1 on the page, muted grey
+     5.81:1 there and 5.32:1 on the alt band, all comfortably past AA. */
+  --color-bg:             #F4F4E6;
+  --color-bg-alt:         #E9EBD6;
+  --color-surface:        #FFFCF4;
+  --color-surface-muted:  #FAF9EA;
+  --color-surface-sunken: #FDFCF2;
 
   --color-text:            #1D1D1F;
   /* Darker than Apple's #6E6E73, which measures only 4.17:1 on the alt band
@@ -109,7 +115,7 @@
 
   /* The two content sections that used to be black. A whiter light green:
      present enough to read as a band, pale enough to take dark ink. */
-  --color-section-light:     #EAF4EC;
+  --color-section-light:     #EDF2DE;
   --color-section-light-ink: #16301E;   /* 12.64:1 on the band */
   --color-section-light-soft:#3A5443;   /*  7.37:1 on the band */
   --color-section-light-line: rgba(22, 48, 30, 0.12);
@@ -123,8 +129,8 @@
 
   --color-footer-bg: #FFFFFF;
 
-  --color-band-veil: #FFFFFF;
-  --color-alt-veil:  #E3EBE2;
+  --color-band-veil: #FFFCF4;
+  --color-alt-veil:  #E9EBD6;
 
   /* Card frames. On a tinted page a card needs an edge, or it reads as a
      patch of lighter background rather than an object. The line is green
