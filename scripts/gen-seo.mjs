@@ -380,7 +380,7 @@ writeFileSync(
       display: "standalone",
       background_color: "#EFF4EE",
       theme_color: "#1D4E2B",
-      icons: [{ src: "/images/logos/aswenna-mark.png", sizes: "512x512", type: "image/png" }],
+      icons: [{ src: "/images/logos/aswenna_mark.png", sizes: "512x512", type: "image/png" }],
     },
     null,
     2,
@@ -397,7 +397,7 @@ const graph = [
     email: C.contactDetails.email,
     telephone: C.contactDetails.phones.map((p) => p.href.replace("tel:", "")),
     address: { "@type": "PostalAddress", addressCountry: "LK" },
-    logo: { "@type": "ImageObject", url: `${ORIGIN}/images/logos/aswenna-mark.png` },
+    logo: { "@type": "ImageObject", url: `${ORIGIN}/images/logos/aswenna_mark.png` },
     knowsLanguage: ["en", "si", "ta"],
     contactPoint: {
       "@type": "ContactPoint",
