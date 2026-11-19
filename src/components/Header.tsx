@@ -101,14 +101,14 @@ export default function Header() {
                 carries the accessible name, so both images are decorative. */}
             <img
               className="brand__logo brand__logo--ink"
-              src="/images/logos/aswenna-logo.webp"
+              src="/images/logos/aswenna_logo.png"
               alt=""
               width={480}
               height={193}
             />
             <img
               className="brand__logo brand__logo--reversed"
-              src="/images/logos/aswenna-logo-white.webp"
+              src="/images/logos/aswenna_logo_white.png"
               alt=""
               width={480}
               height={193}

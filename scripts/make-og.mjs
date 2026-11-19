@@ -19,7 +19,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const b64 = (p, mime) => `data:${mime};base64,${readFileSync(join(root, p)).toString("base64")}`;
 
 const photo = b64("public/images/photos/hero-field.webp", "image/webp");
-const mark = b64("public/images/logos/aswenna-mark.png", "image/png");
+const mark = b64("public/images/logos/aswenna_mark.png", "image/png");
 
 const html = `<!doctype html><html><head><meta charset="utf-8">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Inter:wght@400;500&display=swap">
