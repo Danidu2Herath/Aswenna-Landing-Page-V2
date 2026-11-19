@@ -217,15 +217,27 @@ export const comparison = {
   sub: "The same decisions, made from what the plot reports rather than from what the season usually does.",
   withoutLabel: "Without Aswenna",
   withLabel: "With Aswenna",
+  /* `label` names the decision being compared, so the eight pairs can be a
+     list you pick from rather than sixteen pills stacked down the page.
+     `photo` is decorative backing for the panel — the meaning is in the two
+     sentences, so the images are marked aria-hidden. */
   rows: [
-    { without: "Fertilizer applied to a fixed schedule.", with: "Applied against the plot's own soil profile and growth stage." },
-    { without: "Irrigation judged by eye.", with: "Triggered when measured soil moisture crosses a set threshold." },
-    { without: "A cultivation plan fixed at sowing.", with: "A calendar that rewrites itself when the forecast changes." },
-    { without: "Pests found once damage is visible.", with: "Risk flagged from conditions, and diagnosis from a photograph." },
-    { without: "Crop choice follows the neighbours.", with: "Choice weighed against soil, water, forecast and price history." },
-    { without: "Price discovered on the day of sale.", with: "Wholesale trends and supply forecasts followed through the season." },
-    { without: "Advice that needs a smartphone and coverage.", with: "Advice by app, SMS or voice call, in Sinhala, Tamil or English." },
-    { without: "Field data held by whoever collected it.", with: "Field data owned by the farmer, exportable at any time." },
+    { label: "Fertilizer", photo: "/images/photos/problem-soil.webp",
+      without: "Fertilizer applied to a fixed schedule.", with: "Applied against the plot's own soil profile and growth stage." },
+    { label: "Irrigation", photo: "/images/photos/problem-water.webp",
+      without: "Irrigation judged by eye.", with: "Triggered when measured soil moisture crosses a set threshold." },
+    { label: "The calendar", photo: "/images/photos/field-crop-health.webp",
+      without: "A cultivation plan fixed at sowing.", with: "A calendar that rewrites itself when the forecast changes." },
+    { label: "Pests and disease", photo: "/images/photos/problem-pests.webp",
+      without: "Pests found once damage is visible.", with: "Risk flagged from conditions, and diagnosis from a photograph." },
+    { label: "Crop choice", photo: "/images/photos/field-land-mapping.webp",
+      without: "Crop choice follows the neighbours.", with: "Choice weighed against soil, water, forecast and price history." },
+    { label: "Price and timing", photo: "/images/photos/market-trend.webp",
+      without: "Price discovered on the day of sale.", with: "Wholesale trends and supply forecasts followed through the season." },
+    { label: "How advice arrives", photo: "/images/photos/connectivity-gap.webp",
+      without: "Advice that needs a smartphone and coverage.", with: "Advice by app, SMS or voice call, in Sinhala, Tamil or English." },
+    { label: "Who owns the data", photo: "/images/photos/hero-field.webp",
+      without: "Field data held by whoever collected it.", with: "Field data owned by the farmer, exportable at any time." },
   ],
 };
 

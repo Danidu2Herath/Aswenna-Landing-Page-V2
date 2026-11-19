@@ -1,84 +1,205 @@
-.compare {
-  margin-top: 56px;
+/* ===========================================================================
+   The approach — one decision at a time, shown both ways.
+
+   A list of the eight decisions on the left, the chosen one against its
+   photograph on the right. It replaced a 16-pill grid that ran to 2,100px
+   on a phone; this is a single panel with something to look at.
+   =========================================================================== */
+.cmp {
+  margin-top: clamp(28px, 3.4vw, 46px);
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px 20px;
+  grid-template-columns: minmax(190px, 0.32fr) minmax(0, 1fr);
+  gap: clamp(20px, 2.4vw, 38px);
   align-items: start;
 }
 
-.compare__head {
+/* ---------------------------------- list ---------------------------------- */
+.cmp__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.cmp__pick {
+  position: relative;
+  width: 100%;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 14px 18px;
+  gap: 11px;
+  padding: 13px 14px;
   border-radius: var(--radius-md);
-  font-family: var(--font-heading);
-  font-size: var(--text-sm);
+  text-align: left;
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-soft);
+  background: transparent;
+  border: 1px solid transparent;
+  overflow: hidden;
+  transition:
+    background-color var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease),
+    color var(--duration-fast) var(--ease);
+}
+.cmp__pick:hover { background: var(--color-surface); color: var(--color-text); }
+
+.cmp__pick.is-active {
+  background: var(--color-surface);
+  border-color: var(--color-card-line-strong);
+  color: var(--color-text);
+  font-weight: var(--weight-semibold);
+  box-shadow: var(--color-card-shadow);
+}
+
+.cmp__pick-n {
+  font-variant-numeric: tabular-nums;
+  font-size: var(--text-xs);
   font-weight: var(--weight-bold);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
+  color: var(--brand-tertiary);
+  opacity: 0.55;
 }
-.compare__head--without { background: var(--neutral-200); color: var(--color-text-soft); }
-.compare__head--with { background: var(--brand-primary); color: var(--color-text-inverse); }
+.cmp__pick.is-active .cmp__pick-n { opacity: 1; }
+.cmp__pick-label { flex: 1; }
 
-.compare__badge {
-  display: grid;
-  place-items: center;
-  width: 22px;
-  height: 22px;
-  border-radius: var(--radius-pill);
+/* Drains along the bottom of the active row, so the cycle reads as a rhythm
+   rather than as the page moving by itself. */
+.cmp__pick-timer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  transform-origin: left;
+  background: var(--brand-tertiary);
+  animation-name: cmp-drain;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
 }
-.compare__badge--without { background: var(--neutral-400); color: #fff; }
-.compare__badge--with { background: rgba(255, 255, 255, 0.22); color: #fff; }
-
-/* Each row spans both columns so the two cells always line up. */
-.compare__row {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: subgrid;
-  gap: 20px;
+@keyframes cmp-drain {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0); }
 }
 
-.compare__cell {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 12px;
-  align-items: start;
-  padding: 16px 18px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
-  font-size: var(--text-sm);
+/* --------------------------------- panel ---------------------------------- */
+.cmp__panel {
+  position: relative;
+  isolation: isolate;
+  min-height: clamp(340px, 34vw, 420px);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--color-card-line);
+  display: flex;
+  align-items: flex-end;
+}
+
+.cmp__photo {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
   height: 100%;
+  object-fit: cover;
+  animation: cmp-photo 620ms var(--ease) both;
 }
-.compare__cell--without { background: var(--color-surface); color: var(--color-text-muted); }
-.compare__cell--with { background: var(--tertiary-50); border-color: var(--primary-200); color: var(--color-text); font-weight: var(--weight-medium); }
+@keyframes cmp-photo {
+  from { opacity: 0; transform: scale(1.04); }
+  to { opacity: 1; transform: none; }
+}
 
-.compare__mark {
+/* Dark enough at the foot to carry white text over any of the eight
+   photographs, which range from pale soil to a dark canopy. */
+.cmp__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    rgba(6, 16, 9, 0.18) 0%,
+    rgba(6, 16, 9, 0.52) 42%,
+    rgba(6, 16, 9, 0.88) 100%
+  );
+}
+
+.cmp__body {
+  width: 100%;
+  padding: clamp(20px, 2.6vw, 34px);
   display: grid;
-  place-items: center;
-  width: 20px;
-  height: 20px;
-  margin-top: 1px;
-  border-radius: var(--radius-pill);
+  gap: 14px;
+  animation: cmp-body 420ms var(--ease) both;
 }
-.compare__mark--without { background: #FEE2E2; color: #B91C1C; }
-.compare__mark--with { background: var(--brand-tertiary); color: #fff; }
+@keyframes cmp-body {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
 
-/* Column labels live in the headers on desktop; each cell repeats them on mobile. */
-.compare__inline { display: none; }
+.cmp__decision {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 1rem + 0.9vw, 1.75rem);
+  font-weight: var(--weight-bold);
+  letter-spacing: -0.02em;
+  color: #fff;
+}
 
-@media (max-width: 760px) {
-  .compare { grid-template-columns: minmax(0, 1fr); gap: 8px; }
-  .compare__row { grid-template-columns: minmax(0, 1fr); gap: 8px; margin-bottom: 16px; }
-  .compare__head { display: none; }
-  .compare__inline {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 10.5px;
-    font-weight: var(--weight-bold);
-    letter-spacing: var(--tracking-wide);
-    text-transform: uppercase;
-    color: var(--color-text-muted);
+.cmp__side { display: grid; gap: 6px; }
+
+/* A rule between the two halves, so they read as a pair rather than a list. */
+.cmp__side--with {
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.cmp__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+.cmp__tag .icon { width: 14px; height: 14px; stroke-width: 2.6; }
+.cmp__tag--with { color: #9FE0B4; }
+
+.cmp__text {
+  font-size: var(--text-base);
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.82);
+  text-wrap: pretty;
+}
+.cmp__text--with { color: #fff; font-weight: var(--weight-medium); }
+
+/* ------------------------------- responsive ------------------------------- */
+@media (max-width: 900px) {
+  /* The list becomes a scrolling chip row above the panel. Eight full-width
+     rows plus a panel would be the tall stack this replaced. */
+  .cmp { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+
+  .cmp__list {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+    padding-bottom: 2px;
   }
-  .compare__cell--with .compare__inline { color: var(--primary-700); }
+  .cmp__list::-webkit-scrollbar { display: none; }
+
+  .cmp__pick {
+    width: auto;
+    white-space: nowrap;
+    scroll-snap-align: center;
+    background: var(--color-surface);
+    border-color: var(--color-card-line);
+    padding: 11px 15px;
+  }
+  .cmp__pick-n { display: none; }
+
+  .cmp__panel { min-height: 420px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cmp__pick-timer { display: none; }
+  .cmp__photo, .cmp__body { animation: none; }
 }
