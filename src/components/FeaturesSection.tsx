@@ -9,7 +9,7 @@ import { useMediaQuery } from "../hooks";
 /**
  * Three columns, one line per capability, headed by what that group needs.
  *
- * The whole section used to be three grids of paragraphs — seventeen blocks
+ * The whole section used to be three grids of paragraphs - seventeen blocks
  * of near-identical text, where nothing was louder than anything else and
  * the thing that actually matters (the first group needs no hardware at all)
  * was invisible. Here the count is readable at a glance and the requirement
@@ -53,7 +53,7 @@ export default function FeaturesSection() {
                 {/* A graphic header, so the three groups read as three objects
                     rather than three columns of text. The icon is the group's
                     own; no photograph, because section 07 just used one and
-                    section 13 shows the device — this needs to look different
+                    section 13 shows the device - this needs to look different
                     from both of its neighbours. */}
                 <header className="fcol__head">
                   <span className="fcol__icon" aria-hidden="true">
@@ -83,7 +83,7 @@ export default function FeaturesSection() {
                           /* Keyboard focus opens the row. A TAP also focuses,
                              and without the :focus-visible guard that open
                              was immediately toggled shut again by the click
-                             that followed — the row never opened on a phone. */
+                             that followed - the row never opened on a phone. */
                           onFocus={(e) => {
                             if (e.currentTarget.matches(":focus-visible")) setOpen(key);
                           }}

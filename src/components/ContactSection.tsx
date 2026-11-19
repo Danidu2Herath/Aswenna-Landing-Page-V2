@@ -11,7 +11,7 @@ import { env } from "../env";
    This is a static site: there is no server of ours to post to, so the form
    hands off to a form-relay service which emails the submission on.
 
-   The relay URL is configuration, not code — it lives in .env as
+   The relay URL is configuration, not code - it lives in .env as
    VITE_CONTACT_ENDPOINT. See src/env.ts for why it is not, and cannot be,
    a secret, and .env.example for how to set it.
 
@@ -80,7 +80,7 @@ export default function ContactSection() {
 
     const payload = {
       ...data,
-      _subject: `Aswenna enquiry — ${data.firstName ?? ""} ${data.lastName ?? ""}`.trim(),
+      _subject: `Aswenna enquiry - ${data.firstName ?? ""} ${data.lastName ?? ""}`.trim(),
       _template: "table",
       page: window.location.href,
       submittedAt: new Date().toISOString(),

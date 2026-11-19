@@ -10,7 +10,7 @@ import { useMediaQuery, useOnScreen, useReducedMotion } from "../hooks";
 /**
  * One decision at a time, shown both ways.
  *
- * This was sixteen pills — eight "without" against eight "with" — which on a
+ * This was sixteen pills - eight "without" against eight "with" - which on a
  * phone became sixteen near-identical cards over 2,000px, each repeating the
  * same two labels. Nothing to look at and nothing to hold on to.
  *

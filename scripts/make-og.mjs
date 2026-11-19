@@ -1,5 +1,5 @@
 /**
- * Renders public/images/og-cover.jpg — the 1200x630 card that WhatsApp,
+ * Renders public/images/og-cover.jpg - the 1200x630 card that WhatsApp,
  * LinkedIn, Facebook and X show when the link is shared.
  *
  *   npx --yes playwright@1 install chromium   # once, if you do not have it
@@ -64,7 +64,7 @@ const html = `<!doctype html><html><head><meta charset="utf-8">
       </div>
       <div>
         <h1>Smarter fields,<br><em>greater future.</em></h1>
-        <p>IoT precision farming for Sri Lankan agriculture — soil, weather, irrigation and market intelligence.</p>
+        <p>IoT precision farming for Sri Lankan agriculture - soil, weather, irrigation and market intelligence.</p>
       </div>
       <div class="foot">
         <span class="chip chip--solid">Sri Lanka</span>

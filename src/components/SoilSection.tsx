@@ -22,14 +22,6 @@ export default function SoilSection() {
             <div className="soil__phone-wrap">
               <AppPhone screen="soil" size="sm" />
             </div>
-            <div className="soil__legend">
-              {soil.transparency.rows.map((row) => (
-                <div className="soil__legend-row" key={row.label}>
-                  <Chip tone={row.tone}>{row.label}</Chip>
-                  <p>{row.text}</p>
-                </div>
-              ))}
-            </div>
           </Reveal>
 
           <ul className="soil__list">

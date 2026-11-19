@@ -24,7 +24,7 @@ body {
 img, svg { display: block; max-width: 100%; }
 
 /* The React root is a flex column with the main region growing, so the footer
-   always seats itself at the bottom of the viewport — on a short page, and on
+   always seats itself at the bottom of the viewport - on a short page, and on
    a tall screen where the content does not fill the fold. */
 #app-root {
   min-height: 100vh;
@@ -75,7 +75,7 @@ p { margin: 0; }
    LIGHT SECTIONS
    These two used to be `#000`. They are now a pale green band with dark ink,
    which means every rule inside them that assumed light-on-dark had to be
-   inverted — see components/lightsections.scss.
+   inverted - see components/lightsections.scss.
    --------------------------------------------------------------------------- */
 .section--light {
   background: var(--color-section-light);

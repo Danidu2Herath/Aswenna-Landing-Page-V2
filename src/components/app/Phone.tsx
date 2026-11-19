@@ -11,8 +11,6 @@ type Props = {
   className?: string;
   /** Caption under the device. Omitted inside the hero, where space is tight. */
   caption?: { title: string; text: string };
-  /** The design-concept note. On by default: these are not screenshots. */
-  concept?: boolean;
   /** Accessible description of the whole device. */
   label: string;
 };
@@ -31,7 +29,6 @@ export default function Phone({
   size = "md",
   className = "",
   caption,
-  concept = true,
   label,
 }: Props) {
   const { t } = useI18n();
@@ -70,12 +67,6 @@ export default function Phone({
         <figcaption className="phone__caption">
           <strong>{caption.title}</strong>
           <span>{caption.text}</span>
-          {concept ? (
-            <span className="phone__concept">
-              <Icon name="info" />
-              {t("appUi.conceptNote", appUi.conceptNote)}
-            </span>
-          ) : null}
         </figcaption>
       ) : null}
     </figure>

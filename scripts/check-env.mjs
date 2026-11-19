@@ -4,7 +4,7 @@
  * Vite inlines every VITE_* value into the JavaScript bundle at build time.
  * There is no server to withhold it and no decryption step in the browser, so
  * a secret given a VITE_ prefix is published to every visitor the moment the
- * site deploys — and encrypting the .env file does not change that, because
+ * site deploys - and encrypting the .env file does not change that, because
  * the build decrypts it before inlining.
  *
  * This is the one mistake that cannot be undone by a later commit: once a key
@@ -19,7 +19,7 @@ import { dirname, join } from "node:path";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
 /* Name fragments that mean "this value must never reach a browser". Matched
-   on the name only — values are never printed by this script. */
+   on the name only - values are never printed by this script. */
 const SECRET_WORDS = [
   "SECRET", "PASSWORD", "PASSWD", "PRIVATE", "CREDENTIAL", "TOKEN",
   "APIKEY", "API_KEY", "ACCESS_KEY", "SECRET_KEY", "AUTH", "SIGNING",
@@ -87,7 +87,7 @@ if (existsSync(distDir)) {
 }
 
 if (problems.length) {
-  console.error("\n  BUILD STOPPED — a secret would be published.\n");
+  console.error("\n  BUILD STOPPED - a secret would be published.\n");
   for (const p of problems) {
     console.error(`    ${p.name}`);
     console.error(`      in ${p.file}`);
@@ -103,7 +103,7 @@ if (problems.length) {
     3. Read it from a serverless function instead of the browser.
        docs/FORM-AND-SECRETS.md section 5 has working examples.
 
-  If a name is genuinely public — a form id, a published endpoint — add it
+  If a name is genuinely public - a form id, a published endpoint - add it
   to ALLOWED in scripts/check-env.mjs with a comment saying why.
 `);
   process.exit(1);

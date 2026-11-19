@@ -1,4 +1,4 @@
-/** Two tiny charts, drawn from plain arrays — no charting library. */
+/** Two tiny charts, drawn from plain arrays - no charting library. */
 
 const scale = (values: number[], height: number, pad = 3) => {
   const min = Math.min(...values);

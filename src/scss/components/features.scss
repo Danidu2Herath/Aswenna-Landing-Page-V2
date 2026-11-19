@@ -1,5 +1,5 @@
 /* ===========================================================================
-   Features — three scan columns, one line per capability.
+   Features - three scan columns, one line per capability.
 
    Each column owns an accent, used for its rule, its number and its icons,
    so the three groups are told apart by colour rather than by reading. All
@@ -7,7 +7,7 @@
    5.31:1, comfortably past AA.
 
    A row opens on hover, focus or tap to show the sentence the old card
-   carried. The text is always in the DOM — only its height animates — so a
+   carried. The text is always in the DOM - only its height animates - so a
    crawler, find-in-page and a screen reader all still reach it.
    =========================================================================== */
 .fcols {

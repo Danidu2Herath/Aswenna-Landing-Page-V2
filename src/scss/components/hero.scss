@@ -1,5 +1,5 @@
 /* ===========================================================================
-   Hero — full-bleed field photograph, dark scrim, centred white type, and
+   Hero - full-bleed field photograph, dark scrim, centred white type, and
    the partner marks along the bottom edge.
    =========================================================================== */
 .hero {
@@ -207,7 +207,7 @@
 
 /* The plate is dark by default, because three of the four marks are light
    artwork: the Aswenna and Veyra files are drawn in #FFFFFF, and the IIT
-   crest carries WHITE lettering, so a white plate swallows its name — which
+   crest carries WHITE lettering, so a white plate swallows its name - which
    is exactly what the first version of this did. ATP is the exception and
    opts into a light plate below. */
 .hero__partner::before {

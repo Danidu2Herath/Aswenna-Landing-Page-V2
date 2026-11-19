@@ -1,5 +1,5 @@
 /**
- * Sinhala — interface strings only.
+ * Sinhala - interface strings only.
  * Long-form sections stay in English and fall back automatically.
  * EVERY STRING HERE NEEDS A NATIVE SPEAKER'S REVIEW BEFORE LAUNCH.
  */
@@ -47,7 +47,7 @@ export const si = {
     note: "සාමාන්‍යයෙන් වැඩ කරන දින කිහිපයක් ඇතුළත පිළිතුරු දෙමු.",
     consent: "ඉදිරිපත් කිරීමෙන්, ඇස්වැන්න ව්‍යාපෘතිය සම්බන්ධයෙන් ඔබ හා සම්බන්ධ වීමට ඔබ එකඟ වේ.",
     submit: "විමසීම යොමු කරන්න",
-    successTitle: "ස්තූතියි — ඔබගේ විමසීම ලැබුණි.",
+    successTitle: "ස්තූතියි - ඔබගේ විමසීම ලැබුණි.",
     fields: {
       firstName: { label: "මුල් නම", placeholder: "ඔබගේ මුල් නම ඇතුළත් කරන්න" },
       lastName: { label: "අවසන් නම", placeholder: "ඔබගේ අවසන් නම ඇතුළත් කරන්න" },

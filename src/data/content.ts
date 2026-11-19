@@ -1,12 +1,12 @@
 /* ==========================================================================
-   ASWENNA — SITE CONTENT
+   ASWENNA - SITE CONTENT
    All copy lives here. The build script renders index.html from it, and the
    i18n module swaps the translated strings at runtime.
    ========================================================================== */
 
 export const site = {
   name: "Aswenna",
-  title: "Agricultural Intelligence Platform",
+  title: "Agriculture Intelligence Platform",
   tagline: "Smarter fields, greater future",
   promise: "Empowering Farmers, Growing Prosperity.",
   parent: "Veyra Solutions",
@@ -14,14 +14,14 @@ export const site = {
      and the structured data. It used to live in the footer as a visible
      paragraph; the paragraph is gone, the metadata still needs it. */
   description:
-    "An IoT-enabled precision farming platform for Sri Lankan agriculture — soil intelligence, hyperlocal weather, AI recommendations, smart irrigation, crop-health monitoring and market intelligence.",
+    "An IoT-enabled precision farming platform for Sri Lankan agriculture - soil intelligence, hyperlocal weather, AI recommendations, smart irrigation, crop-health monitoring and market intelligence.",
 
   /* What a search result actually shows. Google cuts a title at roughly 60
      characters and a description at roughly 160, so these are written to fit
-     rather than to be complete — `description` above stays long because the
+     rather than to be complete - `description` above stays long because the
      structured data and the manifest have no such limit. Both are written
      into index.html by scripts/gen-seo.mjs, so there is one source. */
-  metaTitle: "Aswenna — IoT precision farming for Sri Lankan farms",
+  metaTitle: "Agriculture Intelligence Platform",
   metaDescription:
     "Soil intelligence, hyperlocal weather, crop recommendations and market data for Sri Lankan smallholdings. In Sinhala, Tamil and English.",
 };
@@ -73,7 +73,7 @@ export const partners = {
     { src: "/images/logos/aswenna-white.svg", alt: "Aswenna", cls: "" },
     { src: "/images/logos/veyra-placeholder.svg", alt: "Veyra Solutions", cls: "" },
     { src: "/images/logos/iit.png", alt: "Informatics Institute of Technology", cls: "hero__partner--tall" },
-    /* Drawn in black ink — measured, 0 light pixels — so on hover it needs a
+    /* Drawn in black ink - measured, 0 light pixels - so on hover it needs a
        light plate behind it. Every other mark here is light artwork and
        takes the default dark plate. */
     { src: "/images/logos/atp.webp", alt: "Agile Team Project", cls: "hero__partner--dark-art" },
@@ -182,7 +182,7 @@ export const field = {
   num: "05",
   eyebrow: "Field scanning",
   title: "Intelligence Across the Land.",
-  sub: "Beyond a single sensor point, Aswenna reads the whole plot — its boundaries, its canopy, its weather and its risks.",
+  sub: "Beyond a single sensor point, Aswenna reads the whole plot - its boundaries, its canopy, its weather and its risks.",
   items: [
     { icon: "map", title: "Geo-Located Land Mapping", photo: "/images/photos/field-land-mapping.webp", alt: "A satellite map view of farmland with place labels",
       text: "Farmers identify their plots on a map and receive a personalized soil profile for that location." },
@@ -219,7 +219,7 @@ export const comparison = {
   withLabel: "With Aswenna",
   /* `label` names the decision being compared, so the eight pairs can be a
      list you pick from rather than sixteen pills stacked down the page.
-     `photo` is decorative backing for the panel — the meaning is in the two
+     `photo` is decorative backing for the panel - the meaning is in the two
      sentences, so the images are marked aria-hidden. */
   rows: [
     { label: "Fertilizer", photo: "/images/photos/problem-soil.webp",
@@ -288,7 +288,7 @@ export const fieldFirst = {
   accent: "Not an Office",
   sub: "The constraints of a Sri Lankan smallholding are the starting point, not an edge case handled later.",
   items: [
-    { icon: "message-circle", title: "Plain, field-ready language", text: "Recommendations are written as an instruction a farmer can act on — what to do, on which plot, and by when — not as a dashboard metric to interpret." },
+    { icon: "message-circle", title: "Plain, field-ready language", text: "Recommendations are written as an instruction a farmer can act on - what to do, on which plot, and by when - not as a dashboard metric to interpret." },
     { icon: "signal-low", title: "Low-data, low-coverage by default", text: "Screens are built to load on a weak connection, and the application keeps working through the gaps rather than waiting for a signal." },
     { icon: "phone-call", title: "One-tap agronomy helpline", text: "When a recommendation needs a human, the app places the farmer in touch with their extension officer with the plot's context already attached." },
   ],
@@ -298,7 +298,7 @@ export const hardware = {
   num: "10",
   eyebrow: "Field technology",
   title: "The IoT Ecosystem.",
-  sub: "Hardware built for village conditions — solar powered, long range, and shareable across a farmer organization.",
+  sub: "Hardware built for village conditions - solar powered, long range, and shareable across a farmer organization.",
   components: [
     { icon: "cpu", name: "ESP32-based soil monitoring nodes" },
     { icon: "droplet", name: "Soil moisture sensors" },
@@ -327,7 +327,7 @@ export const install = {
       points: ["One gateway serves many plots", "Shared across a farmer organization", "Bridges field devices to mobile data"],
       link: "Shared at the village level" },
     { icon: "plug", label: "Device 03", title: "Pump Controller with Manual Switch",
-      text: "Fitted to an existing pump or valve. It opens when measured soil moisture falls below the threshold and closes when moisture recovers — and the farmer can always override it by hand.",
+      text: "Fitted to an existing pump or valve. It opens when measured soil moisture falls below the threshold and closes when moisture recovers - and the farmer can always override it by hand.",
       points: ["Works with the pump already installed", "Automatic start and stop from soil moisture", "Manual override at the switch, always"],
       link: "Farmer override is never removed" },
   ],
@@ -382,8 +382,8 @@ export const platform = {
 export const roadmap = {
   eyebrow: "Strategic implementation",
   title: "The Roadmap.",
-  sub: "Phases 01–03 define the project scope. Phase 04 collects future extensions. All phases describe planned capabilities, not deployed commercial operations.",
-  scopeLabel: "Project scope: Phases 01–03",
+  sub: "Phases 01-03 define the project scope. Phase 04 collects future extensions. All phases describe planned capabilities, not deployed commercial operations.",
+  scopeLabel: "Project scope: Phases 01-03",
   futureLabel: "Future work: Phase 04",
   note: "All phases above describe planned and proposed capabilities of the Aswenna project. They do not represent deployed commercial operations.",
   phases: [
@@ -405,12 +405,12 @@ export const faq = {
   accent: "Questions",
   sub: "What farmers and farmer organizations ask most often about the project.",
   items: [
-    { q: "Do I need to buy sensors or hardware?", a: "No. Tier 0 is the whole software platform with no hardware at all — soil profiling, crop recommendations, the cultivation calendar, alerts, market analytics and satellite crop-health maps. Hardware only adds measured readings from your own plot on top of that." },
+    { q: "Do I need to buy sensors or hardware?", a: "No. Tier 0 is the whole software platform with no hardware at all - soil profiling, crop recommendations, the cultivation calendar, alerts, market analytics and satellite crop-health maps. Hardware only adds measured readings from your own plot on top of that." },
     { q: "What if I do not have a smartphone or a signal?", a: "Alerts and recommendations can be delivered by SMS or by voice call to a basic handset, and the application itself is offline-first: it keeps working without a connection and synchronises when one returns." },
     { q: "How accurate are the soil values?", a: "It depends on where they come from, and Aswenna always tells you which. Estimated values are derived from regional soil databases for your mapped location. Measured values come from a field device or a handheld probe on your plot. The two are never mixed or presented as the same thing." },
     { q: "Who owns the data from my land?", a: "You do. Plot boundaries, readings and history belong to the farmer, and can be exported at any time. Data shared with a farmer organization or an extension officer is anonymized where it feeds area-wide analysis." },
     { q: "Is Aswenna available in Sinhala and Tamil?", a: "Yes. The interface and the alerts are planned in Sinhala, Tamil and English, because advice that cannot be read is not advice." },
-    { q: "Is this available to use today?", a: "Not yet. Aswenna is an academic and agricultural research initiative. Phases 01 to 03 describe the planned project scope and Phase 04 collects proposed future extensions — none of it describes a deployed commercial service." },
+    { q: "Is this available to use today?", a: "Not yet. Aswenna is an academic and agricultural research initiative. Phases 01 to 03 describe the planned project scope and Phase 04 collects proposed future extensions - none of it describes a deployed commercial service." },
   ],
 };
 
@@ -431,7 +431,7 @@ export const contact = {
   submit: "Submit enquiry",
   sending: "Sending…",
   consent: "By submitting you agree to be contacted about the Aswenna project.",
-  successTitle: "Thank you — your enquiry is on its way.",
+  successTitle: "Thank you - your enquiry is on its way.",
   successText: "We have received your details and will reply to the address or number you gave us.",
   errorTitle: "That did not send.",
   errorText: "Something went wrong on the way to us. Please try again, or email us directly.",
@@ -475,7 +475,7 @@ export const footer = {
 };
 
 /* ==========================================================================
-   MOBILE APPLICATION — INTERFACE DESIGN CONCEPTS
+   MOBILE APPLICATION - INTERFACE DESIGN CONCEPTS
    --------------------------------------------------------------------------
    These screens are design concepts for the proposed Aswenna application.
    Every number in them is ILLUSTRATIVE: it shows what the interface does with
@@ -488,7 +488,6 @@ export const footer = {
    what is derived from regional databases and forecasts.
    ========================================================================== */
 export const appUi = {
-  conceptNote: "Interface design concept — illustrative values",
   statusTime: "9:41",
   tabs: [
     { icon: "house", label: "Home" },
@@ -528,9 +527,9 @@ export const appUi = {
     plot: "Plot A · 2.4 ha",
     depthLabel: "Moisture by depth",
     layers: [
-      { name: "0–15 cm", value: 38, tag: "Measured" },
-      { name: "15–30 cm", value: 54, tag: "Measured" },
-      { name: "30–60 cm", value: 61, tag: "Estimated" },
+      { name: "0-15 cm", value: 38, tag: "Measured" },
+      { name: "15-30 cm", value: 54, tag: "Measured" },
+      { name: "30-60 cm", value: 61, tag: "Estimated" },
     ],
     trendLabel: "Last 7 days",
     trend: [52, 49, 44, 58, 51, 45, 42],
@@ -567,7 +566,7 @@ export const appUi = {
       { icon: "bug", title: "Scout for leaf folder", when: "Thu 20 Nov", state: "next" },
       { icon: "wheat", title: "Panicle initiation check", when: "Sat 29 Nov", state: "next", group: "Later this month" },
     ],
-    shift: { icon: "refresh", text: "Two tasks moved — rain forecast for Wednesday." },
+    shift: { icon: "refresh", text: "Two tasks moved - rain forecast for Wednesday." },
   },
 
   irrigation: {
@@ -588,8 +587,8 @@ export const appUi = {
     modes: ["Auto", "Manual"],
     logLabel: "Today",
     log: [
-      { time: "06:12", text: "Valve opened — moisture below 35%", kind: "open" },
-      { time: "07:48", text: "Valve closed — upper threshold reached", kind: "close" },
+      { time: "06:12", text: "Valve opened - moisture below 35%", kind: "open" },
+      { time: "07:48", text: "Valve closed - upper threshold reached", kind: "close" },
       { time: "09:30", text: "Next check scheduled", kind: "info" },
     ],
   },

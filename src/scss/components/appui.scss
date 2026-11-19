@@ -1,5 +1,5 @@
 /* ==========================================================================
-   MOBILE APPLICATION — INTERFACE DESIGN CONCEPTS
+   MOBILE APPLICATION - INTERFACE DESIGN CONCEPTS
    --------------------------------------------------------------------------
    The device and the screens inside it are real DOM and real SVG, not
    screenshots: they stay crisp at any size, inherit the design tokens, and
@@ -982,35 +982,12 @@
   color: var(--color-text-muted);
 }
 
-.phone__concept {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3em;
-  align-self: center;
-  margin-top: 0.1rem;
-  padding: 0.2em 0.55em;
-  border-radius: var(--radius-pill);
-  background: var(--color-surface-muted);
-  color: var(--color-text-soft);
-  font-size: 0.68rem;
-  font-weight: var(--weight-semibold);
-  letter-spacing: 0.01em;
-
-  .icon { width: 0.9em; height: 0.9em; }
-}
-
 /* On a dark band the caption has to invert. */
 .section--dark .phone__caption strong,
 .cta .phone__caption strong { color: #fff; }
 
 .section--dark .phone__caption span,
 .cta .phone__caption span { color: rgba(231, 242, 234, 0.78); }
-
-.section--dark .phone__concept,
-.cta .phone__concept {
-  background: rgba(255, 255, 255, 0.14);
-  color: rgba(231, 242, 234, 0.92);
-}
 
 /* With the device in the frame, the right-hand floating card would sit behind
    it. Both cards move to the left column instead, which also keeps the

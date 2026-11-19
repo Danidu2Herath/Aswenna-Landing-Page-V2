@@ -80,5 +80,5 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 }
 
-/** `const { t } = useI18n()` — every content string goes through this. */
+/** `const { t } = useI18n()` - every content string goes through this. */
 export const useI18n = () => useContext(LanguageContext);

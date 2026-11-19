@@ -12,15 +12,15 @@ import { useMediaQuery, useReducedMotion } from "../hooks";
 /**
  * The growth journey has two presentations, and only one is ever live.
  *
- * DESKTOP — the section pins and the crop grows as you scroll through it.
+ * DESKTOP - the section pins and the crop grows as you scroll through it.
  *
- * TOUCH / NARROW / REDUCED MOTION — the "growing spine": a vertical timeline
+ * TOUCH / NARROW / REDUCED MOTION - the "growing spine": a vertical timeline
  * with the crop in a STICKY viewer above it. The crop still grows
  * continuously with scroll, but the page is never pinned, so the visitor
  * keeps the one gesture a phone gives them.
  *
  * Sticky is not pinned. The section is an ordinary height, scrolling never
- * stalls, and flicking past it costs one swipe instead of six — which is
+ * stalls, and flicking past it costs one swipe instead of six - which is
  * what made the pinned scrub, and then the horizontal card row, impractical
  * on a phone. Growth also reads top-to-bottom here, which is both the
  * natural direction of a phone and the direction a plant actually grows.
@@ -113,8 +113,8 @@ export default function JourneySection() {
   const spineStage = journey.stages[spineIndex];
 
   /**
-   * Tapping a node scrolls until the reading anchor — the bottom edge of the
-   * sticky viewer — sits in the MIDDLE of that stage. Landing the stage's top
+   * Tapping a node scrolls until the reading anchor - the bottom edge of the
+   * sticky viewer - sits in the MIDDLE of that stage. Landing the stage's top
    * edge on the anchor instead would leave the previous stage still active,
    * which is how the first attempt at this read as "off by one".
    */

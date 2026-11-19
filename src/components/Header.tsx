@@ -8,8 +8,8 @@ import { rafThrottle } from "../lib/util";
  * The floating header.
  *
  * Two independent states:
- *   `header--stuck`      — past the first scroll, so it tightens and frosts.
- *   `header--over-dark`  — the bar is currently sitting over one of the dark
+ *   `header--stuck`      - past the first scroll, so it tightens and frosts.
+ *   `header--over-dark`  - the bar is currently sitting over one of the dark
  *                          sections, so it drops the light glass for a dark,
  *                          mostly transparent treatment with light text.
  *
