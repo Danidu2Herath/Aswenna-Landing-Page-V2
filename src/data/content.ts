@@ -70,7 +70,10 @@ export const hero = {
 export const partners = {
   note: "Aswenna is a project of Veyra Solutions.",
   logos: [
-    { src: "/images/logos/aswenna-white.svg", alt: "Aswenna", cls: "" },
+    /* The reversed logo, not the colour one: flattening the colour lockup to
+       white would fuse the disc and the leaf into a blank circle. This file
+       has the disc dropped already, so it reads on the dark hero. */
+    { src: "/images/logos/aswenna-logo-white.webp", alt: "Aswenna", cls: "" },
     { src: "/images/logos/veyra-placeholder.svg", alt: "Veyra Solutions", cls: "" },
     /* Flattening this to white turns the crest into a solid blob: the circular
        device and the "IIT" letters disappear. Greyscale keeps them, and the
