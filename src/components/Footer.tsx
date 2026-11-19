@@ -25,8 +25,7 @@ export default function Footer() {
         <div className="footer__top">
           <div className="footer__brand">
             <a className="footer__logo" href="#top">
-              <img src="/images/logos/aswenna-mark.svg" alt="" width={34} height={34} />
-              <strong>{site.name}</strong>
+              <img src="/images/logos/aswenna-logo.webp" alt={site.name} width={480} height={193} />
             </a>
             <p className="footer__tagline">{t("footer.tagline", footer.tagline)}</p>
             <a className="footer__cta" href={footer.cta.href}>

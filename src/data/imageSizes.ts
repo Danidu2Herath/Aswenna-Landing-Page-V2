@@ -3,17 +3,25 @@
    on every <img> so the browser reserves the right space before the image
    arrives, instead of shifting the page when it does. */
 export const imageSizes: Record<string, [number, number]> = {
-  "/images/favicon.svg": [
-    48,
-    48
+  "/images/apple-touch-icon.png": [
+    180,
+    180
   ],
-  "/images/logos/aswenna-mark.svg": [
-    48,
-    48
+  "/images/favicon.png": [
+    192,
+    192
   ],
-  "/images/logos/aswenna-white.svg": [
-    220,
-    48
+  "/images/logos/aswenna-logo-white.webp": [
+    480,
+    193
+  ],
+  "/images/logos/aswenna-logo.webp": [
+    480,
+    193
+  ],
+  "/images/logos/aswenna-mark.png": [
+    512,
+    512
   ],
   "/images/logos/atp.webp": [
     131,

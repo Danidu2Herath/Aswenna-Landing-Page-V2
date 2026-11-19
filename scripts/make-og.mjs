@@ -19,7 +19,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const b64 = (p, mime) => `data:${mime};base64,${readFileSync(join(root, p)).toString("base64")}`;
 
 const photo = b64("public/images/photos/hero-field.webp", "image/webp");
-const mark = b64("public/images/logos/aswenna-mark.svg", "image/svg+xml");
+const mark = b64("public/images/logos/aswenna-mark.png", "image/png");
 
 const html = `<!doctype html><html><head><meta charset="utf-8">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Inter:wght@400;500&display=swap">
@@ -36,7 +36,7 @@ const html = `<!doctype html><html><head><meta charset="utf-8">
   }
   .inner { position: relative; height: 100%; padding: 64px 72px; display: flex; flex-direction: column; justify-content: space-between; }
   .brand { display: flex; align-items: center; gap: 16px; }
-  .brand img { width: 56px; height: 56px; border-radius: 12px; }
+  .brand img { width: 60px; height: 60px; }
   .brand b { font-family: "Plus Jakarta Sans", sans-serif; font-size: 34px; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
   .brand span { font-size: 17px; color: rgba(231,242,234,0.72); display: block; margin-top: 2px; letter-spacing: 0.01em; }
   h1 {
@@ -60,11 +60,11 @@ const html = `<!doctype html><html><head><meta charset="utf-8">
     <div class="inner">
       <div class="brand">
         <img src="${mark}" alt="">
-        <div><b>Aswenna</b><span>Agricultural Intelligence Platform</span></div>
+        <div><b>Aswenna</b><span>Agriculture Intelligence Platform</span></div>
       </div>
       <div>
         <h1>Smarter fields,<br><em>greater future.</em></h1>
-        <p>IoT precision farming for Sri Lankan agriculture - soil, weather, irrigation and market intelligence.</p>
+        <p>Precision farming for Sri Lankan agriculture - soil, weather, irrigation and market intelligence.</p>
       </div>
       <div class="foot">
         <span class="chip chip--solid">Sri Lanka</span>

@@ -95,11 +95,24 @@ export default function Header() {
       <header className={classes} ref={headerRef}>
         <div className="header__inner container">
           <a className="brand" href="#top" aria-label={`${site.name} home`}>
-            <img src="/images/logos/aswenna-mark.svg" alt="" width={36} height={36} />
-            <span className="brand__text">
-              <span className="brand__name">{site.name}</span>
-              <span className="brand__tag">{t("site.tagline", site.tagline)}</span>
-            </span>
+            {/* Two files, one shown at a time. Over the hero photograph the
+                bar has no surface and the wordmark would be dark green ink on
+                a dark field, so the reversed logo takes over there. The <a>
+                carries the accessible name, so both images are decorative. */}
+            <img
+              className="brand__logo brand__logo--ink"
+              src="/images/logos/aswenna-logo.webp"
+              alt=""
+              width={480}
+              height={193}
+            />
+            <img
+              className="brand__logo brand__logo--reversed"
+              src="/images/logos/aswenna-logo-white.webp"
+              alt=""
+              width={480}
+              height={193}
+            />
           </a>
 
           <nav className="header__nav" aria-label={t("ui.primaryNav", ui.primaryNav)}>

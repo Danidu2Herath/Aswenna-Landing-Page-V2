@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Aswenna">
-  <rect width="48" height="48" rx="13" fill="#1D4E2B"/>
-  <path d="M24 37V20" stroke="#D6EFDF" stroke-width="3" stroke-linecap="round"/>
-  <path d="M24 24c0-6 4.6-10.5 10.5-11 .5 5.9-3.6 11-10.5 11Z" fill="#7FC89B"/>
-  <path d="M24 30c-5.4 0-9.2-3.6-9.6-8.6 5 .4 9.2 3.8 9.6 8.6Z" fill="#2F7C47"/>
-  <path d="M15 38h18" stroke="#ADDEC0" stroke-width="3" stroke-linecap="round"/>
-</svg>

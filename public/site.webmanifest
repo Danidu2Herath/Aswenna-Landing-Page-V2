@@ -8,9 +8,9 @@
   "theme_color": "#1D4E2B",
   "icons": [
     {
-      "src": "/images/logos/aswenna-mark.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
+      "src": "/images/logos/aswenna-mark.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ]
 }

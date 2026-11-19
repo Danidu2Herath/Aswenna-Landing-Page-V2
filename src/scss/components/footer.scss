@@ -26,20 +26,13 @@
   padding-bottom: clamp(32px, 5vw, 64px);
 }
 
+/* The logo carries the name, so no wordmark is set in type beside it. The
+   strapline below stays live text: at this size the one baked into the
+   artwork would be about five pixels tall. */
 .footer__logo {
   display: inline-flex;
-  align-items: center;
-  gap: 10px;
 
-  img { border-radius: var(--radius-sm); }
-
-  strong {
-    font-family: var(--font-heading);
-    font-size: clamp(var(--text-xl), 1rem + 0.6vw, var(--text-2xl));
-    font-weight: var(--weight-bold);
-    letter-spacing: var(--tracking-tight);
-    color: var(--color-text);
-  }
+  img { display: block; height: clamp(42px, 4.4vw, 52px); width: auto; }
 }
 
 .footer__tagline {
