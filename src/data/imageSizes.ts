@@ -27,6 +27,10 @@ export const imageSizes: Record<string, [number, number]> = {
     220,
     48
   ],
+  "/images/logos/westminster.svg": [
+    170,
+    41
+  ],
   "/images/og-cover.jpg": [
     1200,
     630

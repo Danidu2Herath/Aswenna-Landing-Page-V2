@@ -262,6 +262,15 @@
 
 .hero__partner--tall img { height: 36px; }
 
+/* A mark whose detail is carried by its own tones rather than by its outline.
+   brightness(0) invert(1) paints every opaque pixel the same white, which for
+   the IIT crest means a featureless shield. Greyscale keeps the tonal
+   difference between the shield, the device and the lettering; the brightness
+   lifts the result far enough off the dark hero to read. */
+.hero__partner--mono img { filter: grayscale(1) brightness(2.2); }
+.hero__partner--mono:hover img,
+.hero__partner--mono:focus-within img { filter: none; }
+
 @media (prefers-reduced-motion: reduce) {
   .hero__partner::before { transform: none; transition: opacity 1ms; }
   .hero__partner img { transition: none; }
