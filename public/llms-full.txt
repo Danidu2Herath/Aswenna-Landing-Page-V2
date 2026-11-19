@@ -1,6 +1,6 @@
 # Aswenna - Agriculture Intelligence Platform
 
-> An IoT-enabled precision farming platform for Sri Lankan agriculture - soil intelligence, hyperlocal weather, AI recommendations, smart irrigation, crop-health monitoring and market intelligence.
+> A precision farming platform for Sri Lankan agriculture - soil intelligence, hyperlocal weather, AI recommendations, smart irrigation, crop-health monitoring and market intelligence.
 
 | | |
 | --- | --- |

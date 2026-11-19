@@ -14,7 +14,7 @@ export const site = {
      and the structured data. It used to live in the footer as a visible
      paragraph; the paragraph is gone, the metadata still needs it. */
   description:
-    "An IoT-enabled precision farming platform for Sri Lankan agriculture - soil intelligence, hyperlocal weather, AI recommendations, smart irrigation, crop-health monitoring and market intelligence.",
+    "A precision farming platform for Sri Lankan agriculture - soil intelligence, hyperlocal weather, AI recommendations, smart irrigation, crop-health monitoring and market intelligence.",
 
   /* What a search result actually shows. Google cuts a title at roughly 60
      characters and a description at roughly 160, so these are written to fit
