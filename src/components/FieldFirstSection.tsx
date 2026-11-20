@@ -37,10 +37,10 @@ export default function FieldFirstSection() {
             <div className="ffirst__stack">
               <div className="media media--4x3">
                 <img
-                  src="/images/photos/connectivity-gap.webp"
-                  alt="Paddy fields and coconut palms in rural Sri Lanka"
+                  src="/images/photos/designed-for-field.webp"
+                  alt="A tea picker working across a terraced hillside plantation"
                   loading="lazy"
-                  {...imgSize("/images/photos/connectivity-gap.webp")}
+                  {...imgSize("/images/photos/designed-for-field.webp")}
                 />
               </div>
               <div className="ffirst__device">
