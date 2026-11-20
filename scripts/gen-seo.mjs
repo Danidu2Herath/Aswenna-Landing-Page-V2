@@ -379,7 +379,7 @@ writeFileSync(
       start_url: "/",
       display: "standalone",
       background_color: "#EFF4EE",
-      theme_color: "#1D4E2B",
+      theme_color: "#06271B",
       icons: [{ src: "/images/logos/aswenna_mark.png", sizes: "512x512", type: "image/png" }],
     },
     null,

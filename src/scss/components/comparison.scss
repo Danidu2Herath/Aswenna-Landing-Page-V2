@@ -108,16 +108,21 @@
 }
 
 /* Dark enough at the foot to carry white text over any of the eight
-   photographs, which range from pale soil to a dark canopy. */
+   photographs, which range from pale soil to a dark canopy.
+
+   The stops were raised when the scrim moved from a near-black to the brand
+   green, which is the lighter of the two: at the old 0.18/0.52/0.88 the worst
+   panel measured 4.52:1, a hair over AA. At these they measure 5.63:1 at
+   worst, which is where the near-black left them (5.32:1). */
 .cmp__scrim {
   position: absolute;
   inset: 0;
   z-index: -1;
   background: linear-gradient(
     180deg,
-    rgba(6, 16, 9, 0.18) 0%,
-    rgba(6, 16, 9, 0.52) 42%,
-    rgba(6, 16, 9, 0.88) 100%
+    rgba(var(--brand-dark-rgb), 0.24) 0%,
+    rgba(var(--brand-dark-rgb), 0.60) 42%,
+    rgba(var(--brand-dark-rgb), 0.92) 100%
   );
 }
 

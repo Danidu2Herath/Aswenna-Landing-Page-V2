@@ -14,7 +14,7 @@
   padding-bottom: clamp(28px, 4vw, 44px);
   color: #fff;
   overflow: hidden;
-  background: #0b1a10;
+  background: var(--brand-dark);
 }
 
 .hero__bg {
@@ -216,7 +216,7 @@
   inset: 0;
   z-index: -1;
   border-radius: inherit;
-  background: rgba(6, 16, 9, 0.72);
+  background: rgba(var(--brand-dark-rgb), 0.72);
   border: 1px solid rgba(255, 255, 255, 0.16);
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
