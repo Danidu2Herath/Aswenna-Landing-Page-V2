@@ -25,6 +25,13 @@
   --color-accent-ink: #0063C6;
   --brand-neutral:   #1D1D1F;   /* label             */
 
+  /* The dark green of the logo's disc, taken from the artwork itself. Every
+     dark brand surface uses it so the page and the mark are the same colour
+     rather than two greens that nearly agree. The -rgb form exists because
+     the partner hover plate needs it at 72%. */
+  --brand-dark:      #06271B;
+  --brand-dark-rgb:  6, 39, 27;
+
   /* 2. RAMPS */
   --primary-50:  #F0F6FF;
   --primary-100: #DCEBFF;

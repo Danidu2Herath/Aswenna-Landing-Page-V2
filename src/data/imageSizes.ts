@@ -12,12 +12,12 @@ export const imageSizes: Record<string, [number, number]> = {
     192
   ],
   "/images/logos/aswenna_logo.png": [
-    480,
-    193
+    560,
+    197
   ],
   "/images/logos/aswenna_logo_white.png": [
-    480,
-    193
+    560,
+    197
   ],
   "/images/logos/aswenna_mark.png": [
     512,

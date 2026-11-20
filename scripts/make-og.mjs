@@ -26,7 +26,7 @@ const html = `<!doctype html><html><head><meta charset="utf-8">
 <style>
   * { box-sizing: border-box; margin: 0; }
   body { width: 1200px; height: 630px; overflow: hidden; font-family: Inter, system-ui, sans-serif; }
-  .card { position: relative; width: 1200px; height: 630px; background: #0E2715; overflow: hidden; }
+  .card { position: relative; width: 1200px; height: 630px; background: #06271B; overflow: hidden; }
   .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .scrim {
     position: absolute; inset: 0;
