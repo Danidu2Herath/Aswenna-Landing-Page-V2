@@ -21,13 +21,17 @@ export default function PricingSection() {
                     {t("pricing.flag", pricing.flag)}
                   </span>
                 ) : null}
-                <span className="plan__tag">{t(`pricing.tiers.${i}.tag`, p.tag)}</span>
+                <span className="plan__tag">
+                  {t(`pricing.tiers.${i}.tag`, p.tag)}
+                </span>
                 <h3 className="plan__name">{p.name}</h3>
                 <p className="plan__price">
                   {t(`pricing.tiers.${i}.price`, p.price)}
                   <span>{t(`pricing.tiers.${i}.unit`, p.unit)}</span>
                 </p>
-                <p className="plan__text">{t(`pricing.tiers.${i}.text`, p.text)}</p>
+                <p className="plan__text">
+                  {t(`pricing.tiers.${i}.text`, p.text)}
+                </p>
                 <ul className="plan__list">
                   {p.items.map((item, j) => (
                     <li key={item}>
@@ -38,19 +42,15 @@ export default function PricingSection() {
                     </li>
                   ))}
                 </ul>
-                <a className={`btn ${p.featured ? "btn--primary" : "btn--ghost"} plan__btn`} href="#contact">
+                <a
+                  className={`btn ${p.featured ? "btn--primary" : "btn--ghost"} plan__btn`}
+                  href="#contact">
                   {t(`pricing.tiers.${i}.cta`, p.cta)}
                 </a>
               </article>
             </Reveal>
           ))}
         </div>
-        <Reveal>
-          <p className="pricing__note">
-            <Icon name="info" />
-            <span>{t("pricing.note", pricing.note)}</span>
-          </p>
-        </Reveal>
       </div>
     </section>
   );
