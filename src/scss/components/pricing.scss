@@ -15,9 +15,14 @@
   border-radius: var(--radius-xl);
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  transition: transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+  transition:
+    transform var(--duration) var(--ease),
+    box-shadow var(--duration) var(--ease);
 }
-.plan:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+.plan:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
 .plan--featured {
   border-color: var(--brand-primary);
   box-shadow: var(--shadow-md), var(--ring);
@@ -49,7 +54,10 @@
   text-transform: uppercase;
   color: var(--color-accent-text);
 }
-.plan__name { margin-top: 8px; font-size: var(--text-xl); }
+.plan__name {
+  margin-top: 8px;
+  font-size: var(--text-xl);
+}
 
 .plan__price {
   margin-top: 18px;
@@ -70,10 +78,24 @@
   color: var(--color-text-muted);
 }
 
-.plan__text { margin-top: 14px; font-size: var(--text-sm); color: var(--color-text-soft); }
+.plan__text {
+  margin-top: 14px;
+  font-size: var(--text-sm);
+  color: var(--color-text-soft);
+}
 
-.plan__list { margin-top: 22px; display: grid; gap: 10px; flex: 1; }
-.plan__list li { display: flex; align-items: flex-start; gap: 10px; font-size: var(--text-sm); }
+.plan__list {
+  margin-top: 22px;
+  display: grid;
+  gap: 10px;
+  flex: 1;
+}
+.plan__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: var(--text-sm);
+}
 .plan__tick {
   display: grid;
   place-items: center;
@@ -85,24 +107,21 @@
   background: var(--color-highlight-soft);
   color: var(--brand-tertiary);
 }
-.plan--featured .plan__tick { background: var(--brand-primary); color: #fff; }
-
-.plan__btn { margin-top: 26px; width: 100%; }
-
-.pricing__note {
-  margin-top: 28px;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  max-width: 76ch;
-  margin-inline: auto;
-  padding: 16px 20px;
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  font-size: var(--text-xs);
-  color: var(--color-text-muted);
+.plan--featured .plan__tick {
+  background: var(--brand-primary);
+  color: #fff;
 }
-.pricing__note svg { flex-shrink: 0; margin-top: 1px; color: var(--brand-secondary); }
 
-@media (max-width: 900px) { .pricing__grid { grid-template-columns: minmax(0, 1fr); } .plan--featured { padding-top: 40px; } }
+.plan__btn {
+  margin-top: 26px;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .pricing__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .plan--featured {
+    padding-top: 40px;
+  }
+}
