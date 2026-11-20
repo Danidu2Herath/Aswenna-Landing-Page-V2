@@ -43,9 +43,29 @@ export const imageSizes: Record<string, [number, number]> = {
     1200,
     630
   ],
+  "/images/photos/calendar.webp": [
+    1450,
+    1089
+  ],
   "/images/photos/connectivity-gap.webp": [
     900,
     507
+  ],
+  "/images/photos/crop-choice.webp": [
+    1450,
+    1088
+  ],
+  "/images/photos/cta-grow-smarter.webp": [
+    1600,
+    1066
+  ],
+  "/images/photos/designed-for-field.webp": [
+    900,
+    450
+  ],
+  "/images/photos/fertilizer.webp": [
+    1450,
+    818
   ],
   "/images/photos/field-crop-health.webp": [
     1200,
@@ -59,13 +79,45 @@ export const imageSizes: Record<string, [number, number]> = {
     500,
     667
   ],
+  "/images/photos/harvest-market-timing.webp": [
+    1600,
+    1067
+  ],
   "/images/photos/hero-field.webp": [
     2000,
     1145
   ],
+  "/images/photos/how-advice-arrives.webp": [
+    1450,
+    967
+  ],
+  "/images/photos/hyperlocal-weather.webp": [
+    1000,
+    562
+  ],
+  "/images/photos/irrigation.webp": [
+    1450,
+    967
+  ],
+  "/images/photos/land-prep-nursery.webp": [
+    1300,
+    975
+  ],
   "/images/photos/market-trend.webp": [
     1200,
     900
+  ],
+  "/images/photos/panicle-soil-nutrition.webp": [
+    1600,
+    1067
+  ],
+  "/images/photos/plant-disease.webp": [
+    1450,
+    1933
+  ],
+  "/images/photos/price-and-timing.webp": [
+    1450,
+    1933
   ],
   "/images/photos/problem-climate.webp": [
     760,
@@ -90,6 +142,14 @@ export const imageSizes: Record<string, [number, number]> = {
   "/images/photos/problem-water.webp": [
     760,
     506
+  ],
+  "/images/photos/vegetative-top-dressing.webp": [
+    1600,
+    1186
+  ],
+  "/images/photos/who-owns-the-data.webp": [
+    1450,
+    2175
   ]
 };
 
