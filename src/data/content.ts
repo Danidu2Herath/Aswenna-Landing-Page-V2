@@ -29,7 +29,7 @@ export const site = {
 export const contactDetails = {
   email: "info@veyra.lk",
   phones: [
-    { label: "+94 78 259 6361", href: "tel:+94782596361" },
+    { label: "+94 78 259 6361", href: "tel:+94786373542" },
     { label: "+94 77 786 2375", href: "tel:+94777862375" },
   ],
 };

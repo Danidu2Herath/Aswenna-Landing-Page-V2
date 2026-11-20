@@ -1,4 +1,3 @@
-import Icon from "./Icon";
 import Reveal from "./Reveal";
 import SectionHead from "./SectionHead";
 import { problems } from "../data/content";
