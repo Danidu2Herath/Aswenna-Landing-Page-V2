@@ -84,12 +84,12 @@ p { margin: 0; }
 .section--light .section-title { color: var(--color-section-light-ink); }
 .section--light .section-title .accent { color: var(--color-section-light-accent); }
 .section--light .section-sub { color: var(--color-section-light-soft); }
-.section--light .eyebrow {
-  background: rgba(255, 255, 255, 0.72);
-  border-color: var(--color-section-light-line);
-  color: var(--color-section-light-accent);
-}
-.section--light .eyebrow__num { background: var(--color-section-light-accent); color: #fff; }
+/* No eyebrow overrides here on purpose. The light band used to give the
+   eyebrow a white plate and a filled green number, which made sections 03
+   and 06 the only two on the page that opened differently from the other
+   twelve. The plate is also unnecessary: --color-section-light-accent is
+   the same green as --brand-tertiary, and it measures 5.84:1 straight on
+   the band, well past AA for a 19px semibold line. */
 
 /* --------------------------- section heading ------------------------------ */
 .section-head { max-width: 720px; }
