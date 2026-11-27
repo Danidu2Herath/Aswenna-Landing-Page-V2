@@ -1,0 +1,26 @@
+# Cloudflare Pages reads this file from the build output (dist/_headers).
+# https://developers.cloudflare.com/pages/configuration/headers/
+#
+# The CSP allows exactly what the page loads today:
+#   - own scripts/styles/images
+#   - Google Fonts (CSS from fonts.googleapis.com, files from fonts.gstatic.com)
+#   - the contact form relay (formsubmit.co)
+#   - Cloudflare Web Analytics (static.cloudflareinsights.com / cloudflareinsights.com)
+# script-src permits the one inline script in index.html by hash. Two hashes
+# because the snippet's line endings differ (CRLF on Windows, LF on Linux CI).
+# If that inline script is ever edited, recompute its sha256 and update both,
+# or the page will lose its "js" class and the reveal animations.
+# The 'unsafe-inline' in style-src is for React inline style attributes.
+# Add any new third-party host here, or the browser will block it.
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), interest-cohort=()
+  Strict-Transport-Security: max-age=15552000
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-/GlaljABSqqOEGneUMbcCNjZ2SgxshEdigdbr8aaJKQ=' 'sha256-ZnYJX5ypMaaAhxxWhSEjbMkhO2A9yPmbzEQH3LFaITA=' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co https://cloudflareinsights.com; base-uri 'self'; form-action 'self'; object-src 'none'; frame-ancestors 'none'
+
+# Vite's hashed bundles never change under the same name.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
