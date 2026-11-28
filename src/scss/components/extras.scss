@@ -10,8 +10,16 @@
   place-items: center;
   border-bottom: 1px solid var(--color-border);
   background:
-    radial-gradient(280px 180px at 30% 25%, rgba(52, 199, 89, 0.18), transparent 70%),
-    radial-gradient(260px 200px at 78% 80%, rgba(75, 94, 112, 0.14), transparent 72%),
+    radial-gradient(
+      280px 180px at 30% 25%,
+      rgba(52, 199, 89, 0.18),
+      transparent 70%
+    ),
+    radial-gradient(
+      260px 200px at 78% 80%,
+      rgba(75, 94, 112, 0.14),
+      transparent 72%
+    ),
     var(--color-surface-muted);
 }
 .field__art-icon {
@@ -25,10 +33,15 @@
   color: var(--brand-primary);
   box-shadow: var(--shadow-sm);
 }
-.field__art-icon .icon { width: 30px; height: 30px; }
+.field__art-icon .icon {
+  width: 30px;
+  height: 30px;
+}
 
 /* --------------------------- field-first visual --------------------------- */
-.ffirst__visual .media { width: 100%; }
+.ffirst__visual .media {
+  width: 100%;
+}
 
 /* ------------------------------ contact form ------------------------------ */
 .contact__details {
@@ -36,8 +49,15 @@
   display: grid;
   gap: 10px;
 }
-.contact__details li { display: flex; align-items: center; gap: 10px; font-size: var(--text-sm); }
-.contact__details .icon { color: var(--brand-tertiary); }
+.contact__details li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--text-sm);
+}
+.contact__details .icon {
+  color: var(--brand-tertiary);
+}
 /* WCAG 2.5.8 wants 24px on every pointer, not only on touch; the line box
    on its own was 23px. The coarse-pointer rule below raises it to 44px. */
 .contact__details a {
@@ -47,9 +67,14 @@
   color: var(--color-text-soft);
   transition: color var(--duration-fast) var(--ease);
 }
-.contact__details a:hover { color: var(--primary-700); text-decoration: underline; }
+.contact__details a:hover {
+  color: var(--primary-700);
+  text-decoration: underline;
+}
 
-.field__req { color: var(--color-accent-text); }
+.field__req {
+  color: var(--color-accent-text);
+}
 
 /* The honeypot must be unreachable rather than merely invisible. */
 .field__trap {
@@ -62,9 +87,14 @@
 }
 
 .field.is-invalid input,
-.field.is-invalid textarea { border-color: #B3261E; background: #FDF3F2; }
+.field.is-invalid textarea {
+  border-color: #b3261e;
+  background: #fdf3f2;
+}
 .field.is-invalid input:focus,
-.field.is-invalid textarea:focus { box-shadow: 0 0 0 4px rgba(179, 38, 30, 0.16); }
+.field.is-invalid textarea:focus {
+  box-shadow: 0 0 0 4px rgba(179, 38, 30, 0.16);
+}
 
 .contact__status {
   grid-column: 1 / -1;
@@ -72,9 +102,15 @@
   font-size: var(--text-sm);
   color: var(--color-text-soft);
 }
-.contact__status--error { color: #B3261E; font-weight: var(--weight-medium); }
+.contact__status--error {
+  color: #b3261e;
+  font-weight: var(--weight-medium);
+}
 
-.contact__submit[disabled] { opacity: 0.65; cursor: progress; }
+.contact__submit[disabled] {
+  opacity: 0.65;
+  cursor: progress;
+}
 
 .contact__result {
   display: grid;
@@ -86,9 +122,18 @@
   border: 1px solid var(--color-border-accent);
   text-align: center;
 }
-.contact__result strong { font-family: var(--font-heading); font-size: var(--text-lg); }
-.contact__result p { font-size: var(--text-sm); color: var(--color-text-soft); max-width: 44ch; }
-.contact__result--error { border-color: #F0C8C5; }
+.contact__result strong {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+}
+.contact__result p {
+  font-size: var(--text-sm);
+  color: var(--color-text-soft);
+  max-width: 44ch;
+}
+.contact__result--error {
+  border-color: #f0c8c5;
+}
 
 .contact__result-icon {
   display: grid;
@@ -98,9 +143,17 @@
   border-radius: var(--radius-pill);
   color: #fff;
 }
-.contact__result-icon .icon { width: 26px; height: 26px; stroke-width: 2.6; }
-.contact__result-icon--ok { background: var(--brand-primary); }
-.contact__result-icon--bad { background: #B3261E; }
+.contact__result-icon .icon {
+  width: 26px;
+  height: 26px;
+  stroke-width: 2.6;
+}
+.contact__result-icon--ok {
+  background: var(--brand-primary);
+}
+.contact__result-icon--bad {
+  background: #b3261e;
+}
 
 .contact__result-fallback {
   display: flex;
@@ -108,23 +161,48 @@
   gap: 8px;
   font-size: var(--text-sm);
 }
-.contact__result-fallback a { color: var(--primary-700); font-weight: var(--weight-semibold); }
+.contact__result-fallback a {
+  color: var(--primary-700);
+  font-weight: var(--weight-semibold);
+}
 
 /* ------------------------------ footer extras ----------------------------- */
-.footer__cols { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-@media (max-width: 900px) { .footer__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.footer__cols {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+@media (max-width: 900px) {
+  .footer__cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 
 /* --------------------------- engine centre swap --------------------------- */
-.eloop__centre-name.is-swapping { animation: eloop-swap 380ms var(--ease) both; }
-.journey__now.is-swapping { animation: journey-swap 420ms var(--ease) both; }
+.eloop__centre-name.is-swapping {
+  animation: eloop-swap 380ms var(--ease) both;
+}
+.journey__now.is-swapping {
+  animation: journey-swap 420ms var(--ease) both;
+}
 
 /* ------------------------------ icon in burger ---------------------------- */
-.burger__close { display: none; }
-[aria-expanded="true"] .burger__open { display: none; }
-[aria-expanded="true"] .burger__close { display: block; }
-.faq__minus { display: none; }
-.faq__item.is-open .faq__plus { display: none; }
-.faq__item.is-open .faq__minus { display: block; }
+.burger__close {
+  display: none;
+}
+[aria-expanded="true"] .burger__open {
+  display: none;
+}
+[aria-expanded="true"] .burger__close {
+  display: block;
+}
+.faq__minus {
+  display: none;
+}
+.faq__item.is-open .faq__plus {
+  display: none;
+}
+.faq__item.is-open .faq__minus {
+  display: block;
+}
 
 /* ===========================================================================
    Touch target sizes.
@@ -132,6 +210,10 @@
    range thumb and the footer/contact link lists were all under the 44px
    comfortable minimum. These bring them up without changing the look.
    =========================================================================== */
+
+.lang__button {
+  min-height: 44px;
+}
 
 .season__link {
   min-height: 44px;
@@ -147,5 +229,7 @@
     display: flex;
     align-items: center;
   }
-  .footer__col ul { gap: 2px; }
+  .footer__col ul {
+    gap: 2px;
+  }
 }

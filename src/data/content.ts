@@ -41,6 +41,8 @@ export const ui = {
   primaryNav: "Primary",
   backToTop: "Back to top",
   skipToContent: "Skip to content",
+  language: "Language",
+  chooseLanguage: "Choose a language",
 };
 
 export const nav = [

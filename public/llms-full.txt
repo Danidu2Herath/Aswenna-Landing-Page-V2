@@ -12,7 +12,7 @@
 | Planned platform languages | Sinhala, Tamil, English |
 | Contact | info@veyra.lk · +94 78 259 6361 · +94 77 786 2375 |
 | Canonical URL | https://aswenna.veyra.lk/ |
-| Content last updated | 2026-11-19 |
+| Content last updated | 2026-11-21 |
 
 ## Status - read this first
 
@@ -167,7 +167,7 @@ No hardware is required to begin. Hardware is added only when a farmer or an org
 
 ### Tier 0 - Software Only
 
-**LKR 0** (no hardware)
+**Contact Sales** (no hardware)
 
 The full platform on regional and satellite data.
 
@@ -179,7 +179,7 @@ The full platform on regional and satellite data.
 
 ### Tier 1 - Shared Village Station
 
-**LKR 49,950** (per village, indicative)
+**Contact Sales** (per village, indicative)
 
 Shared by a farmer organization across a community.
 
@@ -191,7 +191,7 @@ Shared by a farmer organization across a community.
 
 ### Tier 2 - Plot Automation
 
-**LKR 26,990** (per plot, indicative)
+**Contact Sales** (per plot, indicative)
 
 Dedicated sensing and automated watering on your own plot.
 
@@ -301,5 +301,5 @@ We usually reply within a few working days.
 
 ---
 
-_Content last updated 2026-11-19, generated from src/data/content.ts. This
+_Content last updated 2026-11-21, generated from src/data/content.ts. This
 file carries the site's content; where the two disagree, the page is correct._
