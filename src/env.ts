@@ -29,22 +29,37 @@ function read(name: string, fallback: string): string {
   // say so loudly in development and quietly use the fallback in production
   // rather than shipping a page with a broken form.
   if (import.meta.env.DEV) {
-    console.warn(`[env] ${name} is not set in .env - falling back to "${fallback}".`);
+    console.warn(
+      `[env] ${name} is not set in .env - falling back to "${fallback}".`,
+    );
   }
   return fallback;
 }
 
 export const env = {
   /** Canonical origin of the deployed site. No trailing slash. */
-  siteUrl: read("VITE_SITE_URL", "https://aswenna.veyra.lk").replace(/\/+$/, ""),
+  siteUrl: read("VITE_SITE_URL", "https://aswenna.veyra.lk").replace(
+    /\/+$/,
+    "",
+  ),
 
   /**
    * Where the contact form POSTs. It must accept a JSON body and answer 2xx
    * on success. FormSubmit, Formspree, Web3Forms and your own endpoint all
    * fit; changing services means changing this one value.
    */
-  contactEndpoint: read("VITE_CONTACT_ENDPOINT", "https://formsubmit.co/ajax/info@veyra.lk"),
-
+  contactEndpoint: read(
+    "VITE_CONTACT_ENDPOINT",
+    "https://formsubmit.co/ajax/info@veyra.lk",
+  ),
+  /**
+   * Web3Forms public access key. When set, the form sends a Web3Forms-shaped
+   * payload (access_key, name, email, subject, message, botcheck). Leave
+   * blank for FormSubmit-style relays. A public form key, not a secret.
+   */
+  web3formsKey: (
+    (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | undefined) ?? ""
+  ).trim(),
   /** How long to wait for the relay before showing the error state, in ms. */
   contactTimeoutMs: Number(read("VITE_CONTACT_TIMEOUT_MS", "15000")) || 15000,
 } as const;
