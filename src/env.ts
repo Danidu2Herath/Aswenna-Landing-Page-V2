@@ -50,7 +50,7 @@ export const env = {
    */
   contactEndpoint: read(
     "VITE_CONTACT_ENDPOINT",
-    "https://formsubmit.co/ajax/info@veyra.lk",
+    "https://formspree.io/f/xbgoegjv",
   ),
   /**
    * Web3Forms public access key. When set, the form sends a Web3Forms-shaped

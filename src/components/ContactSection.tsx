@@ -9,16 +9,13 @@ import { env } from "../env";
    WHERE THE FORM SENDS
    ---------------------------------------------------------------------------
    This is a static site: there is no server of ours to post to, so the form
-   hands off to a form-relay service which emails the submission on.
+   hands off to Formspree, which emails the submission on.
 
    The relay URL is configuration, not code - it lives in .env as
-   VITE_CONTACT_ENDPOINT. See src/env.ts for why it is not, and cannot be,
-   a secret, and .env.example for how to set it.
-
-   With FormSubmit the inbox must be activated once: submit the form on the
-   live site, then click the link in the confirmation email it sends to that
-   address. Until that is done every submission fails and the visitor sees
-   the error state.
+   VITE_CONTACT_ENDPOINT (https://formspree.io/f/<form id>). See src/env.ts
+   for why it is not, and cannot be, a secret, and .env.example for how to
+   set it. The destination inbox and the allowed domains are set in the
+   Formspree dashboard.
    =========================================================================== */
 
 type View = "form" | "success" | "error";
@@ -67,7 +64,7 @@ export default function ContactSection() {
     setInvalid(next);
     if (firstBad) {
       setStatus({
-        text: "Please check the highlighted fields.",
+        text: t("contact.checkFields", "Please check the highlighted fields."),
         tone: "error",
       });
       firstBad.focus();
@@ -78,7 +75,11 @@ export default function ContactSection() {
   };
 
   const markField = (control: HTMLInputElement | HTMLTextAreaElement) => {
-    if (!control.value && !control.required) return;
+    if (!control.value && !control.required) {
+      // A cleared optional field is no longer invalid.
+      setInvalid((prev) => ({ ...prev, [control.name]: false }));
+      return;
+    }
     setInvalid((prev) => ({
       ...prev,
       [control.name]: !control.checkValidity(),
@@ -87,45 +88,34 @@ export default function ContactSection() {
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (busy) return; // ignore a second submit while one is in flight
     if (!validate()) return;
 
-    const data = Object.fromEntries(
+    // Read the form before the first await: currentTarget is only reliable
+    // synchronously.
+    const raw = Object.fromEntries(
       new FormData(event.currentTarget).entries(),
     ) as Record<string, string>;
-    if (data._gotcha) return; // a bot filled the honeypot
-    delete data._gotcha;
+    if (raw._gotcha) return; // a bot filled the honeypot
 
-    const fullName = `${data.firstName ?? ""} ${data.lastName ?? ""}`.trim();
-    const isWeb3Forms = /web3forms\.com/i.test(env.contactEndpoint);
-
-    if (isWeb3Forms && !env.web3formsKey) {
-      console.error(
-        "Contact form: VITE_WEB3FORMS_ACCESS_KEY is not set, so Web3Forms will discard this.",
-      );
-      setView("error");
-      return;
+    // Trim values and drop blanks so the email lists only what was entered.
+    const data: Record<string, string> = {};
+    for (const [key, value] of Object.entries(raw)) {
+      if (key === "_gotcha") continue;
+      const clean = typeof value === "string" ? value.trim() : "";
+      if (clean) data[key] = clean;
     }
 
-    // Flat top-level keys only. Web3Forms reads access_key, name, email,
-    // subject, message and botcheck; every other key is appended to the email.
-    const payload = isWeb3Forms
-      ? {
-          ...data,
-          access_key: env.web3formsKey,
-          name: fullName,
-          from_name: "Aswenna website",
-          subject: `Aswenna enquiry - ${fullName}`,
-          botcheck: false,
-          page: window.location.href,
-          submittedAt: new Date().toISOString(),
-        }
-      : {
-          ...data,
-          _subject: `Aswenna enquiry - ${fullName}`,
-          _template: "table",
-          page: window.location.href,
-          submittedAt: new Date().toISOString(),
-        };
+    const fullName = `${data.firstName ?? ""} ${data.lastName ?? ""}`.trim();
+
+    // Formspree: flat JSON. `email` becomes the reply-to, `_subject` the
+    // subject line, and every other key is listed in the email.
+    const payload = {
+      ...data,
+      _subject: `Aswenna enquiry - ${fullName}`,
+      page: window.location.href,
+      submittedAt: new Date().toISOString(),
+    };
 
     setBusy(true);
     setStatus({ text: t("contact.sending", contact.sending) });
@@ -143,16 +133,18 @@ export default function ContactSection() {
         body: JSON.stringify(payload),
         signal: controller.signal,
       });
-      if (!res.ok) throw new Error(`Relay answered ${res.status}`);
-      // Web3Forms (and Formspree) can answer 2xx while rejecting the payload,
-      // and say so only in the body. Trust the body, not the status.
-      const body = await res.json().catch(() => null);
-      if (body && body.success === false) {
+
+      // Formspree answers 200 {"ok":true} on success and 4xx with an
+      // "errors" array when it rejects the submission.
+      if (!res.ok) {
+        const detail = await res.json().catch(() => null);
         throw new Error(
-          `Relay rejected the submission: ${body.message ?? "no reason given"}`,
+          `Relay answered ${res.status}: ${JSON.stringify(detail?.errors ?? detail)}`,
         );
       }
+
       form.current?.reset();
+      setInvalid({});
       setStatus(null);
       setView("success");
     } catch (err) {
@@ -239,27 +231,31 @@ export default function ContactSection() {
                 </div>
               ))}
 
-              <div className={`field${invalid.size ? " is-invalid" : ""}`}>
+              <div className={`field${invalid["size"] ? " is-invalid" : ""}`}>
                 {label("size", false)}
                 <div className="field__group">
                   <input
                     id="size"
                     name="size"
                     type="number"
+                    inputMode="decimal"
                     min={0}
-                    step={0.1}
+                    step="any"
+                    aria-invalid={invalid["size"] ? true : undefined}
                     placeholder={t(
                       "contact.fields.size.placeholder",
                       contact.fields.size.placeholder,
                     )}
                     onBlur={(e) => markField(e.currentTarget)}
                   />
-                  <span className="field__unit">hectares</span>
+                  <span className="field__unit">
+                    {t("contact.unitHectares", "hectares")}
+                  </span>
                 </div>
               </div>
 
               <div
-                className={`field field--wide${invalid.message ? " is-invalid" : ""}`}>
+                className={`field field--wide${invalid["message"] ? " is-invalid" : ""}`}>
                 {label("message", false)}
                 <textarea
                   id="message"
