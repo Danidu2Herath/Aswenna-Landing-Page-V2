@@ -7,7 +7,9 @@
   z-index: 60;
   transition: top var(--duration) var(--ease);
 }
-.header--stuck { top: var(--header-gap-stuck); }
+.header--stuck {
+  top: var(--header-gap-stuck);
+}
 
 /* Once scrolling starts the pills lift off the page. Not full liquid glass:
    on the pale sage background there is nothing behind the panel for a heavy
@@ -54,9 +56,15 @@
 
 /* Over the hero the bar has no surface at all, so the dark-green wordmark
    would sit on a dark photograph. The reversed file takes over. */
-.header--over-dark .brand__logo--ink { display: none; }
-.header--over-dark .brand__logo--reversed { display: block; }
-.header--over-dark .header__nav a { color: var(--header-dark-ink-soft); }
+.header--over-dark .brand__logo--ink {
+  display: none;
+}
+.header--over-dark .brand__logo--reversed {
+  display: block;
+}
+.header--over-dark .header__nav a {
+  color: var(--header-dark-ink-soft);
+}
 .header--over-dark .header__nav a:hover,
 .header--over-dark .header__nav a:focus-visible {
   background: var(--header-dark-hover);
@@ -67,10 +75,16 @@
    not change meaning with the backdrop. It only gains a ring so its edge
    survives on a dark field. */
 .header--over-dark .header__cta {
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.24), var(--header-dark-shadow);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.24),
+    var(--header-dark-shadow);
 }
 
-.header__inner { display: flex; align-items: center; gap: 20px; }
+.header__inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
 
 .brand {
   display: inline-flex;
@@ -84,16 +98,26 @@
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-xs);
-  transition: background-color var(--duration) var(--ease), border-color var(--duration) var(--ease),
-              box-shadow var(--duration) var(--ease);
+  transition:
+    background-color var(--duration) var(--ease),
+    border-color var(--duration) var(--ease),
+    box-shadow var(--duration) var(--ease);
 }
 /* The logo is one image, not a mark beside type, so there is no font size or
    colour to keep in step with the bar. Height drives it; the width follows
    the intrinsic ratio on the element. */
-.brand__logo { display: block; height: 34px; width: auto; }
-.brand__logo--reversed { display: none; }
+.brand__logo {
+  display: block;
+  height: 34px;
+  width: auto;
+}
+.brand__logo--reversed {
+  display: none;
+}
 
-.header__nav { margin-inline: auto; }
+.header__nav {
+  margin-inline: auto;
+}
 .header__nav ul {
   display: flex;
   align-items: center;
@@ -103,8 +127,10 @@
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-xs);
-  transition: background-color var(--duration) var(--ease), border-color var(--duration) var(--ease),
-              box-shadow var(--duration) var(--ease);
+  transition:
+    background-color var(--duration) var(--ease),
+    border-color var(--duration) var(--ease),
+    box-shadow var(--duration) var(--ease);
 }
 .header__nav a {
   display: block;
@@ -116,12 +142,24 @@
   /* Sinhala and Tamil labels are longer than the English ones; without this
      they wrap and the header pill doubles in height. */
   white-space: nowrap;
-  transition: background-color var(--duration-fast) var(--ease), color var(--duration-fast) var(--ease);
+  transition:
+    background-color var(--duration-fast) var(--ease),
+    color var(--duration-fast) var(--ease);
 }
-.header__nav a:hover { background: var(--color-accent-soft); color: var(--primary-700); }
+.header__nav a:hover {
+  background: var(--color-accent-soft);
+  color: var(--primary-700);
+}
 
-.header__actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-.header__cta { padding: 11px 20px; }
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.header__cta {
+  padding: 11px 20px;
+}
 
 .header__burger {
   display: none;
@@ -158,8 +196,14 @@
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-lg);
 }
-.mobile-nav.is-open { display: block; }
-.mobile-nav ul { display: flex; flex-direction: column; margin-bottom: 12px; }
+.mobile-nav.is-open {
+  display: block;
+}
+.mobile-nav ul {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
 
 /* Scoped to the list. As `.mobile-nav a` it also hit the Get started button
    and, being more specific than .btn--primary, painted its label grey on
@@ -173,16 +217,30 @@
   font-weight: var(--weight-medium);
   color: var(--color-text-soft);
 }
-.mobile-nav ul a:hover { background: var(--color-surface-sunken); color: var(--color-text); }
-.mobile-nav .btn { width: 100%; justify-content: center; }
+.mobile-nav ul a:hover {
+  background: var(--color-surface-sunken);
+  color: var(--color-text);
+}
+.mobile-nav .btn {
+  width: 100%;
+  justify-content: center;
+}
 
 @media (max-width: 1180px) {
-  .header__nav { display: none; }
-  .header__inner { justify-content: space-between; }
-  .header__burger { display: grid; }
+  .header__nav {
+    display: none;
+  }
+  .header__inner {
+    justify-content: space-between;
+  }
+  .header__burger {
+    display: grid;
+  }
 }
 @media (max-width: 560px) {
-  .header__cta { display: none; }
+  .header__cta {
+    display: none;
+  }
 }
 
 /* ---------------------------------------------------------------------------
@@ -198,15 +256,21 @@ html[lang="ta"] .header__nav a {
   padding: 9px 10px;
 }
 
-@media (max-width: 1320px) {
+@media (max-width: 1240px) {
   html[lang="si"] .header__nav,
-  html[lang="ta"] .header__nav { display: none; }
+  html[lang="ta"] .header__nav {
+    display: none;
+  }
 
   html[lang="si"] .header__inner,
-  html[lang="ta"] .header__inner { justify-content: space-between; }
+  html[lang="ta"] .header__inner {
+    justify-content: space-between;
+  }
 
   html[lang="si"] .header__burger,
-  html[lang="ta"] .header__burger { display: grid; }
+  html[lang="ta"] .header__burger {
+    display: grid;
+  }
 }
 
 /* ---------------------------------------------------------------------------
@@ -216,9 +280,13 @@ html[lang="ta"] .header__nav a {
    reducing the language control to its globe buys back ~70px.
    --------------------------------------------------------------------------- */
 @media (max-width: 420px) {
-  :root { --gutter: 16px; }
+  :root {
+    --gutter: 16px;
+  }
 
-  .header__actions { gap: 6px; }
+  .header__actions {
+    gap: 6px;
+  }
 }
 
 /* ===========================================================================
@@ -235,7 +303,9 @@ html[lang="ta"] .header__nav a {
   border-bottom: 1px solid var(--header-light-border);
   -webkit-backdrop-filter: var(--header-light-blur);
   backdrop-filter: var(--header-light-blur);
-  transition: background-color var(--duration) var(--ease), border-color var(--duration) var(--ease);
+  transition:
+    background-color var(--duration) var(--ease),
+    border-color var(--duration) var(--ease);
 }
 .header.header--over-dark {
   background: var(--header-dark-bg);
@@ -243,7 +313,9 @@ html[lang="ta"] .header__nav a {
   -webkit-backdrop-filter: var(--header-dark-blur);
   backdrop-filter: var(--header-dark-blur);
 }
-.header__inner { width: 100%; }
+.header__inner {
+  width: 100%;
+}
 
 .header .brand,
 .header .header__nav ul,
@@ -260,10 +332,17 @@ html[lang="ta"] .header__nav a {
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
 }
-.header .brand { padding: 0; }
-.header .brand__logo { height: 34px; }
+.header .brand {
+  padding: 0;
+}
+.header .brand__logo {
+  height: 34px;
+}
 
-.header__nav ul { padding: 0; gap: 4px; }
+.header__nav ul {
+  padding: 0;
+  gap: 4px;
+}
 .header__nav a {
   padding: 6px 10px;
   font-size: 12px;
@@ -274,9 +353,15 @@ html[lang="ta"] .header__nav a {
   background: none;
 }
 .header__nav a:hover,
-.header__nav a:focus-visible { background: none; color: #000; }
+.header__nav a:focus-visible {
+  background: none;
+  color: #000;
+}
 .header--over-dark .header__nav a:hover,
-.header--over-dark .header__nav a:focus-visible { background: none; color: #fff; }
+.header--over-dark .header__nav a:focus-visible {
+  background: none;
+  color: #fff;
+}
 
 .header__cta {
   padding: 4px 12px;
@@ -292,14 +377,68 @@ html[lang="ta"] .header__nav a {
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
 }
-.header--over-dark .header__nav a { color: rgba(255, 255, 255, 0.86); font-size: 14px; }
-.header__nav a { font-size: 14px; }
-.header--over-dark .header__burger { color: #fff; }
+.header--over-dark .header__nav a {
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 14px;
+}
+.header__nav a {
+  font-size: 14px;
+}
+.header--over-dark .header__burger {
+  color: #fff;
+}
 
 /* Over dark ground the call to action becomes a white pill. */
 .header--over-dark .header__cta {
   background: #fff;
   color: #1d1d1f;
 }
-.header--over-dark .header__cta:hover { background: #f0f0f2; }
-.header__cta { padding: 8px 18px; font-size: 14px; font-weight: var(--weight-medium); }
+.header--over-dark .header__cta:hover {
+  background: #f0f0f2;
+}
+.header__cta {
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: var(--weight-medium);
+}
+
+/* Globe button: flat like the other nav items. */
+.header .lang__button,
+.header--stuck .lang__button,
+.header--over-dark .lang__button {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 14px;
+}
+.header .lang__button:hover {
+  color: #000;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.header--over-dark .lang__button {
+  color: rgba(255, 255, 255, 0.86);
+}
+.header--over-dark .lang__button:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Phones: just the globe, no code or arrow. */
+@media (max-width: 420px) {
+  .lang__code,
+  .lang__chev {
+    display: none;
+  }
+  .lang__button {
+    padding: 11px;
+  }
+}
+
+/* The dropdown panel is always a light surface, even over the dark hero. */
+.header .lang__option {
+  color: var(--color-text-soft);
+}

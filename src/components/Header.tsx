@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Icon from "./Icon";
-import { useI18n } from "../i18n";
+import LanguageSwitcher from "./LanguageSwitcher";
+import { AVAILABLE, useI18n } from "../i18n";
 import { nav, site, ui } from "../data/content";
 import { rafThrottle } from "../lib/util";
 
@@ -18,7 +19,7 @@ import { rafThrottle } from "../lib/util";
  * what is actually underneath is the only way to get both right.
  */
 export default function Header() {
-  const { t } = useI18n();
+  const { lang, setLang, t } = useI18n();
   const [stuck, setStuck] = useState(false);
   const [overDark, setOverDark] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -68,7 +69,7 @@ export default function Header() {
     };
     // Resizing past the breakpoint must not leave the menu stuck open.
     const onResize = rafThrottle(() => {
-      if (window.innerWidth > 1180) setMenuOpen(false);
+      if (window.innerWidth > 1240) setMenuOpen(false);
     });
     document.addEventListener("keydown", onKey);
     window.addEventListener("resize", onResize, { passive: true });
@@ -94,7 +95,10 @@ export default function Header() {
 
       <header className={classes} ref={headerRef}>
         <div className="header__inner container">
-          <a className="brand" href="#top" aria-label={`${site.name} home`}>
+          <a
+            className="brand"
+            href="#top"
+            aria-label={t("ui.home", `${site.name} home`)}>
             {/* Two files, one shown at a time. Over the hero photograph the
                 bar has no surface and the wordmark would be dark green ink on
                 a dark field, so the reversed logo takes over there. The <a>
@@ -115,7 +119,9 @@ export default function Header() {
             />
           </a>
 
-          <nav className="header__nav" aria-label={t("ui.primaryNav", ui.primaryNav)}>
+          <nav
+            className="header__nav"
+            aria-label={t("ui.primaryNav", ui.primaryNav)}>
             <ul>
               {nav.map((item, i) => (
                 <li key={item.href}>
@@ -126,6 +132,7 @@ export default function Header() {
           </nav>
 
           <div className="header__actions">
+            <LanguageSwitcher />
             <a className="btn btn--primary header__cta" href="#contact">
               <span>{t("ui.getStarted", ui.getStarted)}</span>
               <Icon name="arrow-right" />
@@ -135,9 +142,12 @@ export default function Header() {
               className="header__burger"
               aria-expanded={menuOpen}
               aria-controls="mobile-nav"
-              aria-label={menuOpen ? t("ui.closeMenu", ui.closeMenu) : t("ui.openMenu", ui.openMenu)}
-              onClick={() => setMenuOpen((v) => !v)}
-            >
+              aria-label={
+                menuOpen
+                  ? t("ui.closeMenu", ui.closeMenu)
+                  : t("ui.openMenu", ui.openMenu)
+              }
+              onClick={() => setMenuOpen((v) => !v)}>
               <Icon name="menu" className="burger__open" />
               <Icon name="x" className="burger__close" />
             </button>
@@ -151,8 +161,7 @@ export default function Header() {
           onClick={(event) => {
             // Any link closes the menu, so the page is never left scroll-locked.
             if ((event.target as HTMLElement).closest("a")) setMenuOpen(false);
-          }}
-        >
+          }}>
           <ul>
             {nav.map((item, i) => (
               <li key={item.href}>
@@ -166,6 +175,29 @@ export default function Header() {
           <a className="btn btn--primary btn--lg" href="#contact">
             {t("ui.getStarted", ui.getStarted)}
           </a>
+
+          <div
+            className="langstack"
+            role="group"
+            aria-label={t("ui.chooseLanguage", ui.chooseLanguage)}>
+            <span className="langstack__label">
+              <Icon name="globe" />
+              <span>{t("ui.language", ui.language)}</span>
+            </span>
+            <div className="langstack__options">
+              {AVAILABLE.map((l) => (
+                <button
+                  type="button"
+                  key={l.code}
+                  className={`langstack__option${l.code === lang ? " is-active" : ""}`}
+                  lang={l.code}
+                  aria-pressed={l.code === lang}
+                  onClick={() => setLang(l.code)}>
+                  {l.native}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
       </header>
     </>
