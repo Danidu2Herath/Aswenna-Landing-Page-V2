@@ -74,3 +74,18 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name=${{ vars.CLOUDFLARE_PROJECT_NAME }} --branch=${{ github.head_ref || github.ref_name }} --commit-dirty=true
+
+      # Production deploys only: delete older production deployments so their
+      # <hash>.pages.dev addresses go away. Previews are left alone. A cleanup
+      # failure must never fail the deploy that already succeeded.
+      - uses: actions/checkout@v4
+        if: github.ref == 'refs/heads/main'
+
+      - name: Prune old production deployments
+        if: github.ref == 'refs/heads/main'
+        continue-on-error: true
+        run: node scripts/prune-deployments.mjs
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_PROJECT_NAME: ${{ vars.CLOUDFLARE_PROJECT_NAME }}
